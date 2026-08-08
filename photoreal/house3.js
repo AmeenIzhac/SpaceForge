@@ -1,5 +1,5 @@
 // Realistic single-storey house + first-person tour through every room.
-// Runs inside headless Chrome; render_house.mjs calls window.renderFrame(i).
+// Runs inside headless Chrome; render_house3.mjs calls window.renderFrame(i).
 //
 // Bungalow: entry hall spine, living room, kitchen-diner, bedroom, bathroom.
 // Real doorway openings (walk-through), open door leaves, windows with
@@ -865,11 +865,12 @@ const poses = [];
       return x;
     };
   };
+  // de-jittered variant: no handheld noise floor, slower/softer roll —
+  // the same human gaze + gait behaviour shot as if on a gimbal
   const ouSpeed = makeOU(2.5, 0.20);    // walking-pace surges
   const ouGaze = makeOU(2.4, 0.16);     // rad: slow scanning wander (never still)
   const ouPitch = makeOU(3.0, 0.06);    // rad, around the downward base
-  const ouRoll = makeOU(1.6, 0.017);    // rad
-  const ouX = makeOU(0.45, 0.005), ouY = makeOU(0.5, 0.004), ouZ = makeOU(0.45, 0.005);
+  const ouRoll = makeOU(2.8, 0.011);    // rad
   const ouH = makeOU(6.0, 0.02);        // slow eye-height drift
   const BASE_PITCH = -0.115;            // ~-6.6 deg: tours look slightly down
 
@@ -961,24 +962,20 @@ const poses = [];
     pitch += (Math.max(-0.44, Math.min(0.05, pitchT)) - pitch) * Math.min(1, dt / 0.45);
     // roll: OU + stride-locked lean
     roll = ouRoll() + 0.004 * Math.sin(Math.PI * gait + 0.7);
-    // position: path + stride sway/bob + handheld noise floor
+    // position: path + stride sway/bob (no handheld noise floor)
     const p = atS(s);
     const hd = headingAt(s) ?? yaw;
     const sway = 0.042 * (0.35 + 0.65 * sv) * Math.sin(Math.PI * gait);
     const bob = (0.012 * Math.sin(2 * Math.PI * gait)
       + 0.004 * Math.sin(4 * Math.PI * gait + 0.8)) * (0.3 + 0.7 * sv);
-    const jf = phase === "walk" ? 1 : 0.55;   // handheld never fully rests
-    const px = p.x + Math.cos(hd) * sway + jf * ouX();
-    const pz = p.z - Math.sin(hd) * sway + jf * ouZ();
-    const py = EYE + ouH() + bob + jf * ouY();
+    const px = p.x + Math.cos(hd) * sway;
+    const pz = p.z - Math.sin(hd) * sway;
+    const py = EYE + ouH() + bob;
     poses.push([px, py, pz, yaw, pitch, roll]);
   }
-  // settle at the end: hold position, keep the micro-noise breathing
+  // settle at the end: hold the final pose
   const last = poses[poses.length - 1];
-  for (let i = 0; i < 30; i++) {
-    poses.push([last[0] + 0.6 * ouX(), last[1] + 0.6 * ouY(), last[2] + 0.6 * ouZ(),
-      last[3], last[4], ouRoll()]);
-  }
+  for (let i = 0; i < 30; i++) poses.push(last);
 }
 
 // ---------------------------------------------------------------- post/api

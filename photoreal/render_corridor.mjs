@@ -1,8 +1,8 @@
-// Headless Three.js corridor sample -> out/three/0.mp4
+// Headless Three.js corridor sample -> out/photoreal/0.mp4
 //
-// Serves scene.js + node_modules + assets over a local HTTP server, drives a
+// Serves corridor.js + node_modules + assets over a local HTTP server, drives a
 // headless Chrome (puppeteer) frame by frame, and pipes PNG screenshots into
-// ffmpeg. Everything is hardcoded; run with:  node three/render.mjs
+// ffmpeg. Everything is hardcoded; run with:  node photoreal/render_corridor.mjs
 
 import http from "node:http";
 import { readFile } from "node:fs/promises";
@@ -14,7 +14,7 @@ import { fileURLToPath } from "node:url";
 import puppeteer from "puppeteer";
 
 const ROOT = path.dirname(fileURLToPath(import.meta.url));
-const OUT = path.join(ROOT, "..", "out", "three", "1.mp4");
+const OUT = path.join(ROOT, "..", "out", "photoreal", "0.mp4");
 const FFMPEG = "/opt/homebrew/bin/ffmpeg";
 const W = 960, H = 544, FPS = 30, DSF = 2; // render at 2x, downscale in ffmpeg
 
@@ -30,7 +30,7 @@ const INDEX = `<!doctype html>
 {"imports":{"three":"/node_modules/three/build/three.module.js",
             "three/addons/":"/node_modules/three/examples/jsm/"}}
 </script>
-<body><script type="module" src="/house.js"></script></body>`;
+<body><script type="module" src="/corridor.js"></script></body>`;
 
 const server = http.createServer(async (req, res) => {
   try {

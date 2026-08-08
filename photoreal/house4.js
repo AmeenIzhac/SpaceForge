@@ -1,5 +1,5 @@
 // Realistic single-storey house + first-person tour through every room.
-// Runs inside headless Chrome; render_house.mjs calls window.renderFrame(i).
+// Runs inside headless Chrome; render_house4.mjs calls window.renderFrame(i).
 //
 // Bungalow: entry hall spine, living room, kitchen-diner, bedroom, bathroom.
 // Real doorway openings (walk-through), open door leaves, windows with
@@ -397,10 +397,16 @@ const ROOMS = {
   BED: { x0: 0, x1: 4.8, z0: 4.4, z1: 8.4, floor: "floorCarpet", fsu: 2.6 },
   BATH: { x0: 6.8, x1: 9.2, z0: 4.4, z1: 6.6, floor: "floorTileK", fsu: 0.85 },
 };
-for (const r of Object.values(ROOMS)) {
+for (const [rname, r] of Object.entries(ROOMS)) {
   const fs = sink(r.floor), cs = sink("ceil");
   const dx = r.x1 - r.x0, dz = r.z1 - r.z0;
   fs.add(new THREE.Vector3(r.x0, 0, r.z0), new THREE.Vector3(0, 0, dz), new THREE.Vector3(dx, 0, 0), r.fsu, r.fsu);
+  if (rname === "HALL") {
+    // stairwell: ceiling only north of the flight; the landing slab roofs
+    // the south end; z 2.35..4.94 is a double-height void over the stairs
+    cs.add(new THREE.Vector3(r.x0, H, 0), new THREE.Vector3(dx, 0, 0), new THREE.Vector3(0, 0, 2.35), 2.5, 2.5);
+    continue;
+  }
   cs.add(new THREE.Vector3(r.x0, H, r.z0), new THREE.Vector3(dx, 0, 0), new THREE.Vector3(0, 0, dz), 2.5, 2.5);
 }
 // floor under door openings (thresholds)
@@ -409,12 +415,20 @@ for (const [x, z, dir] of [[4.9, 1.75, "z"], [6.7, 1.75, "z"], [4.9, 5.3, "z"], 
   if (dir === "z") fs.add(new THREE.Vector3(x - T / 2 - 0.01, 0.001, z - 0.47), new THREE.Vector3(0, 0, 0.94), new THREE.Vector3(T + 0.02, 0, 0), 2.2, 2.2);
   else fs.add(new THREE.Vector3(x - 0.47, 0.001, z - T / 2 - 0.01), new THREE.Vector3(0, 0, T + 0.02), new THREE.Vector3(0.94, 0, 0), 2.2, 2.2);
 }
-// roof slab above ceilings: blocks the sun from leaking through wall bands
+// roof slabs above ceilings: block sun leaks; the stairwell gets a raised
+// cap so no light pours straight down the double-height void
 {
-  const roof = new THREE.Mesh(new THREE.BoxGeometry(12.4, 0.1, 9.2), MAT.OUT);
-  roof.position.set(5.8, H + 0.09, 4.2);
-  roof.castShadow = true;
-  scene.add(roof);
+  const seg = (w, d, x, z, y = H + 0.09) => {
+    const m = new THREE.Mesh(new THREE.BoxGeometry(w, 0.1, d), MAT.OUT);
+    m.position.set(x, y, z);
+    m.castShadow = true;
+    scene.add(m);
+  };
+  seg(5.4, 9.2, 2.1, 4.2);                    // west of the stairwell
+  seg(5.4, 9.2, 9.5, 4.2);                    // east of the stairwell
+  seg(1.6, 2.75, 5.8, 0.975);                 // hall, north of the void
+  seg(1.6, 2.4, 5.8, 7.6);                    // south of the shaft
+  seg(2.0, 4.5, 5.8, 4.375, 5.24);            // stairwell tower cap
 }
 
 // ------------------------------------------------------------------ garden
@@ -454,14 +468,14 @@ for (const [x, z, dir] of [[4.9, 1.75, "z"], [6.7, 1.75, "z"], [4.9, 5.3, "z"], 
   scene.add(sun);
   scene.add(new THREE.HemisphereLight(0xcfe0f0, 0x8b7d6a, 0.28));
 }
-function ceilingLamp(x, z, intensity = 2.0, dist = 9) {
-  cyl(MAT.white, 0.16, 0.16, 0.05, x, H - 0.05, z, 24);
+function ceilingLamp(x, z, intensity = 2.0, dist = 9, mountY = H) {
+  cyl(MAT.white, 0.16, 0.16, 0.05, x, mountY - 0.05, z, 24);
   const disc = new THREE.Mesh(new THREE.CylinderGeometry(0.13, 0.13, 0.012, 24),
     new THREE.MeshStandardMaterial({ color: 0xfff6e6, emissive: 0xffe9c8, emissiveIntensity: 1.7 }));
-  disc.position.set(x, H - 0.062, z);
+  disc.position.set(x, mountY - 0.062, z);
   scene.add(disc);
   const pl = new THREE.PointLight(0xffe6c4, intensity, dist, 2);
-  pl.position.set(x, H - 0.28, z);
+  pl.position.set(x, mountY - 0.28, z);
   scene.add(pl);
   return pl;
 }
@@ -470,7 +484,7 @@ ceilingLamp(9.2, 2.1, 2.2);
 ceilingLamp(2.4, 6.4, 2.0);
 ceilingLamp(8.0, 5.5, 1.6, 6);
 ceilingLamp(5.8, 1.6, 1.4, 6);
-ceilingLamp(5.8, 4.8, 1.4, 6);
+ceilingLamp(5.55, 5.6, 1.1, 5);          // under the stair landing
 
 // ----------------------------------------------------------------- living
 {
@@ -723,15 +737,15 @@ art(9.5, 4.185, Math.PI, 0.55, 0.7);
 // -------------------------------------------------------------------- hall
 {
   const r = MAT;
-  box(r.wood, 0.3, 0.045, 1.0, 6.42, 0.72, 3.35);               // console table
-  for (const [lx, lz] of [[6.42, 2.92], [6.42, 3.78]]) {
+  // console table tucked under the hall window, beneath the stair landing
+  box(r.wood, 0.9, 0.045, 0.28, 5.8, 0.72, 6.22);
+  for (const [lx, lz] of [[5.42, 6.2], [6.18, 6.2]]) {
     box(r.darkWood, 0.04, 0.72, 0.04, lx, 0, lz);
-    box(r.darkWood, 0.04, 0.72, 0.04, lx - 0.0, 0, lz); // (twin legs hidden against wall)
   }
-  cyl(r.darkWood, 0.06, 0.045, 0.14, 6.42, 0.765, 3.15, 12);    // vase
+  cyl(r.darkWood, 0.06, 0.045, 0.14, 5.62, 0.765, 6.22, 12);    // vase
   for (let i = 0; i < 5; i++) {
     const st = new THREE.Mesh(new THREE.CylinderGeometry(0.004, 0.004, 0.3 + rng() * 0.15, 6), MAT.leaf);
-    st.position.set(6.4 + (rng() - 0.5) * 0.05, 1.05, 3.15 + (rng() - 0.5) * 0.05);
+    st.position.set(5.6 + (rng() - 0.5) * 0.05, 1.05, 6.22 + (rng() - 0.5) * 0.05);
     st.rotation.z = (rng() - 0.5) * 0.5;
     st.rotation.x = (rng() - 0.5) * 0.5;
     scene.add(st);
@@ -745,6 +759,119 @@ art(9.5, 4.185, Math.PI, 0.55, 0.7);
   // coat hooks
   box(r.wood, 0.5, 0.07, 0.02, 5.05, 1.6, 0.7, Math.PI / 2, { cast: false });
   for (const hz of [0.55, 0.7, 0.85]) cyl(r.brass, 0.012, 0.012, 0.05, 5.06, 1.56, hz, 8).rotation.z = Math.PI / 2;
+}
+
+// ------------------------------------------------------------- staircase
+// straight carpeted flight in the hall, east side (x 5.7..6.6), rising
+// south from z 2.35: 12 risers of 0.22 m (landing floor 2.64, so the
+// under-landing soffit sits exactly at the ground ceiling height H=2.5).
+// The flight fits between the hall's north and south door openings; the
+// landing (z 4.94..6.4) passes over the bedroom/bathroom doors with full
+// headroom. Upper storey: stairwell walls, two closed doors, a window.
+{
+  const RISE = 0.22, TREAD = 0.235, NR = 12;
+  const Z0 = 2.35, X0 = 5.7, X1 = 6.6, XM = (X0 + X1) / 2;
+  // plain carpet for the steps: box faces have 0..1 UVs, so a patterned
+  // map would stretch per riser
+  const stairCarpet = new THREE.MeshStandardMaterial({ color: 0xa8a29a, roughness: 1 });
+  stairCarpet.shadowSide = THREE.DoubleSide;
+  // steps
+  for (let i = 0; i < NR; i++) {
+    const zf = Z0 + i * TREAD;
+    box(stairCarpet, X1 - X0, RISE, 0.03, XM, i * RISE, zf + 0.015, 0, { cast: false }); // riser
+    box(stairCarpet, X1 - X0, 0.045, TREAD + 0.03, XM, (i + 1) * RISE - 0.045, zf + TREAD / 2 + 0.005, 0); // tread
+  }
+  // stepped spandrel paneling closing the west side under the flight
+  for (let i = 1; i < NR; i++) {
+    box(MAT.trim, 0.028, i * RISE - 0.02, TREAD + 0.01, X0 + 0.014, 0, Z0 + i * TREAD + TREAD / 2, 0, { cast: false });
+  }
+  // landing slab (top at 2.64; underside = ground ceiling height)
+  box(MAT.trim, 1.6, 2.64 - H, 1.46, 5.8, H, 5.67, 0, { cast: false });
+  sink("floorCarpet").add(new THREE.Vector3(5.0, 2.645, 4.94),
+    new THREE.Vector3(0, 0, 1.46), new THREE.Vector3(1.6, 0, 0), 2.6, 2.6);
+  // balustrade along the open west edge of the flight
+  const slope = Math.atan2(RISE * NR, TREAD * NR);
+  const railLen = Math.hypot(TREAD * NR, RISE * NR) + 0.15;
+  const rail = new THREE.Mesh(new THREE.BoxGeometry(0.07, 0.062, railLen), MAT.wood);
+  rail.position.set(X0 + 0.045, (1.12 + 3.54) / 2 - 0.03, (Z0 + Z0 + TREAD * NR) / 2);
+  rail.rotation.x = -slope;
+  rail.castShadow = true;
+  scene.add(rail);
+  for (let i = 0; i < NR; i++) {
+    const zi = Z0 + i * TREAD + 0.09;
+    box(MAT.trim, 0.032, 0.86, 0.032, X0 + 0.045, (i + 1) * RISE, zi, 0, { cast: false });
+  }
+  box(MAT.wood, 0.095, 1.15, 0.095, X0 + 0.045, 0, Z0 - 0.06);          // bottom newel
+  box(MAT.wood, 0.095, 1.0, 0.095, X0 + 0.045, 2.64, Z0 + TREAD * NR + 0.05); // top newel
+  // landing guard along its open north edge (over the hall void)
+  box(MAT.wood, 0.72, 0.06, 0.07, 5.36, 3.5, 4.98);
+  for (const bx of [5.1, 5.32, 5.54]) box(MAT.trim, 0.032, 0.86, 0.032, bx, 2.64, 4.98, 0, { cast: false });
+  // upper stairwell walls (y 2.5..5.15) + south window + two closed doors
+  const hs = sink("HALL");
+  const UP0 = H, UP1 = 5.15;
+  hs.add(new THREE.Vector3(5.0, UP0, 6.4), new THREE.Vector3(0, 0, -(6.4 - 2.35)), new THREE.Vector3(0, UP1 - UP0, 0)); // west, facing +x
+  hs.add(new THREE.Vector3(6.6, UP0, 2.35), new THREE.Vector3(0, 0, 6.4 - 2.35), new THREE.Vector3(0, UP1 - UP0, 0));   // east, facing -x
+  hs.add(new THREE.Vector3(5.0, UP0, 2.35), new THREE.Vector3(1.6, 0, 0), new THREE.Vector3(0, UP1 - UP0, 0));          // north, facing +z
+  // south upper wall with window hole x 5.35..6.25, y 3.55..4.65
+  const sw = (x0, x1, y0, y1) => hs.add(new THREE.Vector3(x1, y0, 6.4), new THREE.Vector3(-(x1 - x0), 0, 0), new THREE.Vector3(0, y1 - y0, 0));
+  sw(5.0, 5.35, UP0, UP1); sw(6.25, 6.6, UP0, UP1);
+  sw(5.35, 6.25, UP0, 3.55); sw(5.35, 6.25, 4.65, UP1);
+  const tq = sink("trimQ");  // reveals
+  tq.add(new THREE.Vector3(5.35, 3.55, 6.6), new THREE.Vector3(0, 0, -T), new THREE.Vector3(0, 1.1, 0), 1, 1);
+  tq.add(new THREE.Vector3(6.25, 3.55, 6.4), new THREE.Vector3(0, 0, T), new THREE.Vector3(0, 1.1, 0), 1, 1);
+  tq.add(new THREE.Vector3(5.35, 4.65, 6.4), new THREE.Vector3(0.9, 0, 0), new THREE.Vector3(0, 0, T), 1, 1);
+  tq.add(new THREE.Vector3(5.35, 3.55, 6.6), new THREE.Vector3(0.9, 0, 0), new THREE.Vector3(0, 0, -T), 1, 1);
+  box(MAT.trim, 0.9, 0.06, 0.055, 5.8, 4.59, 6.5);
+  box(MAT.trim, 0.9, 0.06, 0.055, 5.8, 3.55, 6.5);
+  box(MAT.trim, 0.06, 1.1, 0.055, 5.38, 3.55, 6.5);
+  box(MAT.trim, 0.06, 1.1, 0.055, 6.22, 3.55, 6.5);
+  box(MAT.trim, 0.045, 0.98, 0.045, 5.8, 3.61, 6.5);
+  const uglass = new THREE.Mesh(new THREE.PlaneGeometry(0.8, 1.0), MAT.glass);
+  uglass.position.set(5.8, 4.1, 6.5);
+  scene.add(uglass);
+  // upper ceiling
+  sink("ceil").add(new THREE.Vector3(5.0, UP1, 2.35), new THREE.Vector3(1.6, 0, 0), new THREE.Vector3(0, 0, 6.4 - 2.35), 2.5, 2.5);
+  // exterior shell of the stairwell tower: occludes direct sun (no leaks
+  // through interior-quad corner seams) and reads as a real dormer outside
+  const os = sink("OUT");
+  os.add(new THREE.Vector3(4.8, UP0, 2.15), new THREE.Vector3(0, 0, 6.6 - 2.15 + 0.05), new THREE.Vector3(0, UP1 - UP0 + 0.15, 0)); // west ext, facing -x
+  os.add(new THREE.Vector3(6.8, UP0, 6.65), new THREE.Vector3(0, 0, -(6.65 - 2.15)), new THREE.Vector3(0, UP1 - UP0 + 0.15, 0));    // east ext, facing +x
+  os.add(new THREE.Vector3(6.8, UP0, 2.15), new THREE.Vector3(-2.0, 0, 0), new THREE.Vector3(0, UP1 - UP0 + 0.15, 0));              // north ext, facing -z
+  const se = (x0, x1, y0, y1) => os.add(new THREE.Vector3(x0, y0, 6.65), new THREE.Vector3(x1 - x0, 0, 0), new THREE.Vector3(0, y1 - y0, 0)); // south ext, facing +z
+  se(4.8, 5.35, UP0, UP1 + 0.15); se(6.25, 6.8, UP0, UP1 + 0.15);
+  se(5.35, 6.25, UP0, 3.55); se(5.35, 6.25, 4.65, UP1 + 0.15);
+  // two closed doors off the landing (suggesting the upstairs rooms)
+  const upDoor = (wx, zc, ry) => {
+    box(MAT.trim, 0.9, 2.02, 0.05, wx, 2.64, zc, ry);
+    box(MAT.trim, 0.066, 2.09, 0.06, wx, 2.64, zc - 0.48, ry, { cast: false });
+    box(MAT.trim, 0.066, 2.09, 0.06, wx, 2.64, zc + 0.48, ry, { cast: false });
+    box(MAT.trim, 1.05, 0.07, 0.06, wx, 4.7, zc, ry, { cast: false });
+    const kn = new THREE.Mesh(new THREE.SphereGeometry(0.028, 12, 8), MAT.brass);
+    kn.position.set(wx + (wx < 5.8 ? 0.05 : -0.05), 3.62, zc + 0.3);
+    scene.add(kn);
+  };
+  upDoor(5.05, 5.6, Math.PI / 2);
+  upDoor(6.55, 5.6, -Math.PI / 2);
+  // skirting on the landing walls
+  box(MAT.trim, 0.016, 0.09, 1.4, 5.03, 2.64, 5.67, 0, { cast: false });
+  box(MAT.trim, 0.016, 0.09, 1.4, 6.57, 2.64, 5.67, 0, { cast: false });
+  box(MAT.trim, 1.54, 0.09, 0.016, 5.8, 2.64, 6.38, 0, { cast: false });
+  // pendant hanging into the stairwell + light
+  cyl(MAT.metal, 0.006, 0.006, 1.3, 6.15, 3.85, 3.6, 8);
+  const pshade = new THREE.Mesh(new THREE.CylinderGeometry(0.07, 0.17, 0.18, 24, 1, true),
+    new THREE.MeshStandardMaterial({ color: 0xe8e2d4, roughness: 0.6, side: THREE.DoubleSide }));
+  pshade.position.set(6.15, 3.76, 3.6);
+  scene.add(pshade);
+  const pbulb = new THREE.Mesh(new THREE.SphereGeometry(0.033, 12, 8),
+    new THREE.MeshStandardMaterial({ emissive: 0xffe2b0, emissiveIntensity: 2.4, color: 0x111111 }));
+  pbulb.position.set(6.15, 3.74, 3.6);
+  scene.add(pbulb);
+  const spl = new THREE.PointLight(0xffdfa8, 2.4, 9, 2);
+  spl.position.set(6.15, 3.68, 3.6);
+  spl.castShadow = true;
+  spl.shadow.mapSize.set(1024, 1024);
+  spl.shadow.bias = -0.004;
+  scene.add(spl);
 }
 
 // build all quad sinks
@@ -776,19 +903,24 @@ curtains(0.16, 6.5, Math.PI / 2, 1.8);  // bedroom west
 curtains(2.3, 8.24, 0, 1.8);      // bedroom south
 
 // --------------------------------------------------------------- tour path
+// entries are [x, z] or [x, z, y]; the hall spine runs at x 5.35 (west of
+// the stairs), and the tour ends by climbing the flight to the landing
 const WP = [
   [5.8, 0.85], [5.8, 1.75], [4.35, 1.75], [3.3, 1.95], [2.4, 2.15],
   [3.3, 1.95], [4.35, 1.75], [5.45, 1.75], [6.15, 1.75], [7.25, 1.75], [8.3, 2.05],
-  [7.25, 1.75], [6.15, 1.75], [5.8, 2.0], [5.8, 4.5], [5.8, 5.3],
-  [5.45, 5.3], [4.35, 5.3], [3.5, 5.95], [2.7, 7.2],
-  [3.5, 5.95], [4.35, 5.3], [5.45, 5.3], [6.15, 5.3], [7.25, 5.3], [8.0, 5.45],
-  [7.25, 5.3], [6.15, 5.3], [5.8, 5.1], [5.8, 3.0], [5.8, 1.5],
+  [7.25, 1.75], [6.15, 1.75], [5.45, 1.85], [5.35, 2.3], [5.35, 4.7], [5.35, 5.3],
+  [4.35, 5.3], [3.5, 5.95], [2.7, 7.2],
+  [3.5, 5.95], [4.35, 5.3], [5.35, 5.3], [6.15, 5.3], [7.25, 5.3], [8.0, 5.45],
+  [7.25, 5.3], [6.15, 5.3], [5.45, 5.15], [5.35, 4.6], [5.35, 2.75],
+  [5.5, 2.05], [6.15, 2.05], [6.15, 2.3],
+  [6.15, 4.94, 2.64], [6.15, 5.5, 2.64], [5.75, 5.82, 2.64], [5.5, 5.88, 2.64],
 ];
 const STOPS = [ // {pt, dur (s), amp (rad)} — matched to nearest path point
   { pt: [2.4, 2.15], dur: 3.4, amp: 1.25 },  // living
   { pt: [8.3, 2.05], dur: 3.2, amp: 1.15 },  // kitchen
   { pt: [2.7, 7.2], dur: 3.2, amp: 1.1 },    // bedroom
   { pt: [8.0, 5.45], dur: 2.4, amp: 0.8 },   // bathroom
+  { pt: [5.75, 5.82], dur: 3.0, amp: 1.05 }, // upstairs landing
 ];
 
 function roundCorners(pts, r = 0.4, k = 8) {
@@ -808,7 +940,8 @@ function roundCorners(pts, r = 0.4, k = 8) {
     for (let j = 1; j < k; j++) {
       const t = j / k, mt = 1 - t;
       out.push(new THREE.Vector3(
-        mt * mt * p1.x + 2 * mt * t * p.x + t * t * p2.x, 0,
+        mt * mt * p1.x + 2 * mt * t * p.x + t * t * p2.x,
+        mt * mt * p1.y + 2 * mt * t * p.y + t * t * p2.y,
         mt * mt * p1.z + 2 * mt * t * p.z + t * t * p2.z));
     }
     out.push(p2);
@@ -816,7 +949,7 @@ function roundCorners(pts, r = 0.4, k = 8) {
   out.push(pts[pts.length - 1].clone());
   return out;
 }
-const poly = roundCorners(WP.map(([x, z]) => new THREE.Vector3(x, 0, z)));
+const poly = roundCorners(WP.map(([x, z, y]) => new THREE.Vector3(x, y || 0, z)));
 const cum = [0];
 for (let i = 1; i < poly.length; i++) cum.push(cum[i - 1] + poly[i].distanceTo(poly[i - 1]));
 const TOTAL = cum[cum.length - 1];
@@ -893,6 +1026,17 @@ const poses = [];
     return cum[best];
   });
   const nearDoor = (ss) => doorS.some((sd) => Math.abs(ss - sd) < 1.0);
+  // stair zone: slower pace, gaze on the steps, no look-asides, less sway
+  const nearestS = (x, z) => {
+    let best = 0, bd = 1e9;
+    for (let i = 0; i < poly.length; i++) {
+      const d2 = (poly[i].x - x) ** 2 + (poly[i].z - z) ** 2;
+      if (d2 < bd) { bd = d2; best = i; }
+    }
+    return cum[best];
+  };
+  const stairLo = nearestS(6.15, 2.3), stairHi = nearestS(6.15, 4.94);
+  const onStairs = (ss) => ss > stairLo - 0.3 && ss < stairHi + 0.25;
 
   let s = 0, rate = 0, phase = "walk", phaseT = 0, stopIdx = 0, panBase = 0;
   let yaw = headingAt(0.05) ?? 0;
@@ -916,6 +1060,7 @@ const poses = [];
       }
       v *= Math.min(1.55, Math.max(0.55, 1 + ouSpeed()));
       v *= 1 + 0.10 * Math.sin(2 * Math.PI * gait);
+      if (onStairs(s)) v *= 0.55;           // climbing pace
       s = Math.min(s + v * dt, nextStopS);
       sv = v / SPEED;
       gait += (1.65 + 0.4 * Math.min(sv, 1.2)) * dt;
@@ -924,7 +1069,7 @@ const poses = [];
       if (regardHold > 0) {
         regardHold -= dt;
         if (regardHold <= 0) regardOff = 0;
-      } else if (regardWait <= 0 && !nearDoor(s) && nextStopS - s > 1.4) {
+      } else if (regardWait <= 0 && !nearDoor(s) && !onStairs(s + 1.0) && nextStopS - s > 1.4) {
         regardOff = (rng() < 0.5 ? -1 : 1) * (0.5 + rng() * 0.9);
         regardHold = 1.1 + rng() * 1.4;
         regardWait = 2.2 + rng() * 3.2;
@@ -957,20 +1102,27 @@ const poses = [];
     const tgt = Math.sign(err) * Math.min(maxRate, Math.sqrt(2 * maxAcc * Math.abs(err)), Math.abs(err));
     rate += Math.max(-maxAcc, Math.min(maxAcc, tgt - rate));
     yaw += rate;
-    // pitch: slow wander about a downward base + faint step coupling
-    const pitchT = BASE_PITCH + ouPitch() + 0.003 * Math.sin(2 * Math.PI * gait + 1.3);
+    // pitch: slow wander about a downward base + faint step coupling;
+    // on the stairs, look down at the steps, easing off near the top
+    let stairDip = 0;
+    if (onStairs(s)) {
+      const remain = Math.max(0, (stairHi - s) / Math.max(0.5, stairHi - stairLo));
+      stairDip = -0.14 * Math.min(1, remain * 1.6);
+    }
+    const pitchT = BASE_PITCH + stairDip + ouPitch() + 0.003 * Math.sin(2 * Math.PI * gait + 1.3);
     pitch += (Math.max(-0.44, Math.min(0.05, pitchT)) - pitch) * Math.min(1, dt / 0.45);
     // roll: OU + stride-locked lean
     roll = ouRoll() + 0.004 * Math.sin(Math.PI * gait + 0.7);
-    // position: path + stride sway/bob (no handheld noise floor)
+    // position: path (with its height on the stairs) + stride sway/bob
     const p = atS(s);
     const hd = headingAt(s) ?? yaw;
-    const sway = 0.042 * (0.35 + 0.65 * sv) * Math.sin(Math.PI * gait);
+    const swayAmp = 0.042 * (0.35 + 0.65 * sv) * (onStairs(s) ? 0.45 : 1);
+    const sway = swayAmp * Math.sin(Math.PI * gait);
     const bob = (0.012 * Math.sin(2 * Math.PI * gait)
       + 0.004 * Math.sin(4 * Math.PI * gait + 0.8)) * (0.3 + 0.7 * sv);
     const px = p.x + Math.cos(hd) * sway;
     const pz = p.z - Math.sin(hd) * sway;
-    const py = EYE + ouH() + bob;
+    const py = EYE + p.y + ouH() + bob;
     poses.push([px, py, pz, yaw, pitch, roll]);
   }
   // settle at the end: hold the final pose

@@ -1,0 +1,4733 @@
+{
+  "question": "This is a first-person video of someone walking through corridors. At the very start of the walk a large red X is painted on the floor, straight ahead of the camera. Freeze on the final frame and treat the direction the camera is facing as north (000 degrees). What is the compass bearing from the camera to the red X? Answer in degrees clockwise from that forward direction, 0-359: 090 is directly to the right, 180 directly behind, 270 directly to the left.",
+  "scoring": "Absolute circular error in degrees between the answer and bearing_gt_deg: err = min(|a - gt|, 360 - |a - gt|). Chance level for a uniform guess is 90 degrees.",
+  "answer_field": "bearing_gt_deg",
+  "note": "Every field except id/turns/legs/seed is ground truth or a derived feature \u2014 strip them before showing a model. probes_prompts.jsonl holds the model-facing side alone.",
+  "convention": "World axes are x east, y south; the camera looks along (cos yaw, sin yaw), so bearing 090 is (-sin, cos), its right. One lattice step is 3 world units.",
+  "generator": {
+    "seed": 2029,
+    "turn_levels": [
+      1,
+      2,
+      3,
+      5,
+      8
+    ],
+    "ratio_bands": [
+      [
+        1.0,
+        1.2
+      ],
+      [
+        1.8,
+        2.6
+      ],
+      [
+        3.5,
+        4.5
+      ],
+      [
+        6.0,
+        7.5
+      ],
+      [
+        9.0,
+        10.0
+      ]
+    ],
+    "patterns": [
+      "alt",
+      "same",
+      "rand",
+      "rand"
+    ],
+    "total_steps_max": 34,
+    "mood": "office",
+    "junctions": false,
+    "marker_ahead": 3.0,
+    "speed": 1.26,
+    "fps": 30
+  },
+  "plans": [
+    {
+      "id": 0,
+      "seed": 2029,
+      "turns": "R",
+      "legs": [
+        9,
+        8
+      ],
+      "n_turns": 1,
+      "ratio_band": [
+        1.0,
+        1.2
+      ],
+      "ratio": 1.12,
+      "total_steps": 17,
+      "pattern_requested": "alt",
+      "pattern": "alt",
+      "legs_sorted_ascending": false,
+      "replicate": 0,
+      "bearing_gt_deg": 135.0,
+      "distance_to_x": 33.94,
+      "final_yaw_deg": 90.0,
+      "end_xy": [
+        29.5,
+        26.5
+      ],
+      "marker_xy": [
+        5.5,
+        2.5
+      ],
+      "path_len": 50.82,
+      "duration_s": 43.8,
+      "n_frames": 1313,
+      "cum_turn_deg": 90.0,
+      "net_turn_deg": 90.0,
+      "crow_over_path": 0.668,
+      "equal_leg_bearing_deg": 138.81,
+      "equal_leg_err_deg": 3.81,
+      "cardinal_err_deg": 45.0,
+      "behind_err_deg": 45.0,
+      "sensitivity_deg_per_unit": 1.69,
+      "difficulty": 0.326,
+      "tier": "easy"
+    },
+    {
+      "id": 1,
+      "seed": 2030,
+      "turns": "L",
+      "legs": [
+        5,
+        5
+      ],
+      "n_turns": 1,
+      "ratio_band": [
+        1.0,
+        1.2
+      ],
+      "ratio": 1.0,
+      "total_steps": 10,
+      "pattern_requested": "same",
+      "pattern": "same",
+      "legs_sorted_ascending": false,
+      "replicate": 1,
+      "bearing_gt_deg": 218.66,
+      "distance_to_x": 19.21,
+      "final_yaw_deg": 270.0,
+      "end_xy": [
+        17.5,
+        2.5
+      ],
+      "marker_xy": [
+        5.5,
+        17.5
+      ],
+      "path_len": 29.82,
+      "duration_s": 27.1,
+      "n_frames": 813,
+      "cum_turn_deg": -90.0,
+      "net_turn_deg": -90.0,
+      "crow_over_path": 0.644,
+      "equal_leg_bearing_deg": 218.66,
+      "equal_leg_err_deg": 0.0,
+      "cardinal_err_deg": 38.66,
+      "behind_err_deg": 38.66,
+      "sensitivity_deg_per_unit": 2.98,
+      "difficulty": 0.351,
+      "tier": "easy"
+    },
+    {
+      "id": 2,
+      "seed": 2031,
+      "turns": "R",
+      "legs": [
+        2,
+        2
+      ],
+      "n_turns": 1,
+      "ratio_band": [
+        1.0,
+        1.2
+      ],
+      "ratio": 1.0,
+      "total_steps": 4,
+      "pattern_requested": "rand",
+      "pattern": "rand",
+      "legs_sorted_ascending": false,
+      "replicate": 2,
+      "bearing_gt_deg": 153.43,
+      "distance_to_x": 6.71,
+      "final_yaw_deg": 90.0,
+      "end_xy": [
+        8.5,
+        8.5
+      ],
+      "marker_xy": [
+        5.5,
+        2.5
+      ],
+      "path_len": 11.82,
+      "duration_s": 12.8,
+      "n_frames": 384,
+      "cum_turn_deg": 90.0,
+      "net_turn_deg": 90.0,
+      "crow_over_path": 0.568,
+      "equal_leg_bearing_deg": 153.43,
+      "equal_leg_err_deg": 0.0,
+      "cardinal_err_deg": 26.57,
+      "behind_err_deg": 26.57,
+      "sensitivity_deg_per_unit": 8.54,
+      "difficulty": 0.376,
+      "tier": "easy"
+    },
+    {
+      "id": 3,
+      "seed": 2032,
+      "turns": "L",
+      "legs": [
+        2,
+        2
+      ],
+      "n_turns": 1,
+      "ratio_band": [
+        1.0,
+        1.2
+      ],
+      "ratio": 1.0,
+      "total_steps": 4,
+      "pattern_requested": "rand",
+      "pattern": "rand",
+      "legs_sorted_ascending": false,
+      "replicate": 3,
+      "bearing_gt_deg": 206.57,
+      "distance_to_x": 6.71,
+      "final_yaw_deg": 270.0,
+      "end_xy": [
+        8.5,
+        2.5
+      ],
+      "marker_xy": [
+        5.5,
+        8.5
+      ],
+      "path_len": 11.82,
+      "duration_s": 12.8,
+      "n_frames": 384,
+      "cum_turn_deg": -90.0,
+      "net_turn_deg": -90.0,
+      "crow_over_path": 0.568,
+      "equal_leg_bearing_deg": 206.57,
+      "equal_leg_err_deg": 0.0,
+      "cardinal_err_deg": 26.57,
+      "behind_err_deg": 26.57,
+      "sensitivity_deg_per_unit": 8.54,
+      "difficulty": 0.386,
+      "tier": "easy"
+    },
+    {
+      "id": 4,
+      "seed": 2033,
+      "turns": "L",
+      "legs": [
+        5,
+        2
+      ],
+      "n_turns": 1,
+      "ratio_band": [
+        1.8,
+        2.6
+      ],
+      "ratio": 2.5,
+      "total_steps": 7,
+      "pattern_requested": "alt",
+      "pattern": "alt",
+      "legs_sorted_ascending": false,
+      "replicate": 0,
+      "bearing_gt_deg": 243.43,
+      "distance_to_x": 13.42,
+      "final_yaw_deg": 270.0,
+      "end_xy": [
+        17.5,
+        2.5
+      ],
+      "marker_xy": [
+        5.5,
+        8.5
+      ],
+      "path_len": 20.82,
+      "duration_s": 19.9,
+      "n_frames": 598,
+      "cum_turn_deg": -90.0,
+      "net_turn_deg": -90.0,
+      "crow_over_path": 0.644,
+      "equal_leg_bearing_deg": 216.87,
+      "equal_leg_err_deg": 26.57,
+      "cardinal_err_deg": 26.57,
+      "behind_err_deg": 63.43,
+      "sensitivity_deg_per_unit": 4.27,
+      "difficulty": 0.465,
+      "tier": "medium"
+    },
+    {
+      "id": 5,
+      "seed": 2034,
+      "turns": "R",
+      "legs": [
+        8,
+        4
+      ],
+      "n_turns": 1,
+      "ratio_band": [
+        1.8,
+        2.6
+      ],
+      "ratio": 2.0,
+      "total_steps": 12,
+      "pattern_requested": "same",
+      "pattern": "same",
+      "legs_sorted_ascending": false,
+      "replicate": 1,
+      "bearing_gt_deg": 119.74,
+      "distance_to_x": 24.19,
+      "final_yaw_deg": 90.0,
+      "end_xy": [
+        26.5,
+        14.5
+      ],
+      "marker_xy": [
+        5.5,
+        2.5
+      ],
+      "path_len": 35.82,
+      "duration_s": 31.8,
+      "n_frames": 955,
+      "cum_turn_deg": 90.0,
+      "net_turn_deg": 90.0,
+      "crow_over_path": 0.675,
+      "equal_leg_bearing_deg": 140.19,
+      "equal_leg_err_deg": 20.45,
+      "cardinal_err_deg": 29.74,
+      "behind_err_deg": 60.26,
+      "sensitivity_deg_per_unit": 2.37,
+      "difficulty": 0.361,
+      "tier": "easy"
+    },
+    {
+      "id": 6,
+      "seed": 2035,
+      "turns": "R",
+      "legs": [
+        5,
+        2
+      ],
+      "n_turns": 1,
+      "ratio_band": [
+        1.8,
+        2.6
+      ],
+      "ratio": 2.5,
+      "total_steps": 7,
+      "pattern_requested": "rand",
+      "pattern": "rand",
+      "legs_sorted_ascending": false,
+      "replicate": 2,
+      "bearing_gt_deg": 116.57,
+      "distance_to_x": 13.42,
+      "final_yaw_deg": 90.0,
+      "end_xy": [
+        17.5,
+        8.5
+      ],
+      "marker_xy": [
+        5.5,
+        2.5
+      ],
+      "path_len": 20.82,
+      "duration_s": 19.9,
+      "n_frames": 598,
+      "cum_turn_deg": 90.0,
+      "net_turn_deg": 90.0,
+      "crow_over_path": 0.644,
+      "equal_leg_bearing_deg": 143.13,
+      "equal_leg_err_deg": 26.57,
+      "cardinal_err_deg": 26.57,
+      "behind_err_deg": 63.43,
+      "sensitivity_deg_per_unit": 4.27,
+      "difficulty": 0.477,
+      "tier": "medium"
+    },
+    {
+      "id": 7,
+      "seed": 2036,
+      "turns": "R",
+      "legs": [
+        4,
+        9
+      ],
+      "n_turns": 1,
+      "ratio_band": [
+        1.8,
+        2.6
+      ],
+      "ratio": 2.25,
+      "total_steps": 13,
+      "pattern_requested": "rand",
+      "pattern": "rand",
+      "legs_sorted_ascending": false,
+      "replicate": 3,
+      "bearing_gt_deg": 161.57,
+      "distance_to_x": 28.46,
+      "final_yaw_deg": 90.0,
+      "end_xy": [
+        14.5,
+        29.5
+      ],
+      "marker_xy": [
+        5.5,
+        2.5
+      ],
+      "path_len": 38.82,
+      "duration_s": 34.2,
+      "n_frames": 1027,
+      "cum_turn_deg": 90.0,
+      "net_turn_deg": 90.0,
+      "crow_over_path": 0.733,
+      "equal_leg_bearing_deg": 140.19,
+      "equal_leg_err_deg": 21.37,
+      "cardinal_err_deg": 18.43,
+      "behind_err_deg": 18.43,
+      "sensitivity_deg_per_unit": 2.01,
+      "difficulty": 0.273,
+      "tier": "easy"
+    },
+    {
+      "id": 8,
+      "seed": 2037,
+      "turns": "L",
+      "legs": [
+        8,
+        2
+      ],
+      "n_turns": 1,
+      "ratio_band": [
+        3.5,
+        4.5
+      ],
+      "ratio": 4.0,
+      "total_steps": 10,
+      "pattern_requested": "alt",
+      "pattern": "alt",
+      "legs_sorted_ascending": false,
+      "replicate": 0,
+      "bearing_gt_deg": 254.05,
+      "distance_to_x": 21.84,
+      "final_yaw_deg": 270.0,
+      "end_xy": [
+        26.5,
+        2.5
+      ],
+      "marker_xy": [
+        5.5,
+        8.5
+      ],
+      "path_len": 29.82,
+      "duration_s": 27.1,
+      "n_frames": 813,
+      "cum_turn_deg": -90.0,
+      "net_turn_deg": -90.0,
+      "crow_over_path": 0.732,
+      "equal_leg_bearing_deg": 218.66,
+      "equal_leg_err_deg": 35.39,
+      "cardinal_err_deg": 15.95,
+      "behind_err_deg": 74.05,
+      "sensitivity_deg_per_unit": 2.62,
+      "difficulty": 0.381,
+      "tier": "easy"
+    },
+    {
+      "id": 9,
+      "seed": 2038,
+      "turns": "L",
+      "legs": [
+        2,
+        8
+      ],
+      "n_turns": 1,
+      "ratio_band": [
+        3.5,
+        4.5
+      ],
+      "ratio": 4.0,
+      "total_steps": 10,
+      "pattern_requested": "same",
+      "pattern": "same",
+      "legs_sorted_ascending": false,
+      "replicate": 1,
+      "bearing_gt_deg": 187.13,
+      "distance_to_x": 24.19,
+      "final_yaw_deg": 270.0,
+      "end_xy": [
+        8.5,
+        2.5
+      ],
+      "marker_xy": [
+        5.5,
+        26.5
+      ],
+      "path_len": 29.82,
+      "duration_s": 27.1,
+      "n_frames": 813,
+      "cum_turn_deg": -90.0,
+      "net_turn_deg": -90.0,
+      "crow_over_path": 0.811,
+      "equal_leg_bearing_deg": 218.66,
+      "equal_leg_err_deg": 31.53,
+      "cardinal_err_deg": 7.13,
+      "behind_err_deg": 7.13,
+      "sensitivity_deg_per_unit": 2.37,
+      "difficulty": 0.285,
+      "tier": "easy"
+    },
+    {
+      "id": 10,
+      "seed": 2039,
+      "turns": "L",
+      "legs": [
+        2,
+        7
+      ],
+      "n_turns": 1,
+      "ratio_band": [
+        3.5,
+        4.5
+      ],
+      "ratio": 3.5,
+      "total_steps": 9,
+      "pattern_requested": "rand",
+      "pattern": "rand",
+      "legs_sorted_ascending": false,
+      "replicate": 2,
+      "bearing_gt_deg": 188.13,
+      "distance_to_x": 21.21,
+      "final_yaw_deg": 270.0,
+      "end_xy": [
+        8.5,
+        2.5
+      ],
+      "marker_xy": [
+        5.5,
+        23.5
+      ],
+      "path_len": 26.82,
+      "duration_s": 24.7,
+      "n_frames": 741,
+      "cum_turn_deg": -90.0,
+      "net_turn_deg": -90.0,
+      "crow_over_path": 0.791,
+      "equal_leg_bearing_deg": 216.87,
+      "equal_leg_err_deg": 28.74,
+      "cardinal_err_deg": 8.13,
+      "behind_err_deg": 8.13,
+      "sensitivity_deg_per_unit": 2.7,
+      "difficulty": 0.331,
+      "tier": "easy"
+    },
+    {
+      "id": 11,
+      "seed": 2040,
+      "turns": "R",
+      "legs": [
+        2,
+        8
+      ],
+      "n_turns": 1,
+      "ratio_band": [
+        3.5,
+        4.5
+      ],
+      "ratio": 4.0,
+      "total_steps": 10,
+      "pattern_requested": "rand",
+      "pattern": "rand",
+      "legs_sorted_ascending": false,
+      "replicate": 3,
+      "bearing_gt_deg": 172.87,
+      "distance_to_x": 24.19,
+      "final_yaw_deg": 90.0,
+      "end_xy": [
+        8.5,
+        26.5
+      ],
+      "marker_xy": [
+        5.5,
+        2.5
+      ],
+      "path_len": 29.82,
+      "duration_s": 27.1,
+      "n_frames": 813,
+      "cum_turn_deg": 90.0,
+      "net_turn_deg": 90.0,
+      "crow_over_path": 0.811,
+      "equal_leg_bearing_deg": 141.34,
+      "equal_leg_err_deg": 31.53,
+      "cardinal_err_deg": 7.13,
+      "behind_err_deg": 7.13,
+      "sensitivity_deg_per_unit": 2.37,
+      "difficulty": 0.298,
+      "tier": "easy"
+    },
+    {
+      "id": 12,
+      "seed": 2041,
+      "turns": "L",
+      "legs": [
+        7,
+        1
+      ],
+      "n_turns": 1,
+      "ratio_band": [
+        6.0,
+        7.5
+      ],
+      "ratio": 7.0,
+      "total_steps": 8,
+      "pattern_requested": "alt",
+      "pattern": "alt",
+      "legs_sorted_ascending": false,
+      "replicate": 0,
+      "bearing_gt_deg": 260.54,
+      "distance_to_x": 18.25,
+      "final_yaw_deg": 270.0,
+      "end_xy": [
+        23.5,
+        2.5
+      ],
+      "marker_xy": [
+        5.5,
+        5.5
+      ],
+      "path_len": 23.82,
+      "duration_s": 22.3,
+      "n_frames": 670,
+      "cum_turn_deg": -90.0,
+      "net_turn_deg": -90.0,
+      "crow_over_path": 0.766,
+      "equal_leg_bearing_deg": 216.87,
+      "equal_leg_err_deg": 43.67,
+      "cardinal_err_deg": 9.46,
+      "behind_err_deg": 80.54,
+      "sensitivity_deg_per_unit": 3.14,
+      "difficulty": 0.414,
+      "tier": "easy"
+    },
+    {
+      "id": 13,
+      "seed": 2042,
+      "turns": "R",
+      "legs": [
+        6,
+        1
+      ],
+      "n_turns": 1,
+      "ratio_band": [
+        6.0,
+        7.5
+      ],
+      "ratio": 6.0,
+      "total_steps": 7,
+      "pattern_requested": "same",
+      "pattern": "same",
+      "legs_sorted_ascending": false,
+      "replicate": 1,
+      "bearing_gt_deg": 101.31,
+      "distance_to_x": 15.3,
+      "final_yaw_deg": 90.0,
+      "end_xy": [
+        20.5,
+        5.5
+      ],
+      "marker_xy": [
+        5.5,
+        2.5
+      ],
+      "path_len": 20.82,
+      "duration_s": 19.9,
+      "n_frames": 598,
+      "cum_turn_deg": 90.0,
+      "net_turn_deg": 90.0,
+      "crow_over_path": 0.735,
+      "equal_leg_bearing_deg": 143.13,
+      "equal_leg_err_deg": 41.82,
+      "cardinal_err_deg": 11.31,
+      "behind_err_deg": 78.69,
+      "sensitivity_deg_per_unit": 3.75,
+      "difficulty": 0.442,
+      "tier": "medium"
+    },
+    {
+      "id": 14,
+      "seed": 2043,
+      "turns": "L",
+      "legs": [
+        6,
+        1
+      ],
+      "n_turns": 1,
+      "ratio_band": [
+        6.0,
+        7.5
+      ],
+      "ratio": 6.0,
+      "total_steps": 7,
+      "pattern_requested": "rand",
+      "pattern": "rand",
+      "legs_sorted_ascending": false,
+      "replicate": 2,
+      "bearing_gt_deg": 258.69,
+      "distance_to_x": 15.3,
+      "final_yaw_deg": 270.0,
+      "end_xy": [
+        20.5,
+        2.5
+      ],
+      "marker_xy": [
+        5.5,
+        5.5
+      ],
+      "path_len": 20.82,
+      "duration_s": 19.9,
+      "n_frames": 598,
+      "cum_turn_deg": -90.0,
+      "net_turn_deg": -90.0,
+      "crow_over_path": 0.735,
+      "equal_leg_bearing_deg": 216.87,
+      "equal_leg_err_deg": 41.82,
+      "cardinal_err_deg": 11.31,
+      "behind_err_deg": 78.69,
+      "sensitivity_deg_per_unit": 3.75,
+      "difficulty": 0.452,
+      "tier": "medium"
+    },
+    {
+      "id": 15,
+      "seed": 2044,
+      "turns": "L",
+      "legs": [
+        1,
+        6
+      ],
+      "n_turns": 1,
+      "ratio_band": [
+        6.0,
+        7.5
+      ],
+      "ratio": 6.0,
+      "total_steps": 7,
+      "pattern_requested": "rand",
+      "pattern": "rand",
+      "legs_sorted_ascending": false,
+      "replicate": 3,
+      "bearing_gt_deg": 183.18,
+      "distance_to_x": 18.03,
+      "final_yaw_deg": 270.0,
+      "end_xy": [
+        5.5,
+        2.5
+      ],
+      "marker_xy": [
+        4.5,
+        20.5
+      ],
+      "path_len": 20.82,
+      "duration_s": 19.9,
+      "n_frames": 598,
+      "cum_turn_deg": -90.0,
+      "net_turn_deg": -90.0,
+      "crow_over_path": 0.866,
+      "equal_leg_bearing_deg": 216.87,
+      "equal_leg_err_deg": 33.69,
+      "cardinal_err_deg": 3.18,
+      "behind_err_deg": 3.18,
+      "sensitivity_deg_per_unit": 3.18,
+      "difficulty": 0.361,
+      "tier": "easy"
+    },
+    {
+      "id": 16,
+      "seed": 2045,
+      "turns": "R",
+      "legs": [
+        9,
+        1
+      ],
+      "n_turns": 1,
+      "ratio_band": [
+        9.0,
+        10.0
+      ],
+      "ratio": 9.0,
+      "total_steps": 10,
+      "pattern_requested": "alt",
+      "pattern": "alt",
+      "legs_sorted_ascending": false,
+      "replicate": 0,
+      "bearing_gt_deg": 97.13,
+      "distance_to_x": 24.19,
+      "final_yaw_deg": 90.0,
+      "end_xy": [
+        29.5,
+        5.5
+      ],
+      "marker_xy": [
+        5.5,
+        2.5
+      ],
+      "path_len": 29.82,
+      "duration_s": 27.1,
+      "n_frames": 813,
+      "cum_turn_deg": 90.0,
+      "net_turn_deg": 90.0,
+      "crow_over_path": 0.811,
+      "equal_leg_bearing_deg": 141.34,
+      "equal_leg_err_deg": 44.22,
+      "cardinal_err_deg": 7.13,
+      "behind_err_deg": 82.87,
+      "sensitivity_deg_per_unit": 2.37,
+      "difficulty": 0.354,
+      "tier": "easy"
+    },
+    {
+      "id": 17,
+      "seed": 2046,
+      "turns": "R",
+      "legs": [
+        1,
+        9
+      ],
+      "n_turns": 1,
+      "ratio_band": [
+        9.0,
+        10.0
+      ],
+      "ratio": 9.0,
+      "total_steps": 10,
+      "pattern_requested": "same",
+      "pattern": "same",
+      "legs_sorted_ascending": false,
+      "replicate": 1,
+      "bearing_gt_deg": 177.88,
+      "distance_to_x": 27.02,
+      "final_yaw_deg": 90.0,
+      "end_xy": [
+        5.5,
+        29.5
+      ],
+      "marker_xy": [
+        4.5,
+        2.5
+      ],
+      "path_len": 29.82,
+      "duration_s": 27.1,
+      "n_frames": 813,
+      "cum_turn_deg": 90.0,
+      "net_turn_deg": 90.0,
+      "crow_over_path": 0.906,
+      "equal_leg_bearing_deg": 141.34,
+      "equal_leg_err_deg": 36.54,
+      "cardinal_err_deg": 2.12,
+      "behind_err_deg": 2.12,
+      "sensitivity_deg_per_unit": 2.12,
+      "difficulty": 0.29,
+      "tier": "easy"
+    },
+    {
+      "id": 18,
+      "seed": 2047,
+      "turns": "R",
+      "legs": [
+        10,
+        1
+      ],
+      "n_turns": 1,
+      "ratio_band": [
+        9.0,
+        10.0
+      ],
+      "ratio": 10.0,
+      "total_steps": 11,
+      "pattern_requested": "rand",
+      "pattern": "rand",
+      "legs_sorted_ascending": false,
+      "replicate": 2,
+      "bearing_gt_deg": 96.34,
+      "distance_to_x": 27.17,
+      "final_yaw_deg": 90.0,
+      "end_xy": [
+        32.5,
+        5.5
+      ],
+      "marker_xy": [
+        5.5,
+        2.5
+      ],
+      "path_len": 32.82,
+      "duration_s": 29.5,
+      "n_frames": 884,
+      "cum_turn_deg": 90.0,
+      "net_turn_deg": 90.0,
+      "crow_over_path": 0.828,
+      "equal_leg_bearing_deg": 140.19,
+      "equal_leg_err_deg": 43.85,
+      "cardinal_err_deg": 6.34,
+      "behind_err_deg": 83.66,
+      "sensitivity_deg_per_unit": 2.11,
+      "difficulty": 0.326,
+      "tier": "easy"
+    },
+    {
+      "id": 19,
+      "seed": 2048,
+      "turns": "R",
+      "legs": [
+        1,
+        9
+      ],
+      "n_turns": 1,
+      "ratio_band": [
+        9.0,
+        10.0
+      ],
+      "ratio": 9.0,
+      "total_steps": 10,
+      "pattern_requested": "rand",
+      "pattern": "rand",
+      "legs_sorted_ascending": false,
+      "replicate": 3,
+      "bearing_gt_deg": 177.88,
+      "distance_to_x": 27.02,
+      "final_yaw_deg": 90.0,
+      "end_xy": [
+        5.5,
+        29.5
+      ],
+      "marker_xy": [
+        4.5,
+        2.5
+      ],
+      "path_len": 29.82,
+      "duration_s": 27.1,
+      "n_frames": 813,
+      "cum_turn_deg": 90.0,
+      "net_turn_deg": 90.0,
+      "crow_over_path": 0.906,
+      "equal_leg_bearing_deg": 141.34,
+      "equal_leg_err_deg": 36.54,
+      "cardinal_err_deg": 2.12,
+      "behind_err_deg": 2.12,
+      "sensitivity_deg_per_unit": 2.12,
+      "difficulty": 0.303,
+      "tier": "easy"
+    },
+    {
+      "id": 20,
+      "seed": 2049,
+      "turns": "RL",
+      "legs": [
+        2,
+        2,
+        2
+      ],
+      "n_turns": 2,
+      "ratio_band": [
+        1.0,
+        1.2
+      ],
+      "ratio": 1.0,
+      "total_steps": 6,
+      "pattern_requested": "alt",
+      "pattern": "alt",
+      "legs_sorted_ascending": false,
+      "replicate": 0,
+      "bearing_gt_deg": 213.69,
+      "distance_to_x": 10.82,
+      "final_yaw_deg": 0.0,
+      "end_xy": [
+        14.5,
+        8.5
+      ],
+      "marker_xy": [
+        5.5,
+        2.5
+      ],
+      "path_len": 17.63,
+      "duration_s": 17.4,
+      "n_frames": 523,
+      "cum_turn_deg": 0.0,
+      "net_turn_deg": 0.0,
+      "crow_over_path": 0.613,
+      "equal_leg_bearing_deg": 213.69,
+      "equal_leg_err_deg": 0.0,
+      "cardinal_err_deg": 33.69,
+      "behind_err_deg": 33.69,
+      "sensitivity_deg_per_unit": 5.3,
+      "difficulty": 0.447,
+      "tier": "medium"
+    },
+    {
+      "id": 21,
+      "seed": 2050,
+      "turns": "LL",
+      "legs": [
+        7,
+        7,
+        7
+      ],
+      "n_turns": 2,
+      "ratio_band": [
+        1.0,
+        1.2
+      ],
+      "ratio": 1.0,
+      "total_steps": 21,
+      "pattern_requested": "same",
+      "pattern": "same",
+      "legs_sorted_ascending": false,
+      "replicate": 1,
+      "bearing_gt_deg": 261.87,
+      "distance_to_x": 21.21,
+      "final_yaw_deg": 180.0,
+      "end_xy": [
+        2.5,
+        2.5
+      ],
+      "marker_xy": [
+        5.5,
+        23.5
+      ],
+      "path_len": 62.63,
+      "duration_s": 53.1,
+      "n_frames": 1594,
+      "cum_turn_deg": -180.0,
+      "net_turn_deg": -180.0,
+      "crow_over_path": 0.339,
+      "equal_leg_bearing_deg": 261.87,
+      "equal_leg_err_deg": 0.0,
+      "cardinal_err_deg": 8.13,
+      "behind_err_deg": 81.87,
+      "sensitivity_deg_per_unit": 2.7,
+      "difficulty": 0.235,
+      "tier": "easy"
+    },
+    {
+      "id": 22,
+      "seed": 2051,
+      "turns": "LR",
+      "legs": [
+        2,
+        2,
+        2
+      ],
+      "n_turns": 2,
+      "ratio_band": [
+        1.0,
+        1.2
+      ],
+      "ratio": 1.0,
+      "total_steps": 6,
+      "pattern_requested": "rand",
+      "pattern": "rand",
+      "legs_sorted_ascending": false,
+      "replicate": 2,
+      "bearing_gt_deg": 146.31,
+      "distance_to_x": 10.82,
+      "final_yaw_deg": 0.0,
+      "end_xy": [
+        14.5,
+        2.5
+      ],
+      "marker_xy": [
+        5.5,
+        8.5
+      ],
+      "path_len": 17.63,
+      "duration_s": 17.4,
+      "n_frames": 523,
+      "cum_turn_deg": 0.0,
+      "net_turn_deg": 0.0,
+      "crow_over_path": 0.613,
+      "equal_leg_bearing_deg": 146.31,
+      "equal_leg_err_deg": 0.0,
+      "cardinal_err_deg": 33.69,
+      "behind_err_deg": 33.69,
+      "sensitivity_deg_per_unit": 5.3,
+      "difficulty": 0.462,
+      "tier": "medium"
+    },
+    {
+      "id": 23,
+      "seed": 2052,
+      "turns": "LR",
+      "legs": [
+        3,
+        3,
+        3
+      ],
+      "n_turns": 2,
+      "ratio_band": [
+        1.0,
+        1.2
+      ],
+      "ratio": 1.0,
+      "total_steps": 9,
+      "pattern_requested": "rand",
+      "pattern": "rand",
+      "legs_sorted_ascending": false,
+      "replicate": 3,
+      "bearing_gt_deg": 149.04,
+      "distance_to_x": 17.49,
+      "final_yaw_deg": 0.0,
+      "end_xy": [
+        20.5,
+        2.5
+      ],
+      "marker_xy": [
+        5.5,
+        11.5
+      ],
+      "path_len": 26.63,
+      "duration_s": 24.6,
+      "n_frames": 737,
+      "cum_turn_deg": 0.0,
+      "net_turn_deg": 0.0,
+      "crow_over_path": 0.657,
+      "equal_leg_bearing_deg": 149.04,
+      "equal_leg_err_deg": 0.0,
+      "cardinal_err_deg": 30.96,
+      "behind_err_deg": 30.96,
+      "sensitivity_deg_per_unit": 3.28,
+      "difficulty": 0.404,
+      "tier": "easy"
+    },
+    {
+      "id": 24,
+      "seed": 2053,
+      "turns": "RL",
+      "legs": [
+        3,
+        7,
+        7
+      ],
+      "n_turns": 2,
+      "ratio_band": [
+        1.8,
+        2.6
+      ],
+      "ratio": 2.33,
+      "total_steps": 17,
+      "pattern_requested": "alt",
+      "pattern": "alt",
+      "legs_sorted_ascending": false,
+      "replicate": 0,
+      "bearing_gt_deg": 217.87,
+      "distance_to_x": 34.21,
+      "final_yaw_deg": 0.0,
+      "end_xy": [
+        32.5,
+        23.5
+      ],
+      "marker_xy": [
+        5.5,
+        2.5
+      ],
+      "path_len": 50.63,
+      "duration_s": 43.6,
+      "n_frames": 1308,
+      "cum_turn_deg": 0.0,
+      "net_turn_deg": 0.0,
+      "crow_over_path": 0.676,
+      "equal_leg_bearing_deg": 208.61,
+      "equal_leg_err_deg": 9.26,
+      "cardinal_err_deg": 37.87,
+      "behind_err_deg": 37.87,
+      "sensitivity_deg_per_unit": 1.68,
+      "difficulty": 0.374,
+      "tier": "easy"
+    },
+    {
+      "id": 25,
+      "seed": 2054,
+      "turns": "RR",
+      "legs": [
+        7,
+        8,
+        4
+      ],
+      "n_turns": 2,
+      "ratio_band": [
+        1.8,
+        2.6
+      ],
+      "ratio": 2.0,
+      "total_steps": 19,
+      "pattern_requested": "same",
+      "pattern": "same",
+      "legs_sorted_ascending": false,
+      "replicate": 1,
+      "bearing_gt_deg": 75.96,
+      "distance_to_x": 24.74,
+      "final_yaw_deg": 180.0,
+      "end_xy": [
+        11.5,
+        26.5
+      ],
+      "marker_xy": [
+        5.5,
+        2.5
+      ],
+      "path_len": 56.63,
+      "duration_s": 48.4,
+      "n_frames": 1451,
+      "cum_turn_deg": 180.0,
+      "net_turn_deg": -180.0,
+      "crow_over_path": 0.437,
+      "equal_leg_bearing_deg": 99.46,
+      "equal_leg_err_deg": 23.5,
+      "cardinal_err_deg": 14.04,
+      "behind_err_deg": 104.04,
+      "sensitivity_deg_per_unit": 2.32,
+      "difficulty": 0.328,
+      "tier": "easy"
+    },
+    {
+      "id": 26,
+      "seed": 2055,
+      "turns": "LL",
+      "legs": [
+        7,
+        3,
+        5
+      ],
+      "n_turns": 2,
+      "ratio_band": [
+        1.8,
+        2.6
+      ],
+      "ratio": 2.33,
+      "total_steps": 15,
+      "pattern_requested": "rand",
+      "pattern": "rand",
+      "legs_sorted_ascending": false,
+      "replicate": 2,
+      "bearing_gt_deg": 288.43,
+      "distance_to_x": 9.49,
+      "final_yaw_deg": 180.0,
+      "end_xy": [
+        8.5,
+        2.5
+      ],
+      "marker_xy": [
+        5.5,
+        11.5
+      ],
+      "path_len": 44.63,
+      "duration_s": 38.8,
+      "n_frames": 1165,
+      "cum_turn_deg": -180.0,
+      "net_turn_deg": -180.0,
+      "crow_over_path": 0.213,
+      "equal_leg_bearing_deg": 258.69,
+      "equal_leg_err_deg": 29.74,
+      "cardinal_err_deg": 18.43,
+      "behind_err_deg": 108.43,
+      "sensitivity_deg_per_unit": 6.04,
+      "difficulty": 0.513,
+      "tier": "medium"
+    },
+    {
+      "id": 27,
+      "seed": 2056,
+      "turns": "RR",
+      "legs": [
+        9,
+        5,
+        4
+      ],
+      "n_turns": 2,
+      "ratio_band": [
+        1.8,
+        2.6
+      ],
+      "ratio": 2.25,
+      "total_steps": 18,
+      "pattern_requested": "rand",
+      "pattern": "rand",
+      "legs_sorted_ascending": false,
+      "replicate": 3,
+      "bearing_gt_deg": 51.34,
+      "distance_to_x": 19.21,
+      "final_yaw_deg": 180.0,
+      "end_xy": [
+        17.5,
+        17.5
+      ],
+      "marker_xy": [
+        5.5,
+        2.5
+      ],
+      "path_len": 53.63,
+      "duration_s": 46.0,
+      "n_frames": 1380,
+      "cum_turn_deg": 180.0,
+      "net_turn_deg": -180.0,
+      "crow_over_path": 0.358,
+      "equal_leg_bearing_deg": 99.46,
+      "equal_leg_err_deg": 48.12,
+      "cardinal_err_deg": 38.66,
+      "behind_err_deg": 128.66,
+      "sensitivity_deg_per_unit": 2.98,
+      "difficulty": 0.616,
+      "tier": "hard"
+    },
+    {
+      "id": 28,
+      "seed": 2057,
+      "turns": "RL",
+      "legs": [
+        2,
+        8,
+        6
+      ],
+      "n_turns": 2,
+      "ratio_band": [
+        3.5,
+        4.5
+      ],
+      "ratio": 4.0,
+      "total_steps": 16,
+      "pattern_requested": "alt",
+      "pattern": "alt",
+      "legs_sorted_ascending": false,
+      "replicate": 0,
+      "bearing_gt_deg": 228.81,
+      "distance_to_x": 31.89,
+      "final_yaw_deg": 0.0,
+      "end_xy": [
+        26.5,
+        26.5
+      ],
+      "marker_xy": [
+        5.5,
+        2.5
+      ],
+      "path_len": 47.63,
+      "duration_s": 41.2,
+      "n_frames": 1237,
+      "cum_turn_deg": 0.0,
+      "net_turn_deg": 0.0,
+      "crow_over_path": 0.669,
+      "equal_leg_bearing_deg": 209.05,
+      "equal_leg_err_deg": 19.76,
+      "cardinal_err_deg": 41.19,
+      "behind_err_deg": 48.81,
+      "sensitivity_deg_per_unit": 1.8,
+      "difficulty": 0.439,
+      "tier": "medium"
+    },
+    {
+      "id": 29,
+      "seed": 2058,
+      "turns": "LL",
+      "legs": [
+        4,
+        1,
+        1
+      ],
+      "n_turns": 2,
+      "ratio_band": [
+        3.5,
+        4.5
+      ],
+      "ratio": 4.0,
+      "total_steps": 6,
+      "pattern_requested": "same",
+      "pattern": "same",
+      "legs_sorted_ascending": false,
+      "replicate": 1,
+      "bearing_gt_deg": 333.43,
+      "distance_to_x": 6.71,
+      "final_yaw_deg": 180.0,
+      "end_xy": [
+        11.5,
+        2.5
+      ],
+      "marker_xy": [
+        5.5,
+        5.5
+      ],
+      "path_len": 17.63,
+      "duration_s": 17.4,
+      "n_frames": 523,
+      "cum_turn_deg": -180.0,
+      "net_turn_deg": -180.0,
+      "crow_over_path": 0.38,
+      "equal_leg_bearing_deg": 243.43,
+      "equal_leg_err_deg": 90.0,
+      "cardinal_err_deg": 26.57,
+      "behind_err_deg": 153.43,
+      "sensitivity_deg_per_unit": 8.54,
+      "difficulty": 0.679,
+      "tier": "hard"
+    },
+    {
+      "id": 30,
+      "seed": 2059,
+      "turns": "LL",
+      "legs": [
+        8,
+        8,
+        2
+      ],
+      "n_turns": 2,
+      "ratio_band": [
+        3.5,
+        4.5
+      ],
+      "ratio": 4.0,
+      "total_steps": 18,
+      "pattern_requested": "rand",
+      "pattern": "rand",
+      "legs_sorted_ascending": false,
+      "replicate": 2,
+      "bearing_gt_deg": 302.01,
+      "distance_to_x": 28.3,
+      "final_yaw_deg": 180.0,
+      "end_xy": [
+        20.5,
+        2.5
+      ],
+      "marker_xy": [
+        5.5,
+        26.5
+      ],
+      "path_len": 53.63,
+      "duration_s": 46.0,
+      "n_frames": 1380,
+      "cum_turn_deg": -180.0,
+      "net_turn_deg": -180.0,
+      "crow_over_path": 0.528,
+      "equal_leg_bearing_deg": 260.54,
+      "equal_leg_err_deg": 41.47,
+      "cardinal_err_deg": 32.01,
+      "behind_err_deg": 122.01,
+      "sensitivity_deg_per_unit": 2.02,
+      "difficulty": 0.492,
+      "tier": "medium"
+    },
+    {
+      "id": 31,
+      "seed": 2060,
+      "turns": "RR",
+      "legs": [
+        9,
+        3,
+        2
+      ],
+      "n_turns": 2,
+      "ratio_band": [
+        3.5,
+        4.5
+      ],
+      "ratio": 4.5,
+      "total_steps": 14,
+      "pattern_requested": "rand",
+      "pattern": "rand",
+      "legs_sorted_ascending": false,
+      "replicate": 3,
+      "bearing_gt_deg": 26.57,
+      "distance_to_x": 20.12,
+      "final_yaw_deg": 180.0,
+      "end_xy": [
+        23.5,
+        11.5
+      ],
+      "marker_xy": [
+        5.5,
+        2.5
+      ],
+      "path_len": 41.63,
+      "duration_s": 36.5,
+      "n_frames": 1094,
+      "cum_turn_deg": 180.0,
+      "net_turn_deg": -180.0,
+      "crow_over_path": 0.483,
+      "equal_leg_bearing_deg": 101.31,
+      "equal_leg_err_deg": 74.74,
+      "cardinal_err_deg": 26.57,
+      "behind_err_deg": 153.43,
+      "sensitivity_deg_per_unit": 2.85,
+      "difficulty": 0.571,
+      "tier": "hard"
+    },
+    {
+      "id": 32,
+      "seed": 2061,
+      "turns": "LR",
+      "legs": [
+        1,
+        7,
+        4
+      ],
+      "n_turns": 2,
+      "ratio_band": [
+        6.0,
+        7.5
+      ],
+      "ratio": 7.0,
+      "total_steps": 12,
+      "pattern_requested": "alt",
+      "pattern": "alt",
+      "legs_sorted_ascending": false,
+      "replicate": 0,
+      "bearing_gt_deg": 121.76,
+      "distance_to_x": 24.7,
+      "final_yaw_deg": 0.0,
+      "end_xy": [
+        17.5,
+        2.5
+      ],
+      "marker_xy": [
+        4.5,
+        23.5
+      ],
+      "path_len": 35.63,
+      "duration_s": 31.7,
+      "n_frames": 951,
+      "cum_turn_deg": 0.0,
+      "net_turn_deg": 0.0,
+      "crow_over_path": 0.693,
+      "equal_leg_bearing_deg": 150.26,
+      "equal_leg_err_deg": 28.5,
+      "cardinal_err_deg": 31.76,
+      "behind_err_deg": 58.24,
+      "sensitivity_deg_per_unit": 2.32,
+      "difficulty": 0.475,
+      "tier": "medium"
+    },
+    {
+      "id": 33,
+      "seed": 2062,
+      "turns": "LL",
+      "legs": [
+        7,
+        3,
+        1
+      ],
+      "n_turns": 2,
+      "ratio_band": [
+        6.0,
+        7.5
+      ],
+      "ratio": 7.0,
+      "total_steps": 11,
+      "pattern_requested": "same",
+      "pattern": "same",
+      "legs_sorted_ascending": false,
+      "replicate": 1,
+      "bearing_gt_deg": 329.04,
+      "distance_to_x": 17.49,
+      "final_yaw_deg": 180.0,
+      "end_xy": [
+        20.5,
+        2.5
+      ],
+      "marker_xy": [
+        5.5,
+        11.5
+      ],
+      "path_len": 32.63,
+      "duration_s": 29.3,
+      "n_frames": 880,
+      "cum_turn_deg": -180.0,
+      "net_turn_deg": -180.0,
+      "crow_over_path": 0.536,
+      "equal_leg_bearing_deg": 255.96,
+      "equal_leg_err_deg": 73.07,
+      "cardinal_err_deg": 30.96,
+      "behind_err_deg": 149.04,
+      "sensitivity_deg_per_unit": 3.28,
+      "difficulty": 0.626,
+      "tier": "hard"
+    },
+    {
+      "id": 34,
+      "seed": 2063,
+      "turns": "LL",
+      "legs": [
+        3,
+        7,
+        1
+      ],
+      "n_turns": 2,
+      "ratio_band": [
+        6.0,
+        7.5
+      ],
+      "ratio": 7.0,
+      "total_steps": 11,
+      "pattern_requested": "rand",
+      "pattern": "rand",
+      "legs_sorted_ascending": false,
+      "replicate": 2,
+      "bearing_gt_deg": 278.13,
+      "distance_to_x": 21.21,
+      "final_yaw_deg": 180.0,
+      "end_xy": [
+        8.5,
+        2.5
+      ],
+      "marker_xy": [
+        5.5,
+        23.5
+      ],
+      "path_len": 32.63,
+      "duration_s": 29.3,
+      "n_frames": 880,
+      "cum_turn_deg": -180.0,
+      "net_turn_deg": -180.0,
+      "crow_over_path": 0.65,
+      "equal_leg_bearing_deg": 255.96,
+      "equal_leg_err_deg": 22.17,
+      "cardinal_err_deg": 8.13,
+      "behind_err_deg": 98.13,
+      "sensitivity_deg_per_unit": 2.7,
+      "difficulty": 0.369,
+      "tier": "easy"
+    },
+    {
+      "id": 35,
+      "seed": 2064,
+      "turns": "RR",
+      "legs": [
+        6,
+        1,
+        3
+      ],
+      "n_turns": 2,
+      "ratio_band": [
+        6.0,
+        7.5
+      ],
+      "ratio": 6.0,
+      "total_steps": 10,
+      "pattern_requested": "rand",
+      "pattern": "rand",
+      "legs_sorted_ascending": false,
+      "replicate": 3,
+      "bearing_gt_deg": 26.57,
+      "distance_to_x": 6.71,
+      "final_yaw_deg": 180.0,
+      "end_xy": [
+        11.5,
+        5.5
+      ],
+      "marker_xy": [
+        5.5,
+        2.5
+      ],
+      "path_len": 29.63,
+      "duration_s": 26.9,
+      "n_frames": 808,
+      "cum_turn_deg": 180.0,
+      "net_turn_deg": -180.0,
+      "crow_over_path": 0.226,
+      "equal_leg_bearing_deg": 108.43,
+      "equal_leg_err_deg": 81.87,
+      "cardinal_err_deg": 26.57,
+      "behind_err_deg": 153.43,
+      "sensitivity_deg_per_unit": 8.54,
+      "difficulty": 0.694,
+      "tier": "hard"
+    },
+    {
+      "id": 36,
+      "seed": 2065,
+      "turns": "RL",
+      "legs": [
+        1,
+        4,
+        10
+      ],
+      "n_turns": 2,
+      "ratio_band": [
+        9.0,
+        10.0
+      ],
+      "ratio": 10.0,
+      "total_steps": 15,
+      "pattern_requested": "alt",
+      "pattern": "alt",
+      "legs_sorted_ascending": false,
+      "replicate": 0,
+      "bearing_gt_deg": 201.16,
+      "distance_to_x": 33.24,
+      "final_yaw_deg": 0.0,
+      "end_xy": [
+        35.5,
+        14.5
+      ],
+      "marker_xy": [
+        4.5,
+        2.5
+      ],
+      "path_len": 44.63,
+      "duration_s": 38.8,
+      "n_frames": 1165,
+      "cum_turn_deg": 0.0,
+      "net_turn_deg": 0.0,
+      "crow_over_path": 0.745,
+      "equal_leg_bearing_deg": 209.05,
+      "equal_leg_err_deg": 7.89,
+      "cardinal_err_deg": 21.16,
+      "behind_err_deg": 21.16,
+      "sensitivity_deg_per_unit": 1.72,
+      "difficulty": 0.316,
+      "tier": "easy"
+    },
+    {
+      "id": 37,
+      "seed": 2066,
+      "turns": "RR",
+      "legs": [
+        10,
+        6,
+        1
+      ],
+      "n_turns": 2,
+      "ratio_band": [
+        9.0,
+        10.0
+      ],
+      "ratio": 10.0,
+      "total_steps": 17,
+      "pattern_requested": "same",
+      "pattern": "same",
+      "legs_sorted_ascending": false,
+      "replicate": 1,
+      "bearing_gt_deg": 36.87,
+      "distance_to_x": 30.0,
+      "final_yaw_deg": 180.0,
+      "end_xy": [
+        29.5,
+        20.5
+      ],
+      "marker_xy": [
+        5.5,
+        2.5
+      ],
+      "path_len": 50.63,
+      "duration_s": 43.6,
+      "n_frames": 1308,
+      "cum_turn_deg": 180.0,
+      "net_turn_deg": -180.0,
+      "crow_over_path": 0.592,
+      "equal_leg_bearing_deg": 99.46,
+      "equal_leg_err_deg": 62.59,
+      "cardinal_err_deg": 36.87,
+      "behind_err_deg": 143.13,
+      "sensitivity_deg_per_unit": 1.91,
+      "difficulty": 0.545,
+      "tier": "medium"
+    },
+    {
+      "id": 38,
+      "seed": 2067,
+      "turns": "LL",
+      "legs": [
+        9,
+        1,
+        4
+      ],
+      "n_turns": 2,
+      "ratio_band": [
+        9.0,
+        10.0
+      ],
+      "ratio": 9.0,
+      "total_steps": 14,
+      "pattern_requested": "rand",
+      "pattern": "rand",
+      "legs_sorted_ascending": false,
+      "replicate": 2,
+      "bearing_gt_deg": 345.96,
+      "distance_to_x": 12.37,
+      "final_yaw_deg": 180.0,
+      "end_xy": [
+        17.5,
+        2.5
+      ],
+      "marker_xy": [
+        5.5,
+        5.5
+      ],
+      "path_len": 41.63,
+      "duration_s": 36.5,
+      "n_frames": 1094,
+      "cum_turn_deg": -180.0,
+      "net_turn_deg": -180.0,
+      "crow_over_path": 0.297,
+      "equal_leg_bearing_deg": 258.69,
+      "equal_leg_err_deg": 87.27,
+      "cardinal_err_deg": 14.04,
+      "behind_err_deg": 165.96,
+      "sensitivity_deg_per_unit": 4.63,
+      "difficulty": 0.593,
+      "tier": "hard"
+    },
+    {
+      "id": 39,
+      "seed": 2068,
+      "turns": "RR",
+      "legs": [
+        5,
+        9,
+        1
+      ],
+      "n_turns": 2,
+      "ratio_band": [
+        9.0,
+        10.0
+      ],
+      "ratio": 9.0,
+      "total_steps": 15,
+      "pattern_requested": "rand",
+      "pattern": "rand",
+      "legs_sorted_ascending": false,
+      "replicate": 3,
+      "bearing_gt_deg": 71.57,
+      "distance_to_x": 28.46,
+      "final_yaw_deg": 180.0,
+      "end_xy": [
+        14.5,
+        29.5
+      ],
+      "marker_xy": [
+        5.5,
+        2.5
+      ],
+      "path_len": 44.63,
+      "duration_s": 38.8,
+      "n_frames": 1165,
+      "cum_turn_deg": 180.0,
+      "net_turn_deg": -180.0,
+      "crow_over_path": 0.638,
+      "equal_leg_bearing_deg": 101.31,
+      "equal_leg_err_deg": 29.74,
+      "cardinal_err_deg": 18.43,
+      "behind_err_deg": 108.43,
+      "sensitivity_deg_per_unit": 2.01,
+      "difficulty": 0.402,
+      "tier": "easy"
+    },
+    {
+      "id": 40,
+      "seed": 2069,
+      "turns": "LRL",
+      "legs": [
+        6,
+        6,
+        6,
+        6
+      ],
+      "n_turns": 3,
+      "ratio_band": [
+        1.0,
+        1.2
+      ],
+      "ratio": 1.0,
+      "total_steps": 24,
+      "pattern_requested": "alt",
+      "pattern": "alt",
+      "legs_sorted_ascending": false,
+      "replicate": 0,
+      "bearing_gt_deg": 222.51,
+      "distance_to_x": 48.84,
+      "final_yaw_deg": 270.0,
+      "end_xy": [
+        38.5,
+        2.5
+      ],
+      "marker_xy": [
+        5.5,
+        38.5
+      ],
+      "path_len": 71.45,
+      "duration_s": 60.1,
+      "n_frames": 1804,
+      "cum_turn_deg": -90.0,
+      "net_turn_deg": -90.0,
+      "crow_over_path": 0.683,
+      "equal_leg_bearing_deg": 222.51,
+      "equal_leg_err_deg": 0.0,
+      "cardinal_err_deg": 42.51,
+      "behind_err_deg": 42.51,
+      "sensitivity_deg_per_unit": 1.17,
+      "difficulty": 0.366,
+      "tier": "easy"
+    },
+    {
+      "id": 41,
+      "seed": 2070,
+      "turns": "LLL",
+      "legs": [
+        6,
+        7,
+        7,
+        6
+      ],
+      "n_turns": 3,
+      "ratio_band": [
+        1.0,
+        1.2
+      ],
+      "ratio": 1.17,
+      "total_steps": 26,
+      "pattern_requested": "same",
+      "pattern": "same",
+      "legs_sorted_ascending": false,
+      "replicate": 1,
+      "bearing_gt_deg": 296.57,
+      "distance_to_x": 6.71,
+      "final_yaw_deg": 90.0,
+      "end_xy": [
+        2.5,
+        20.5
+      ],
+      "marker_xy": [
+        8.5,
+        23.5
+      ],
+      "path_len": 77.45,
+      "duration_s": 64.9,
+      "n_frames": 1947,
+      "cum_turn_deg": -270.0,
+      "net_turn_deg": 90.0,
+      "crow_over_path": 0.087,
+      "equal_leg_bearing_deg": 270.0,
+      "equal_leg_err_deg": 26.57,
+      "cardinal_err_deg": 26.57,
+      "behind_err_deg": 116.57,
+      "sensitivity_deg_per_unit": 8.54,
+      "difficulty": 0.629,
+      "tier": "hard"
+    },
+    {
+      "id": 42,
+      "seed": 2071,
+      "turns": "LRR",
+      "legs": [
+        8,
+        8,
+        8,
+        7
+      ],
+      "n_turns": 3,
+      "ratio_band": [
+        1.0,
+        1.2
+      ],
+      "ratio": 1.14,
+      "total_steps": 31,
+      "pattern_requested": "rand",
+      "pattern": "rand",
+      "legs_sorted_ascending": false,
+      "replicate": 2,
+      "bearing_gt_deg": 86.19,
+      "distance_to_x": 45.1,
+      "final_yaw_deg": 90.0,
+      "end_xy": [
+        50.5,
+        23.5
+      ],
+      "marker_xy": [
+        5.5,
+        26.5
+      ],
+      "path_len": 92.45,
+      "duration_s": 76.8,
+      "n_frames": 2304,
+      "cum_turn_deg": 90.0,
+      "net_turn_deg": 90.0,
+      "crow_over_path": 0.488,
+      "equal_leg_bearing_deg": 90.0,
+      "equal_leg_err_deg": 3.81,
+      "cardinal_err_deg": 3.81,
+      "behind_err_deg": 93.81,
+      "sensitivity_deg_per_unit": 1.27,
+      "difficulty": 0.182,
+      "tier": "easy"
+    },
+    {
+      "id": 43,
+      "seed": 2072,
+      "turns": "LLL",
+      "legs": [
+        5,
+        6,
+        5,
+        5
+      ],
+      "n_turns": 3,
+      "ratio_band": [
+        1.0,
+        1.2
+      ],
+      "ratio": 1.2,
+      "total_steps": 21,
+      "pattern_requested": "rand",
+      "pattern": "rand",
+      "legs_sorted_ascending": false,
+      "replicate": 3,
+      "bearing_gt_deg": 315.0,
+      "distance_to_x": 4.24,
+      "final_yaw_deg": 90.0,
+      "end_xy": [
+        2.5,
+        17.5
+      ],
+      "marker_xy": [
+        5.5,
+        20.5
+      ],
+      "path_len": 62.45,
+      "duration_s": 53.0,
+      "n_frames": 1590,
+      "cum_turn_deg": -270.0,
+      "net_turn_deg": 90.0,
+      "crow_over_path": 0.068,
+      "equal_leg_bearing_deg": 270.0,
+      "equal_leg_err_deg": 45.0,
+      "cardinal_err_deg": 45.0,
+      "behind_err_deg": 135.0,
+      "sensitivity_deg_per_unit": 13.5,
+      "difficulty": 0.785,
+      "tier": "hard"
+    },
+    {
+      "id": 44,
+      "seed": 2073,
+      "turns": "RLR",
+      "legs": [
+        4,
+        2,
+        2,
+        4
+      ],
+      "n_turns": 3,
+      "ratio_band": [
+        1.8,
+        2.6
+      ],
+      "ratio": 2.0,
+      "total_steps": 12,
+      "pattern_requested": "alt",
+      "pattern": "alt",
+      "legs_sorted_ascending": false,
+      "replicate": 0,
+      "bearing_gt_deg": 140.19,
+      "distance_to_x": 23.43,
+      "final_yaw_deg": 90.0,
+      "end_xy": [
+        20.5,
+        20.5
+      ],
+      "marker_xy": [
+        5.5,
+        2.5
+      ],
+      "path_len": 35.45,
+      "duration_s": 31.6,
+      "n_frames": 947,
+      "cum_turn_deg": 90.0,
+      "net_turn_deg": 90.0,
+      "crow_over_path": 0.661,
+      "equal_leg_bearing_deg": 140.19,
+      "equal_leg_err_deg": 0.0,
+      "cardinal_err_deg": 39.81,
+      "behind_err_deg": 39.81,
+      "sensitivity_deg_per_unit": 2.45,
+      "difficulty": 0.465,
+      "tier": "medium"
+    },
+    {
+      "id": 45,
+      "seed": 2074,
+      "turns": "LLL",
+      "legs": [
+        4,
+        3,
+        2,
+        2
+      ],
+      "n_turns": 3,
+      "ratio_band": [
+        1.8,
+        2.6
+      ],
+      "ratio": 2.0,
+      "total_steps": 11,
+      "pattern_requested": "same",
+      "pattern": "same",
+      "legs_sorted_ascending": false,
+      "replicate": 1,
+      "bearing_gt_deg": 45.0,
+      "distance_to_x": 4.24,
+      "final_yaw_deg": 90.0,
+      "end_xy": [
+        8.5,
+        8.5
+      ],
+      "marker_xy": [
+        5.5,
+        11.5
+      ],
+      "path_len": 32.45,
+      "duration_s": 29.2,
+      "n_frames": 875,
+      "cum_turn_deg": -270.0,
+      "net_turn_deg": 90.0,
+      "crow_over_path": 0.131,
+      "equal_leg_bearing_deg": 270.0,
+      "equal_leg_err_deg": 135.0,
+      "cardinal_err_deg": 45.0,
+      "behind_err_deg": 135.0,
+      "sensitivity_deg_per_unit": 13.5,
+      "difficulty": 0.851,
+      "tier": "hard"
+    },
+    {
+      "id": 46,
+      "seed": 2075,
+      "turns": "RLL",
+      "legs": [
+        4,
+        5,
+        9,
+        4
+      ],
+      "n_turns": 3,
+      "ratio_band": [
+        1.8,
+        2.6
+      ],
+      "ratio": 2.25,
+      "total_steps": 22,
+      "pattern_requested": "rand",
+      "pattern": "rand",
+      "legs_sorted_ascending": false,
+      "replicate": 2,
+      "bearing_gt_deg": 274.76,
+      "distance_to_x": 36.12,
+      "final_yaw_deg": 270.0,
+      "end_xy": [
+        41.5,
+        5.5
+      ],
+      "marker_xy": [
+        5.5,
+        2.5
+      ],
+      "path_len": 65.45,
+      "duration_s": 55.4,
+      "n_frames": 1661,
+      "cum_turn_deg": -90.0,
+      "net_turn_deg": -90.0,
+      "crow_over_path": 0.552,
+      "equal_leg_bearing_deg": 270.0,
+      "equal_leg_err_deg": 4.76,
+      "cardinal_err_deg": 4.76,
+      "behind_err_deg": 94.76,
+      "sensitivity_deg_per_unit": 1.59,
+      "difficulty": 0.22,
+      "tier": "easy"
+    },
+    {
+      "id": 47,
+      "seed": 2076,
+      "turns": "RRR",
+      "legs": [
+        5,
+        7,
+        3,
+        4
+      ],
+      "n_turns": 3,
+      "ratio_band": [
+        1.8,
+        2.6
+      ],
+      "ratio": 2.33,
+      "total_steps": 19,
+      "pattern_requested": "rand",
+      "pattern": "rand",
+      "legs_sorted_ascending": false,
+      "replicate": 3,
+      "bearing_gt_deg": 341.57,
+      "distance_to_x": 9.49,
+      "final_yaw_deg": 270.0,
+      "end_xy": [
+        8.5,
+        11.5
+      ],
+      "marker_xy": [
+        5.5,
+        2.5
+      ],
+      "path_len": 56.45,
+      "duration_s": 48.2,
+      "n_frames": 1447,
+      "cum_turn_deg": 270.0,
+      "net_turn_deg": -90.0,
+      "crow_over_path": 0.168,
+      "equal_leg_bearing_deg": 90.0,
+      "equal_leg_err_deg": 108.43,
+      "cardinal_err_deg": 18.43,
+      "behind_err_deg": 161.57,
+      "sensitivity_deg_per_unit": 6.04,
+      "difficulty": 0.662,
+      "tier": "hard"
+    },
+    {
+      "id": 48,
+      "seed": 2077,
+      "turns": "LRL",
+      "legs": [
+        2,
+        8,
+        4,
+        8
+      ],
+      "n_turns": 3,
+      "ratio_band": [
+        3.5,
+        4.5
+      ],
+      "ratio": 4.0,
+      "total_steps": 22,
+      "pattern_requested": "alt",
+      "pattern": "alt",
+      "legs_sorted_ascending": false,
+      "replicate": 0,
+      "bearing_gt_deg": 197.35,
+      "distance_to_x": 50.29,
+      "final_yaw_deg": 270.0,
+      "end_xy": [
+        20.5,
+        2.5
+      ],
+      "marker_xy": [
+        5.5,
+        50.5
+      ],
+      "path_len": 65.45,
+      "duration_s": 55.4,
+      "n_frames": 1661,
+      "cum_turn_deg": -90.0,
+      "net_turn_deg": -90.0,
+      "crow_over_path": 0.768,
+      "equal_leg_bearing_deg": 222.51,
+      "equal_leg_err_deg": 25.16,
+      "cardinal_err_deg": 17.35,
+      "behind_err_deg": 17.35,
+      "sensitivity_deg_per_unit": 1.14,
+      "difficulty": 0.333,
+      "tier": "easy"
+    },
+    {
+      "id": 49,
+      "seed": 2078,
+      "turns": "LLL",
+      "legs": [
+        3,
+        4,
+        1,
+        1
+      ],
+      "n_turns": 3,
+      "ratio_band": [
+        3.5,
+        4.5
+      ],
+      "ratio": 4.0,
+      "total_steps": 9,
+      "pattern_requested": "same",
+      "pattern": "same",
+      "legs_sorted_ascending": false,
+      "replicate": 1,
+      "bearing_gt_deg": 18.43,
+      "distance_to_x": 9.49,
+      "final_yaw_deg": 90.0,
+      "end_xy": [
+        8.5,
+        5.5
+      ],
+      "marker_xy": [
+        5.5,
+        14.5
+      ],
+      "path_len": 26.45,
+      "duration_s": 24.4,
+      "n_frames": 732,
+      "cum_turn_deg": -270.0,
+      "net_turn_deg": 90.0,
+      "crow_over_path": 0.359,
+      "equal_leg_bearing_deg": 270.0,
+      "equal_leg_err_deg": 108.43,
+      "cardinal_err_deg": 18.43,
+      "behind_err_deg": 161.57,
+      "sensitivity_deg_per_unit": 6.04,
+      "difficulty": 0.674,
+      "tier": "hard"
+    },
+    {
+      "id": 50,
+      "seed": 2079,
+      "turns": "LRR",
+      "legs": [
+        1,
+        2,
+        4,
+        1
+      ],
+      "n_turns": 3,
+      "ratio_band": [
+        3.5,
+        4.5
+      ],
+      "ratio": 4.0,
+      "total_steps": 8,
+      "pattern_requested": "rand",
+      "pattern": "rand",
+      "legs_sorted_ascending": false,
+      "replicate": 2,
+      "bearing_gt_deg": 77.01,
+      "distance_to_x": 13.34,
+      "final_yaw_deg": 90.0,
+      "end_xy": [
+        17.5,
+        5.5
+      ],
+      "marker_xy": [
+        4.5,
+        8.5
+      ],
+      "path_len": 23.45,
+      "duration_s": 22.0,
+      "n_frames": 661,
+      "cum_turn_deg": 90.0,
+      "net_turn_deg": 90.0,
+      "crow_over_path": 0.569,
+      "equal_leg_bearing_deg": 90.0,
+      "equal_leg_err_deg": 12.99,
+      "cardinal_err_deg": 12.99,
+      "behind_err_deg": 102.99,
+      "sensitivity_deg_per_unit": 4.29,
+      "difficulty": 0.467,
+      "tier": "medium"
+    },
+    {
+      "id": 51,
+      "seed": 2080,
+      "turns": "RRR",
+      "legs": [
+        7,
+        5,
+        5,
+        2
+      ],
+      "n_turns": 3,
+      "ratio_band": [
+        3.5,
+        4.5
+      ],
+      "ratio": 3.5,
+      "total_steps": 19,
+      "pattern_requested": "rand",
+      "pattern": "rand",
+      "legs_sorted_ascending": false,
+      "replicate": 3,
+      "bearing_gt_deg": 341.57,
+      "distance_to_x": 9.49,
+      "final_yaw_deg": 270.0,
+      "end_xy": [
+        8.5,
+        11.5
+      ],
+      "marker_xy": [
+        5.5,
+        2.5
+      ],
+      "path_len": 56.45,
+      "duration_s": 48.2,
+      "n_frames": 1447,
+      "cum_turn_deg": 270.0,
+      "net_turn_deg": -90.0,
+      "crow_over_path": 0.168,
+      "equal_leg_bearing_deg": 90.0,
+      "equal_leg_err_deg": 108.43,
+      "cardinal_err_deg": 18.43,
+      "behind_err_deg": 161.57,
+      "sensitivity_deg_per_unit": 6.04,
+      "difficulty": 0.687,
+      "tier": "hard"
+    },
+    {
+      "id": 52,
+      "seed": 2081,
+      "turns": "LRL",
+      "legs": [
+        6,
+        1,
+        5,
+        6
+      ],
+      "n_turns": 3,
+      "ratio_band": [
+        6.0,
+        7.5
+      ],
+      "ratio": 6.0,
+      "total_steps": 18,
+      "pattern_requested": "alt",
+      "pattern": "alt",
+      "legs_sorted_ascending": false,
+      "replicate": 0,
+      "bearing_gt_deg": 235.01,
+      "distance_to_x": 36.62,
+      "final_yaw_deg": 270.0,
+      "end_xy": [
+        35.5,
+        2.5
+      ],
+      "marker_xy": [
+        5.5,
+        23.5
+      ],
+      "path_len": 53.45,
+      "duration_s": 45.8,
+      "n_frames": 1375,
+      "cum_turn_deg": -90.0,
+      "net_turn_deg": -90.0,
+      "crow_over_path": 0.685,
+      "equal_leg_bearing_deg": 221.19,
+      "equal_leg_err_deg": 13.82,
+      "cardinal_err_deg": 34.99,
+      "behind_err_deg": 55.01,
+      "sensitivity_deg_per_unit": 1.56,
+      "difficulty": 0.434,
+      "tier": "medium"
+    },
+    {
+      "id": 53,
+      "seed": 2082,
+      "turns": "RRR",
+      "legs": [
+        5,
+        7,
+        5,
+        1
+      ],
+      "n_turns": 3,
+      "ratio_band": [
+        6.0,
+        7.5
+      ],
+      "ratio": 7.0,
+      "total_steps": 18,
+      "pattern_requested": "same",
+      "pattern": "same",
+      "legs_sorted_ascending": false,
+      "replicate": 1,
+      "bearing_gt_deg": 9.46,
+      "distance_to_x": 18.25,
+      "final_yaw_deg": 270.0,
+      "end_xy": [
+        2.5,
+        20.5
+      ],
+      "marker_xy": [
+        5.5,
+        2.5
+      ],
+      "path_len": 53.45,
+      "duration_s": 45.8,
+      "n_frames": 1375,
+      "cum_turn_deg": 270.0,
+      "net_turn_deg": -90.0,
+      "crow_over_path": 0.341,
+      "equal_leg_bearing_deg": 90.0,
+      "equal_leg_err_deg": 80.54,
+      "cardinal_err_deg": 9.46,
+      "behind_err_deg": 170.54,
+      "sensitivity_deg_per_unit": 3.14,
+      "difficulty": 0.553,
+      "tier": "medium"
+    },
+    {
+      "id": 54,
+      "seed": 2083,
+      "turns": "RLL",
+      "legs": [
+        5,
+        6,
+        1,
+        2
+      ],
+      "n_turns": 3,
+      "ratio_band": [
+        6.0,
+        7.5
+      ],
+      "ratio": 6.0,
+      "total_steps": 14,
+      "pattern_requested": "rand",
+      "pattern": "rand",
+      "legs_sorted_ascending": false,
+      "replicate": 2,
+      "bearing_gt_deg": 308.66,
+      "distance_to_x": 19.21,
+      "final_yaw_deg": 270.0,
+      "end_xy": [
+        20.5,
+        14.5
+      ],
+      "marker_xy": [
+        5.5,
+        2.5
+      ],
+      "path_len": 41.45,
+      "duration_s": 36.3,
+      "n_frames": 1090,
+      "cum_turn_deg": -90.0,
+      "net_turn_deg": -90.0,
+      "crow_over_path": 0.463,
+      "equal_leg_bearing_deg": 270.0,
+      "equal_leg_err_deg": 38.66,
+      "cardinal_err_deg": 38.66,
+      "behind_err_deg": 128.66,
+      "sensitivity_deg_per_unit": 2.98,
+      "difficulty": 0.664,
+      "tier": "hard"
+    },
+    {
+      "id": 55,
+      "seed": 2084,
+      "turns": "RRR",
+      "legs": [
+        1,
+        7,
+        5,
+        4
+      ],
+      "n_turns": 3,
+      "ratio_band": [
+        6.0,
+        7.5
+      ],
+      "ratio": 7.0,
+      "total_steps": 17,
+      "pattern_requested": "rand",
+      "pattern": "rand",
+      "legs_sorted_ascending": false,
+      "replicate": 3,
+      "bearing_gt_deg": 57.26,
+      "distance_to_x": 16.64,
+      "final_yaw_deg": 270.0,
+      "end_xy": [
+        2.5,
+        11.5
+      ],
+      "marker_xy": [
+        16.5,
+        2.5
+      ],
+      "path_len": 50.45,
+      "duration_s": 43.5,
+      "n_frames": 1304,
+      "cum_turn_deg": 270.0,
+      "net_turn_deg": -90.0,
+      "crow_over_path": 0.33,
+      "equal_leg_bearing_deg": 90.0,
+      "equal_leg_err_deg": 32.74,
+      "cardinal_err_deg": 32.74,
+      "behind_err_deg": 122.74,
+      "sensitivity_deg_per_unit": 3.44,
+      "difficulty": 0.636,
+      "tier": "hard"
+    },
+    {
+      "id": 56,
+      "seed": 2085,
+      "turns": "RLR",
+      "legs": [
+        9,
+        1,
+        5,
+        1
+      ],
+      "n_turns": 3,
+      "ratio_band": [
+        9.0,
+        10.0
+      ],
+      "ratio": 9.0,
+      "total_steps": 16,
+      "pattern_requested": "alt",
+      "pattern": "alt",
+      "legs_sorted_ascending": false,
+      "replicate": 0,
+      "bearing_gt_deg": 98.75,
+      "distance_to_x": 39.46,
+      "final_yaw_deg": 90.0,
+      "end_xy": [
+        44.5,
+        8.5
+      ],
+      "marker_xy": [
+        5.5,
+        2.5
+      ],
+      "path_len": 47.45,
+      "duration_s": 41.1,
+      "n_frames": 1232,
+      "cum_turn_deg": 90.0,
+      "net_turn_deg": 90.0,
+      "crow_over_path": 0.832,
+      "equal_leg_bearing_deg": 138.81,
+      "equal_leg_err_deg": 40.07,
+      "cardinal_err_deg": 8.75,
+      "behind_err_deg": 81.25,
+      "sensitivity_deg_per_unit": 1.45,
+      "difficulty": 0.384,
+      "tier": "easy"
+    },
+    {
+      "id": 57,
+      "seed": 2086,
+      "turns": "LLL",
+      "legs": [
+        10,
+        9,
+        10,
+        1
+      ],
+      "n_turns": 3,
+      "ratio_band": [
+        9.0,
+        10.0
+      ],
+      "ratio": 10.0,
+      "total_steps": 30,
+      "pattern_requested": "same",
+      "pattern": "same",
+      "legs_sorted_ascending": false,
+      "replicate": 1,
+      "bearing_gt_deg": 352.87,
+      "distance_to_x": 24.19,
+      "final_yaw_deg": 90.0,
+      "end_xy": [
+        2.5,
+        5.5
+      ],
+      "marker_xy": [
+        5.5,
+        29.5
+      ],
+      "path_len": 89.45,
+      "duration_s": 74.4,
+      "n_frames": 2232,
+      "cum_turn_deg": -270.0,
+      "net_turn_deg": 90.0,
+      "crow_over_path": 0.27,
+      "equal_leg_bearing_deg": 270.0,
+      "equal_leg_err_deg": 82.87,
+      "cardinal_err_deg": 7.13,
+      "behind_err_deg": 172.87,
+      "sensitivity_deg_per_unit": 2.37,
+      "difficulty": 0.492,
+      "tier": "medium"
+    },
+    {
+      "id": 58,
+      "seed": 2087,
+      "turns": "RRR",
+      "legs": [
+        10,
+        2,
+        1,
+        1
+      ],
+      "n_turns": 3,
+      "ratio_band": [
+        9.0,
+        10.0
+      ],
+      "ratio": 10.0,
+      "total_steps": 14,
+      "pattern_requested": "rand",
+      "pattern": "rand",
+      "legs_sorted_ascending": false,
+      "replicate": 2,
+      "bearing_gt_deg": 277.13,
+      "distance_to_x": 24.19,
+      "final_yaw_deg": 270.0,
+      "end_xy": [
+        29.5,
+        5.5
+      ],
+      "marker_xy": [
+        5.5,
+        2.5
+      ],
+      "path_len": 41.45,
+      "duration_s": 36.3,
+      "n_frames": 1090,
+      "cum_turn_deg": 270.0,
+      "net_turn_deg": -90.0,
+      "crow_over_path": 0.584,
+      "equal_leg_bearing_deg": 90.0,
+      "equal_leg_err_deg": 172.87,
+      "cardinal_err_deg": 7.13,
+      "behind_err_deg": 97.13,
+      "sensitivity_deg_per_unit": 2.37,
+      "difficulty": 0.53,
+      "tier": "medium"
+    },
+    {
+      "id": 59,
+      "seed": 2088,
+      "turns": "LRR",
+      "legs": [
+        10,
+        9,
+        1,
+        7
+      ],
+      "n_turns": 3,
+      "ratio_band": [
+        9.0,
+        10.0
+      ],
+      "ratio": 10.0,
+      "total_steps": 27,
+      "pattern_requested": "rand",
+      "pattern": "rand",
+      "legs_sorted_ascending": false,
+      "replicate": 3,
+      "bearing_gt_deg": 78.69,
+      "distance_to_x": 30.59,
+      "final_yaw_deg": 90.0,
+      "end_xy": [
+        35.5,
+        23.5
+      ],
+      "marker_xy": [
+        5.5,
+        29.5
+      ],
+      "path_len": 80.45,
+      "duration_s": 67.3,
+      "n_frames": 2018,
+      "cum_turn_deg": 90.0,
+      "net_turn_deg": 90.0,
+      "crow_over_path": 0.38,
+      "equal_leg_bearing_deg": 90.0,
+      "equal_leg_err_deg": 11.31,
+      "cardinal_err_deg": 11.31,
+      "behind_err_deg": 101.31,
+      "sensitivity_deg_per_unit": 1.87,
+      "difficulty": 0.338,
+      "tier": "easy"
+    },
+    {
+      "id": 60,
+      "seed": 2089,
+      "turns": "RLRLR",
+      "legs": [
+        2,
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "n_turns": 5,
+      "ratio_band": [
+        1.0,
+        1.2
+      ],
+      "ratio": 1.0,
+      "total_steps": 12,
+      "pattern_requested": "alt",
+      "pattern": "alt",
+      "legs_sorted_ascending": false,
+      "replicate": 0,
+      "bearing_gt_deg": 140.19,
+      "distance_to_x": 23.43,
+      "final_yaw_deg": 90.0,
+      "end_xy": [
+        20.5,
+        20.5
+      ],
+      "marker_xy": [
+        5.5,
+        2.5
+      ],
+      "path_len": 35.08,
+      "duration_s": 31.3,
+      "n_frames": 938,
+      "cum_turn_deg": 90.0,
+      "net_turn_deg": 90.0,
+      "crow_over_path": 0.668,
+      "equal_leg_bearing_deg": 140.19,
+      "equal_leg_err_deg": 0.0,
+      "cardinal_err_deg": 39.81,
+      "behind_err_deg": 39.81,
+      "sensitivity_deg_per_unit": 2.45,
+      "difficulty": 0.513,
+      "tier": "medium"
+    },
+    {
+      "id": 61,
+      "seed": 2090,
+      "turns": "RRLRR",
+      "legs": [
+        3,
+        3,
+        3,
+        3,
+        3,
+        3
+      ],
+      "n_turns": 5,
+      "ratio_band": [
+        1.0,
+        1.2
+      ],
+      "ratio": 1.0,
+      "total_steps": 18,
+      "pattern_requested": "same",
+      "pattern": "rand",
+      "legs_sorted_ascending": false,
+      "replicate": 1,
+      "bearing_gt_deg": 53.13,
+      "distance_to_x": 15.0,
+      "final_yaw_deg": 270.0,
+      "end_xy": [
+        2.5,
+        11.5
+      ],
+      "marker_xy": [
+        14.5,
+        2.5
+      ],
+      "path_len": 53.08,
+      "duration_s": 45.6,
+      "n_frames": 1367,
+      "cum_turn_deg": 270.0,
+      "net_turn_deg": -90.0,
+      "crow_over_path": 0.283,
+      "equal_leg_bearing_deg": 53.13,
+      "equal_leg_err_deg": 0.0,
+      "cardinal_err_deg": 36.87,
+      "behind_err_deg": 126.87,
+      "sensitivity_deg_per_unit": 3.82,
+      "difficulty": 0.558,
+      "tier": "medium"
+    },
+    {
+      "id": 62,
+      "seed": 2091,
+      "turns": "LLRLL",
+      "legs": [
+        3,
+        3,
+        3,
+        3,
+        3,
+        3
+      ],
+      "n_turns": 5,
+      "ratio_band": [
+        1.0,
+        1.2
+      ],
+      "ratio": 1.0,
+      "total_steps": 18,
+      "pattern_requested": "rand",
+      "pattern": "rand",
+      "legs_sorted_ascending": false,
+      "replicate": 2,
+      "bearing_gt_deg": 306.87,
+      "distance_to_x": 15.0,
+      "final_yaw_deg": 90.0,
+      "end_xy": [
+        2.5,
+        11.5
+      ],
+      "marker_xy": [
+        14.5,
+        20.5
+      ],
+      "path_len": 53.08,
+      "duration_s": 45.6,
+      "n_frames": 1367,
+      "cum_turn_deg": -270.0,
+      "net_turn_deg": 90.0,
+      "crow_over_path": 0.283,
+      "equal_leg_bearing_deg": 306.87,
+      "equal_leg_err_deg": 0.0,
+      "cardinal_err_deg": 36.87,
+      "behind_err_deg": 126.87,
+      "sensitivity_deg_per_unit": 3.82,
+      "difficulty": 0.568,
+      "tier": "hard"
+    },
+    {
+      "id": 63,
+      "seed": 2092,
+      "turns": "LLRRR",
+      "legs": [
+        5,
+        6,
+        6,
+        6,
+        6,
+        5
+      ],
+      "n_turns": 5,
+      "ratio_band": [
+        1.0,
+        1.2
+      ],
+      "ratio": 1.2,
+      "total_steps": 34,
+      "pattern_requested": "rand",
+      "pattern": "rand",
+      "legs_sorted_ascending": false,
+      "replicate": 3,
+      "bearing_gt_deg": 29.74,
+      "distance_to_x": 24.19,
+      "final_yaw_deg": 90.0,
+      "end_xy": [
+        20.5,
+        17.5
+      ],
+      "marker_xy": [
+        8.5,
+        38.5
+      ],
+      "path_len": 101.08,
+      "duration_s": 83.6,
+      "n_frames": 2509,
+      "cum_turn_deg": 90.0,
+      "net_turn_deg": 90.0,
+      "crow_over_path": 0.239,
+      "equal_leg_bearing_deg": 39.81,
+      "equal_leg_err_deg": 10.06,
+      "cardinal_err_deg": 29.74,
+      "behind_err_deg": 150.26,
+      "sensitivity_deg_per_unit": 2.37,
+      "difficulty": 0.497,
+      "tier": "medium"
+    },
+    {
+      "id": 64,
+      "seed": 2093,
+      "turns": "RLRLR",
+      "legs": [
+        2,
+        2,
+        2,
+        4,
+        3,
+        5
+      ],
+      "n_turns": 5,
+      "ratio_band": [
+        1.8,
+        2.6
+      ],
+      "ratio": 2.5,
+      "total_steps": 18,
+      "pattern_requested": "alt",
+      "pattern": "alt",
+      "legs_sorted_ascending": false,
+      "replicate": 0,
+      "bearing_gt_deg": 151.39,
+      "distance_to_x": 37.59,
+      "final_yaw_deg": 90.0,
+      "end_xy": [
+        23.5,
+        35.5
+      ],
+      "marker_xy": [
+        5.5,
+        2.5
+      ],
+      "path_len": 53.08,
+      "duration_s": 45.6,
+      "n_frames": 1367,
+      "cum_turn_deg": 90.0,
+      "net_turn_deg": 90.0,
+      "crow_over_path": 0.708,
+      "equal_leg_bearing_deg": 138.37,
+      "equal_leg_err_deg": 13.02,
+      "cardinal_err_deg": 28.61,
+      "behind_err_deg": 28.61,
+      "sensitivity_deg_per_unit": 1.52,
+      "difficulty": 0.427,
+      "tier": "medium"
+    },
+    {
+      "id": 65,
+      "seed": 2094,
+      "turns": "RRRRR",
+      "legs": [
+        3,
+        3,
+        4,
+        5,
+        7,
+        7
+      ],
+      "n_turns": 5,
+      "ratio_band": [
+        1.8,
+        2.6
+      ],
+      "ratio": 2.33,
+      "total_steps": 29,
+      "pattern_requested": "same",
+      "pattern": "same",
+      "legs_sorted_ascending": true,
+      "replicate": 1,
+      "bearing_gt_deg": 135.0,
+      "distance_to_x": 21.21,
+      "final_yaw_deg": 90.0,
+      "end_xy": [
+        23.5,
+        23.5
+      ],
+      "marker_xy": [
+        8.5,
+        8.5
+      ],
+      "path_len": 86.08,
+      "duration_s": 71.7,
+      "n_frames": 2152,
+      "cum_turn_deg": 450.0,
+      "net_turn_deg": 90.0,
+      "crow_over_path": 0.246,
+      "equal_leg_bearing_deg": 141.34,
+      "equal_leg_err_deg": 6.34,
+      "cardinal_err_deg": 45.0,
+      "behind_err_deg": 45.0,
+      "sensitivity_deg_per_unit": 2.7,
+      "difficulty": 0.604,
+      "tier": "hard"
+    },
+    {
+      "id": 66,
+      "seed": 2095,
+      "turns": "RRLRR",
+      "legs": [
+        2,
+        5,
+        5,
+        4,
+        3,
+        3
+      ],
+      "n_turns": 5,
+      "ratio_band": [
+        1.8,
+        2.6
+      ],
+      "ratio": 2.5,
+      "total_steps": 22,
+      "pattern_requested": "rand",
+      "pattern": "rand",
+      "legs_sorted_ascending": false,
+      "replicate": 2,
+      "bearing_gt_deg": 49.4,
+      "distance_to_x": 27.66,
+      "final_yaw_deg": 270.0,
+      "end_xy": [
+        2.5,
+        20.5
+      ],
+      "marker_xy": [
+        23.5,
+        2.5
+      ],
+      "path_len": 65.08,
+      "duration_s": 55.1,
+      "n_frames": 1652,
+      "cum_turn_deg": 270.0,
+      "net_turn_deg": -90.0,
+      "crow_over_path": 0.425,
+      "equal_leg_bearing_deg": 51.34,
+      "equal_leg_err_deg": 1.94,
+      "cardinal_err_deg": 40.6,
+      "behind_err_deg": 130.6,
+      "sensitivity_deg_per_unit": 2.07,
+      "difficulty": 0.503,
+      "tier": "medium"
+    },
+    {
+      "id": 67,
+      "seed": 2096,
+      "turns": "LRLRR",
+      "legs": [
+        2,
+        1,
+        2,
+        1,
+        1,
+        1
+      ],
+      "n_turns": 5,
+      "ratio_band": [
+        1.8,
+        2.6
+      ],
+      "ratio": 2.0,
+      "total_steps": 8,
+      "pattern_requested": "rand",
+      "pattern": "rand",
+      "legs_sorted_ascending": false,
+      "replicate": 3,
+      "bearing_gt_deg": 75.96,
+      "distance_to_x": 12.37,
+      "final_yaw_deg": 90.0,
+      "end_xy": [
+        17.5,
+        5.5
+      ],
+      "marker_xy": [
+        5.5,
+        8.5
+      ],
+      "path_len": 23.08,
+      "duration_s": 21.7,
+      "n_frames": 652,
+      "cum_turn_deg": 90.0,
+      "net_turn_deg": 90.0,
+      "crow_over_path": 0.536,
+      "equal_leg_bearing_deg": 66.8,
+      "equal_leg_err_deg": 9.16,
+      "cardinal_err_deg": 14.04,
+      "behind_err_deg": 104.04,
+      "sensitivity_deg_per_unit": 4.63,
+      "difficulty": 0.518,
+      "tier": "medium"
+    },
+    {
+      "id": 68,
+      "seed": 2097,
+      "turns": "LRLRL",
+      "legs": [
+        7,
+        3,
+        6,
+        2,
+        9,
+        2
+      ],
+      "n_turns": 5,
+      "ratio_band": [
+        3.5,
+        4.5
+      ],
+      "ratio": 4.5,
+      "total_steps": 29,
+      "pattern_requested": "alt",
+      "pattern": "alt",
+      "legs_sorted_ascending": false,
+      "replicate": 0,
+      "bearing_gt_deg": 251.57,
+      "distance_to_x": 66.41,
+      "final_yaw_deg": 270.0,
+      "end_xy": [
+        68.5,
+        2.5
+      ],
+      "marker_xy": [
+        5.5,
+        23.5
+      ],
+      "path_len": 86.08,
+      "duration_s": 71.7,
+      "n_frames": 2152,
+      "cum_turn_deg": -90.0,
+      "net_turn_deg": -90.0,
+      "crow_over_path": 0.771,
+      "equal_leg_bearing_deg": 223.03,
+      "equal_leg_err_deg": 28.54,
+      "cardinal_err_deg": 18.43,
+      "behind_err_deg": 71.57,
+      "sensitivity_deg_per_unit": 0.86,
+      "difficulty": 0.419,
+      "tier": "easy"
+    },
+    {
+      "id": 69,
+      "seed": 2098,
+      "turns": "LLLLL",
+      "legs": [
+        2,
+        2,
+        3,
+        7,
+        8,
+        3
+      ],
+      "n_turns": 5,
+      "ratio_band": [
+        3.5,
+        4.5
+      ],
+      "ratio": 4.0,
+      "total_steps": 25,
+      "pattern_requested": "same",
+      "pattern": "same",
+      "legs_sorted_ascending": false,
+      "replicate": 1,
+      "bearing_gt_deg": 288.43,
+      "distance_to_x": 18.97,
+      "final_yaw_deg": 270.0,
+      "end_xy": [
+        26.5,
+        14.5
+      ],
+      "marker_xy": [
+        8.5,
+        8.5
+      ],
+      "path_len": 74.08,
+      "duration_s": 62.2,
+      "n_frames": 1867,
+      "cum_turn_deg": -450.0,
+      "net_turn_deg": -90.0,
+      "crow_over_path": 0.256,
+      "equal_leg_bearing_deg": 216.87,
+      "equal_leg_err_deg": 71.57,
+      "cardinal_err_deg": 18.43,
+      "behind_err_deg": 108.43,
+      "sensitivity_deg_per_unit": 3.02,
+      "difficulty": 0.634,
+      "tier": "hard"
+    },
+    {
+      "id": 70,
+      "seed": 2099,
+      "turns": "RLLLL",
+      "legs": [
+        1,
+        2,
+        2,
+        4,
+        3,
+        1
+      ],
+      "n_turns": 5,
+      "ratio_band": [
+        3.5,
+        4.5
+      ],
+      "ratio": 4.0,
+      "total_steps": 13,
+      "pattern_requested": "rand",
+      "pattern": "rand",
+      "legs_sorted_ascending": false,
+      "replicate": 2,
+      "bearing_gt_deg": 326.31,
+      "distance_to_x": 3.61,
+      "final_yaw_deg": 90.0,
+      "end_xy": [
+        2.5,
+        5.5
+      ],
+      "marker_xy": [
+        4.5,
+        8.5
+      ],
+      "path_len": 38.08,
+      "duration_s": 33.6,
+      "n_frames": 1009,
+      "cum_turn_deg": -270.0,
+      "net_turn_deg": 90.0,
+      "crow_over_path": 0.095,
+      "equal_leg_bearing_deg": 153.43,
+      "equal_leg_err_deg": 172.87,
+      "cardinal_err_deg": 33.69,
+      "behind_err_deg": 146.31,
+      "sensitivity_deg_per_unit": 15.89,
+      "difficulty": 0.864,
+      "tier": "hard"
+    },
+    {
+      "id": 71,
+      "seed": 2100,
+      "turns": "LLRRR",
+      "legs": [
+        4,
+        3,
+        3,
+        4,
+        1,
+        1
+      ],
+      "n_turns": 5,
+      "ratio_band": [
+        3.5,
+        4.5
+      ],
+      "ratio": 4.0,
+      "total_steps": 16,
+      "pattern_requested": "rand",
+      "pattern": "rand",
+      "legs_sorted_ascending": false,
+      "replicate": 3,
+      "bearing_gt_deg": 9.46,
+      "distance_to_x": 18.25,
+      "final_yaw_deg": 90.0,
+      "end_xy": [
+        8.5,
+        5.5
+      ],
+      "marker_xy": [
+        5.5,
+        23.5
+      ],
+      "path_len": 47.08,
+      "duration_s": 40.8,
+      "n_frames": 1224,
+      "cum_turn_deg": 90.0,
+      "net_turn_deg": 90.0,
+      "crow_over_path": 0.388,
+      "equal_leg_bearing_deg": 33.69,
+      "equal_leg_err_deg": 24.23,
+      "cardinal_err_deg": 9.46,
+      "behind_err_deg": 170.54,
+      "sensitivity_deg_per_unit": 3.14,
+      "difficulty": 0.503,
+      "tier": "medium"
+    },
+    {
+      "id": 72,
+      "seed": 2101,
+      "turns": "LRLRL",
+      "legs": [
+        6,
+        2,
+        6,
+        2,
+        1,
+        1
+      ],
+      "n_turns": 5,
+      "ratio_band": [
+        6.0,
+        7.5
+      ],
+      "ratio": 6.0,
+      "total_steps": 18,
+      "pattern_requested": "alt",
+      "pattern": "alt",
+      "legs_sorted_ascending": false,
+      "replicate": 0,
+      "bearing_gt_deg": 247.38,
+      "distance_to_x": 39.0,
+      "final_yaw_deg": 270.0,
+      "end_xy": [
+        41.5,
+        2.5
+      ],
+      "marker_xy": [
+        5.5,
+        17.5
+      ],
+      "path_len": 53.08,
+      "duration_s": 45.6,
+      "n_frames": 1367,
+      "cum_turn_deg": -90.0,
+      "net_turn_deg": -90.0,
+      "crow_over_path": 0.735,
+      "equal_leg_bearing_deg": 221.63,
+      "equal_leg_err_deg": 25.75,
+      "cardinal_err_deg": 22.62,
+      "behind_err_deg": 67.38,
+      "sensitivity_deg_per_unit": 1.47,
+      "difficulty": 0.452,
+      "tier": "medium"
+    },
+    {
+      "id": 73,
+      "seed": 2102,
+      "turns": "LLLLL",
+      "legs": [
+        1,
+        1,
+        2,
+        4,
+        5,
+        7
+      ],
+      "n_turns": 5,
+      "ratio_band": [
+        6.0,
+        7.5
+      ],
+      "ratio": 7.0,
+      "total_steps": 20,
+      "pattern_requested": "same",
+      "pattern": "same",
+      "legs_sorted_ascending": true,
+      "replicate": 1,
+      "bearing_gt_deg": 219.81,
+      "distance_to_x": 15.62,
+      "final_yaw_deg": 270.0,
+      "end_xy": [
+        17.5,
+        2.5
+      ],
+      "marker_xy": [
+        7.5,
+        14.5
+      ],
+      "path_len": 59.08,
+      "duration_s": 50.3,
+      "n_frames": 1509,
+      "cum_turn_deg": -450.0,
+      "net_turn_deg": -90.0,
+      "crow_over_path": 0.264,
+      "equal_leg_bearing_deg": 213.69,
+      "equal_leg_err_deg": 6.12,
+      "cardinal_err_deg": 39.81,
+      "behind_err_deg": 39.81,
+      "sensitivity_deg_per_unit": 3.67,
+      "difficulty": 0.634,
+      "tier": "hard"
+    },
+    {
+      "id": 74,
+      "seed": 2103,
+      "turns": "LRLLR",
+      "legs": [
+        2,
+        1,
+        7,
+        7,
+        4,
+        5
+      ],
+      "n_turns": 5,
+      "ratio_band": [
+        6.0,
+        7.5
+      ],
+      "ratio": 7.0,
+      "total_steps": 26,
+      "pattern_requested": "rand",
+      "pattern": "rand",
+      "legs_sorted_ascending": false,
+      "replicate": 2,
+      "bearing_gt_deg": 197.1,
+      "distance_to_x": 40.8,
+      "final_yaw_deg": 270.0,
+      "end_xy": [
+        17.5,
+        2.5
+      ],
+      "marker_xy": [
+        5.5,
+        41.5
+      ],
+      "path_len": 77.08,
+      "duration_s": 64.6,
+      "n_frames": 1938,
+      "cum_turn_deg": -90.0,
+      "net_turn_deg": -90.0,
+      "crow_over_path": 0.529,
+      "equal_leg_bearing_deg": 194.04,
+      "equal_leg_err_deg": 3.07,
+      "cardinal_err_deg": 17.1,
+      "behind_err_deg": 17.1,
+      "sensitivity_deg_per_unit": 1.4,
+      "difficulty": 0.331,
+      "tier": "easy"
+    },
+    {
+      "id": 75,
+      "seed": 2104,
+      "turns": "RRLLL",
+      "legs": [
+        3,
+        1,
+        3,
+        6,
+        1,
+        1
+      ],
+      "n_turns": 5,
+      "ratio_band": [
+        6.0,
+        7.5
+      ],
+      "ratio": 6.0,
+      "total_steps": 15,
+      "pattern_requested": "rand",
+      "pattern": "rand",
+      "legs_sorted_ascending": false,
+      "replicate": 3,
+      "bearing_gt_deg": 360.0,
+      "distance_to_x": 18.0,
+      "final_yaw_deg": 270.0,
+      "end_xy": [
+        5.5,
+        20.5
+      ],
+      "marker_xy": [
+        5.5,
+        2.5
+      ],
+      "path_len": 44.08,
+      "duration_s": 38.4,
+      "n_frames": 1152,
+      "cum_turn_deg": -90.0,
+      "net_turn_deg": -90.0,
+      "crow_over_path": 0.408,
+      "equal_leg_bearing_deg": 333.43,
+      "equal_leg_err_deg": 26.57,
+      "cardinal_err_deg": 0.0,
+      "behind_err_deg": 180.0,
+      "sensitivity_deg_per_unit": 3.18,
+      "difficulty": 0.48,
+      "tier": "medium"
+    },
+    {
+      "id": 76,
+      "seed": 2105,
+      "turns": "RLRLR",
+      "legs": [
+        2,
+        9,
+        1,
+        3,
+        3,
+        1
+      ],
+      "n_turns": 5,
+      "ratio_band": [
+        9.0,
+        10.0
+      ],
+      "ratio": 9.0,
+      "total_steps": 19,
+      "pattern_requested": "alt",
+      "pattern": "alt",
+      "legs_sorted_ascending": false,
+      "replicate": 0,
+      "bearing_gt_deg": 158.96,
+      "distance_to_x": 41.79,
+      "final_yaw_deg": 90.0,
+      "end_xy": [
+        20.5,
+        41.5
+      ],
+      "marker_xy": [
+        5.5,
+        2.5
+      ],
+      "path_len": 56.08,
+      "duration_s": 47.9,
+      "n_frames": 1438,
+      "cum_turn_deg": 90.0,
+      "net_turn_deg": 90.0,
+      "crow_over_path": 0.745,
+      "equal_leg_bearing_deg": 138.37,
+      "equal_leg_err_deg": 20.6,
+      "cardinal_err_deg": 21.04,
+      "behind_err_deg": 21.04,
+      "sensitivity_deg_per_unit": 1.37,
+      "difficulty": 0.424,
+      "tier": "medium"
+    },
+    {
+      "id": 77,
+      "seed": 2106,
+      "turns": "LLLLL",
+      "legs": [
+        2,
+        9,
+        9,
+        9,
+        3,
+        1
+      ],
+      "n_turns": 5,
+      "ratio_band": [
+        9.0,
+        10.0
+      ],
+      "ratio": 9.0,
+      "total_steps": 33,
+      "pattern_requested": "same",
+      "pattern": "same",
+      "legs_sorted_ascending": false,
+      "replicate": 1,
+      "bearing_gt_deg": 101.31,
+      "distance_to_x": 15.3,
+      "final_yaw_deg": 270.0,
+      "end_xy": [
+        11.5,
+        26.5
+      ],
+      "marker_xy": [
+        26.5,
+        29.5
+      ],
+      "path_len": 98.08,
+      "duration_s": 81.3,
+      "n_frames": 2438,
+      "cum_turn_deg": -450.0,
+      "net_turn_deg": -90.0,
+      "crow_over_path": 0.156,
+      "equal_leg_bearing_deg": 219.81,
+      "equal_leg_err_deg": 118.5,
+      "cardinal_err_deg": 11.31,
+      "behind_err_deg": 78.69,
+      "sensitivity_deg_per_unit": 3.75,
+      "difficulty": 0.679,
+      "tier": "hard"
+    },
+    {
+      "id": 78,
+      "seed": 2107,
+      "turns": "LRLRR",
+      "legs": [
+        5,
+        5,
+        5,
+        6,
+        1,
+        10
+      ],
+      "n_turns": 5,
+      "ratio_band": [
+        9.0,
+        10.0
+      ],
+      "ratio": 10.0,
+      "total_steps": 32,
+      "pattern_requested": "rand",
+      "pattern": "rand",
+      "legs_sorted_ascending": false,
+      "replicate": 2,
+      "bearing_gt_deg": 84.29,
+      "distance_to_x": 30.15,
+      "final_yaw_deg": 90.0,
+      "end_xy": [
+        35.5,
+        32.5
+      ],
+      "marker_xy": [
+        5.5,
+        35.5
+      ],
+      "path_len": 95.08,
+      "duration_s": 78.9,
+      "n_frames": 2367,
+      "cum_turn_deg": 90.0,
+      "net_turn_deg": 90.0,
+      "crow_over_path": 0.317,
+      "equal_leg_bearing_deg": 70.35,
+      "equal_leg_err_deg": 13.94,
+      "cardinal_err_deg": 5.71,
+      "behind_err_deg": 95.71,
+      "sensitivity_deg_per_unit": 1.9,
+      "difficulty": 0.354,
+      "tier": "easy"
+    },
+    {
+      "id": 79,
+      "seed": 2108,
+      "turns": "LRRRL",
+      "legs": [
+        1,
+        9,
+        7,
+        1,
+        2,
+        2
+      ],
+      "n_turns": 5,
+      "ratio_band": [
+        9.0,
+        10.0
+      ],
+      "ratio": 9.0,
+      "total_steps": 22,
+      "pattern_requested": "rand",
+      "pattern": "rand",
+      "legs_sorted_ascending": false,
+      "replicate": 3,
+      "bearing_gt_deg": 41.63,
+      "distance_to_x": 24.08,
+      "final_yaw_deg": 90.0,
+      "end_xy": [
+        20.5,
+        11.5
+      ],
+      "marker_xy": [
+        4.5,
+        29.5
+      ],
+      "path_len": 65.08,
+      "duration_s": 55.1,
+      "n_frames": 1652,
+      "cum_turn_deg": 90.0,
+      "net_turn_deg": 90.0,
+      "crow_over_path": 0.37,
+      "equal_leg_bearing_deg": 143.13,
+      "equal_leg_err_deg": 101.5,
+      "cardinal_err_deg": 41.63,
+      "behind_err_deg": 138.37,
+      "sensitivity_deg_per_unit": 2.38,
+      "difficulty": 0.768,
+      "tier": "hard"
+    },
+    {
+      "id": 80,
+      "seed": 2109,
+      "turns": "LRLRLRLR",
+      "legs": [
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "n_turns": 8,
+      "ratio_band": [
+        1.0,
+        1.2
+      ],
+      "ratio": 1.0,
+      "total_steps": 18,
+      "pattern_requested": "alt",
+      "pattern": "alt",
+      "legs_sorted_ascending": false,
+      "replicate": 0,
+      "bearing_gt_deg": 138.37,
+      "distance_to_x": 36.12,
+      "final_yaw_deg": 0.0,
+      "end_xy": [
+        32.5,
+        2.5
+      ],
+      "marker_xy": [
+        5.5,
+        26.5
+      ],
+      "path_len": 52.54,
+      "duration_s": 45.1,
+      "n_frames": 1353,
+      "cum_turn_deg": 0.0,
+      "net_turn_deg": 0.0,
+      "crow_over_path": 0.688,
+      "equal_leg_bearing_deg": 138.37,
+      "equal_leg_err_deg": 0.0,
+      "cardinal_err_deg": 41.63,
+      "behind_err_deg": 41.63,
+      "sensitivity_deg_per_unit": 1.59,
+      "difficulty": 0.5,
+      "tier": "medium"
+    },
+    {
+      "id": 81,
+      "seed": 2110,
+      "turns": "RLLRLRLL",
+      "legs": [
+        3,
+        3,
+        3,
+        3,
+        3,
+        3,
+        3,
+        3,
+        3
+      ],
+      "n_turns": 8,
+      "ratio_band": [
+        1.0,
+        1.2
+      ],
+      "ratio": 1.0,
+      "total_steps": 27,
+      "pattern_requested": "same",
+      "pattern": "rand",
+      "legs_sorted_ascending": false,
+      "replicate": 1,
+      "bearing_gt_deg": 323.13,
+      "distance_to_x": 30.0,
+      "final_yaw_deg": 180.0,
+      "end_xy": [
+        29.5,
+        2.5
+      ],
+      "marker_xy": [
+        5.5,
+        20.5
+      ],
+      "path_len": 79.54,
+      "duration_s": 66.5,
+      "n_frames": 1996,
+      "cum_turn_deg": -180.0,
+      "net_turn_deg": -180.0,
+      "crow_over_path": 0.377,
+      "equal_leg_bearing_deg": 323.13,
+      "equal_leg_err_deg": 0.0,
+      "cardinal_err_deg": 36.87,
+      "behind_err_deg": 143.13,
+      "sensitivity_deg_per_unit": 1.91,
+      "difficulty": 0.5,
+      "tier": "medium"
+    },
+    {
+      "id": 82,
+      "seed": 2111,
+      "turns": "RLRLLRLL",
+      "legs": [
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "n_turns": 8,
+      "ratio_band": [
+        1.0,
+        1.2
+      ],
+      "ratio": 1.0,
+      "total_steps": 18,
+      "pattern_requested": "rand",
+      "pattern": "rand",
+      "legs_sorted_ascending": false,
+      "replicate": 2,
+      "bearing_gt_deg": 360.0,
+      "distance_to_x": 15.0,
+      "final_yaw_deg": 180.0,
+      "end_xy": [
+        20.5,
+        2.5
+      ],
+      "marker_xy": [
+        5.5,
+        2.5
+      ],
+      "path_len": 52.54,
+      "duration_s": 45.1,
+      "n_frames": 1353,
+      "cum_turn_deg": -180.0,
+      "net_turn_deg": -180.0,
+      "crow_over_path": 0.286,
+      "equal_leg_bearing_deg": 360.0,
+      "equal_leg_err_deg": 0.0,
+      "cardinal_err_deg": 0.0,
+      "behind_err_deg": 180.0,
+      "sensitivity_deg_per_unit": 3.82,
+      "difficulty": 0.429,
+      "tier": "medium"
+    },
+    {
+      "id": 83,
+      "seed": 2112,
+      "turns": "LLRRLRLL",
+      "legs": [
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "n_turns": 8,
+      "ratio_band": [
+        1.0,
+        1.2
+      ],
+      "ratio": 1.0,
+      "total_steps": 18,
+      "pattern_requested": "rand",
+      "pattern": "rand",
+      "legs_sorted_ascending": false,
+      "replicate": 3,
+      "bearing_gt_deg": 277.13,
+      "distance_to_x": 24.19,
+      "final_yaw_deg": 180.0,
+      "end_xy": [
+        8.5,
+        2.5
+      ],
+      "marker_xy": [
+        5.5,
+        26.5
+      ],
+      "path_len": 52.54,
+      "duration_s": 45.1,
+      "n_frames": 1353,
+      "cum_turn_deg": -180.0,
+      "net_turn_deg": -180.0,
+      "crow_over_path": 0.46,
+      "equal_leg_bearing_deg": 277.13,
+      "equal_leg_err_deg": 0.0,
+      "cardinal_err_deg": 7.13,
+      "behind_err_deg": 97.13,
+      "sensitivity_deg_per_unit": 2.37,
+      "difficulty": 0.391,
+      "tier": "easy"
+    },
+    {
+      "id": 84,
+      "seed": 2113,
+      "turns": "RLRLRLRL",
+      "legs": [
+        1,
+        1,
+        1,
+        1,
+        2,
+        2,
+        1,
+        2,
+        1
+      ],
+      "n_turns": 8,
+      "ratio_band": [
+        1.8,
+        2.6
+      ],
+      "ratio": 2.0,
+      "total_steps": 12,
+      "pattern_requested": "alt",
+      "pattern": "alt",
+      "legs_sorted_ascending": false,
+      "replicate": 0,
+      "bearing_gt_deg": 228.37,
+      "distance_to_x": 24.08,
+      "final_yaw_deg": 0.0,
+      "end_xy": [
+        20.5,
+        20.5
+      ],
+      "marker_xy": [
+        4.5,
+        2.5
+      ],
+      "path_len": 34.54,
+      "duration_s": 30.8,
+      "n_frames": 925,
+      "cum_turn_deg": 0.0,
+      "net_turn_deg": 0.0,
+      "crow_over_path": 0.697,
+      "equal_leg_bearing_deg": 222.71,
+      "equal_leg_err_deg": 5.66,
+      "cardinal_err_deg": 41.63,
+      "behind_err_deg": 48.37,
+      "sensitivity_deg_per_unit": 2.38,
+      "difficulty": 0.616,
+      "tier": "hard"
+    },
+    {
+      "id": 85,
+      "seed": 2114,
+      "turns": "RRRRRRRR",
+      "legs": [
+        2,
+        2,
+        3,
+        3,
+        4,
+        4,
+        5,
+        5,
+        5
+      ],
+      "n_turns": 8,
+      "ratio_band": [
+        1.8,
+        2.6
+      ],
+      "ratio": 2.5,
+      "total_steps": 33,
+      "pattern_requested": "same",
+      "pattern": "same",
+      "legs_sorted_ascending": true,
+      "replicate": 1,
+      "bearing_gt_deg": 135.0,
+      "distance_to_x": 8.49,
+      "final_yaw_deg": 360.0,
+      "end_xy": [
+        17.5,
+        2.5
+      ],
+      "marker_xy": [
+        11.5,
+        8.5
+      ],
+      "path_len": 97.54,
+      "duration_s": 80.8,
+      "n_frames": 2425,
+      "cum_turn_deg": 720.0,
+      "net_turn_deg": 0.0,
+      "crow_over_path": 0.087,
+      "equal_leg_bearing_deg": 180.0,
+      "equal_leg_err_deg": 45.0,
+      "cardinal_err_deg": 45.0,
+      "behind_err_deg": 45.0,
+      "sensitivity_deg_per_unit": 6.75,
+      "difficulty": 0.884,
+      "tier": "hard"
+    },
+    {
+      "id": 86,
+      "seed": 2115,
+      "turns": "LRRRLLRR",
+      "legs": [
+        1,
+        2,
+        2,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1
+      ],
+      "n_turns": 8,
+      "ratio_band": [
+        1.8,
+        2.6
+      ],
+      "ratio": 2.0,
+      "total_steps": 14,
+      "pattern_requested": "rand",
+      "pattern": "rand",
+      "legs_sorted_ascending": false,
+      "replicate": 2,
+      "bearing_gt_deg": 71.57,
+      "distance_to_x": 12.65,
+      "final_yaw_deg": 180.0,
+      "end_xy": [
+        8.5,
+        20.5
+      ],
+      "marker_xy": [
+        4.5,
+        8.5
+      ],
+      "path_len": 40.54,
+      "duration_s": 35.6,
+      "n_frames": 1068,
+      "cum_turn_deg": 180.0,
+      "net_turn_deg": -180.0,
+      "crow_over_path": 0.312,
+      "equal_leg_bearing_deg": 75.96,
+      "equal_leg_err_deg": 4.4,
+      "cardinal_err_deg": 18.43,
+      "behind_err_deg": 108.43,
+      "sensitivity_deg_per_unit": 4.53,
+      "difficulty": 0.578,
+      "tier": "hard"
+    },
+    {
+      "id": 87,
+      "seed": 2116,
+      "turns": "LLLRLRRR",
+      "legs": [
+        2,
+        2,
+        1,
+        1,
+        2,
+        2,
+        2,
+        2,
+        1
+      ],
+      "n_turns": 8,
+      "ratio_band": [
+        1.8,
+        2.6
+      ],
+      "ratio": 2.0,
+      "total_steps": 15,
+      "pattern_requested": "rand",
+      "pattern": "rand",
+      "legs_sorted_ascending": false,
+      "replicate": 3,
+      "bearing_gt_deg": 18.43,
+      "distance_to_x": 9.49,
+      "final_yaw_deg": 0.0,
+      "end_xy": [
+        5.5,
+        5.5
+      ],
+      "marker_xy": [
+        14.5,
+        8.5
+      ],
+      "path_len": 43.54,
+      "duration_s": 38.0,
+      "n_frames": 1139,
+      "cum_turn_deg": 0.0,
+      "net_turn_deg": 0.0,
+      "crow_over_path": 0.218,
+      "equal_leg_bearing_deg": 0.0,
+      "equal_leg_err_deg": 18.43,
+      "cardinal_err_deg": 18.43,
+      "behind_err_deg": 161.57,
+      "sensitivity_deg_per_unit": 6.04,
+      "difficulty": 0.649,
+      "tier": "hard"
+    },
+    {
+      "id": 88,
+      "seed": 2117,
+      "turns": "RLRLRLRL",
+      "legs": [
+        1,
+        4,
+        1,
+        4,
+        1,
+        1,
+        1,
+        3,
+        2
+      ],
+      "n_turns": 8,
+      "ratio_band": [
+        3.5,
+        4.5
+      ],
+      "ratio": 4.0,
+      "total_steps": 18,
+      "pattern_requested": "alt",
+      "pattern": "alt",
+      "legs_sorted_ascending": false,
+      "replicate": 0,
+      "bearing_gt_deg": 246.04,
+      "distance_to_x": 39.4,
+      "final_yaw_deg": 0.0,
+      "end_xy": [
+        20.5,
+        38.5
+      ],
+      "marker_xy": [
+        4.5,
+        2.5
+      ],
+      "path_len": 52.54,
+      "duration_s": 45.1,
+      "n_frames": 1353,
+      "cum_turn_deg": 0.0,
+      "net_turn_deg": 0.0,
+      "crow_over_path": 0.75,
+      "equal_leg_bearing_deg": 221.63,
+      "equal_leg_err_deg": 24.4,
+      "cardinal_err_deg": 23.96,
+      "behind_err_deg": 66.04,
+      "sensitivity_deg_per_unit": 1.45,
+      "difficulty": 0.49,
+      "tier": "medium"
+    },
+    {
+      "id": 89,
+      "seed": 2118,
+      "turns": "LLLLLLLL",
+      "legs": [
+        1,
+        1,
+        2,
+        2,
+        3,
+        3,
+        4,
+        4,
+        4
+      ],
+      "n_turns": 8,
+      "ratio_band": [
+        3.5,
+        4.5
+      ],
+      "ratio": 4.0,
+      "total_steps": 24,
+      "pattern_requested": "same",
+      "pattern": "same",
+      "legs_sorted_ascending": true,
+      "replicate": 1,
+      "bearing_gt_deg": 236.31,
+      "distance_to_x": 7.21,
+      "final_yaw_deg": 0.0,
+      "end_xy": [
+        14.5,
+        14.5
+      ],
+      "marker_xy": [
+        10.5,
+        8.5
+      ],
+      "path_len": 70.54,
+      "duration_s": 59.4,
+      "n_frames": 1782,
+      "cum_turn_deg": -720.0,
+      "net_turn_deg": 0.0,
+      "crow_over_path": 0.102,
+      "equal_leg_bearing_deg": 180.0,
+      "equal_leg_err_deg": 56.31,
+      "cardinal_err_deg": 33.69,
+      "behind_err_deg": 56.31,
+      "sensitivity_deg_per_unit": 7.95,
+      "difficulty": 0.841,
+      "tier": "hard"
+    },
+    {
+      "id": 90,
+      "seed": 2119,
+      "turns": "LRLLLRLL",
+      "legs": [
+        1,
+        1,
+        1,
+        2,
+        3,
+        3,
+        4,
+        4,
+        4
+      ],
+      "n_turns": 8,
+      "ratio_band": [
+        3.5,
+        4.5
+      ],
+      "ratio": 4.0,
+      "total_steps": 23,
+      "pattern_requested": "rand",
+      "pattern": "rand",
+      "legs_sorted_ascending": true,
+      "replicate": 2,
+      "bearing_gt_deg": 292.62,
+      "distance_to_x": 13.0,
+      "final_yaw_deg": 0.0,
+      "end_xy": [
+        14.5,
+        23.5
+      ],
+      "marker_xy": [
+        19.5,
+        11.5
+      ],
+      "path_len": 67.54,
+      "duration_s": 57.0,
+      "n_frames": 1711,
+      "cum_turn_deg": -360.0,
+      "net_turn_deg": 0.0,
+      "crow_over_path": 0.192,
+      "equal_leg_bearing_deg": 180.0,
+      "equal_leg_err_deg": 112.62,
+      "cardinal_err_deg": 22.62,
+      "behind_err_deg": 112.62,
+      "sensitivity_deg_per_unit": 4.41,
+      "difficulty": 0.788,
+      "tier": "hard"
+    },
+    {
+      "id": 91,
+      "seed": 2120,
+      "turns": "RLRRRLRR",
+      "legs": [
+        4,
+        1,
+        1,
+        3,
+        4,
+        3,
+        4,
+        4,
+        4
+      ],
+      "n_turns": 8,
+      "ratio_band": [
+        3.5,
+        4.5
+      ],
+      "ratio": 4.0,
+      "total_steps": 28,
+      "pattern_requested": "rand",
+      "pattern": "rand",
+      "legs_sorted_ascending": false,
+      "replicate": 3,
+      "bearing_gt_deg": 90.0,
+      "distance_to_x": 9.0,
+      "final_yaw_deg": 360.0,
+      "end_xy": [
+        14.5,
+        2.5
+      ],
+      "marker_xy": [
+        14.5,
+        11.5
+      ],
+      "path_len": 82.54,
+      "duration_s": 68.9,
+      "n_frames": 2068,
+      "cum_turn_deg": 360.0,
+      "net_turn_deg": 0.0,
+      "crow_over_path": 0.109,
+      "equal_leg_bearing_deg": 180.0,
+      "equal_leg_err_deg": 90.0,
+      "cardinal_err_deg": 0.0,
+      "behind_err_deg": 90.0,
+      "sensitivity_deg_per_unit": 6.37,
+      "difficulty": 0.684,
+      "tier": "hard"
+    },
+    {
+      "id": 92,
+      "seed": 2121,
+      "turns": "LRLRLRLR",
+      "legs": [
+        5,
+        2,
+        6,
+        4,
+        5,
+        3,
+        2,
+        1,
+        6
+      ],
+      "n_turns": 8,
+      "ratio_band": [
+        6.0,
+        7.5
+      ],
+      "ratio": 6.0,
+      "total_steps": 34,
+      "pattern_requested": "alt",
+      "pattern": "alt",
+      "legs_sorted_ascending": false,
+      "replicate": 0,
+      "bearing_gt_deg": 156.5,
+      "distance_to_x": 75.24,
+      "final_yaw_deg": 0.0,
+      "end_xy": [
+        74.5,
+        2.5
+      ],
+      "marker_xy": [
+        5.5,
+        32.5
+      ],
+      "path_len": 100.54,
+      "duration_s": 83.2,
+      "n_frames": 2496,
+      "cum_turn_deg": 0.0,
+      "net_turn_deg": 0.0,
+      "crow_over_path": 0.748,
+      "equal_leg_bearing_deg": 139.9,
+      "equal_leg_err_deg": 16.6,
+      "cardinal_err_deg": 23.5,
+      "behind_err_deg": 23.5,
+      "sensitivity_deg_per_unit": 0.76,
+      "difficulty": 0.449,
+      "tier": "medium"
+    },
+    {
+      "id": 93,
+      "seed": 2122,
+      "turns": "LLLLLLLL",
+      "legs": [
+        1,
+        1,
+        2,
+        2,
+        3,
+        4,
+        4,
+        5,
+        7
+      ],
+      "n_turns": 8,
+      "ratio_band": [
+        6.0,
+        7.5
+      ],
+      "ratio": 7.0,
+      "total_steps": 29,
+      "pattern_requested": "same",
+      "pattern": "same",
+      "legs_sorted_ascending": true,
+      "replicate": 1,
+      "bearing_gt_deg": 204.78,
+      "distance_to_x": 14.32,
+      "final_yaw_deg": 0.0,
+      "end_xy": [
+        23.5,
+        17.5
+      ],
+      "marker_xy": [
+        10.5,
+        11.5
+      ],
+      "path_len": 85.54,
+      "duration_s": 71.3,
+      "n_frames": 2139,
+      "cum_turn_deg": -720.0,
+      "net_turn_deg": 0.0,
+      "crow_over_path": 0.167,
+      "equal_leg_bearing_deg": 180.0,
+      "equal_leg_err_deg": 24.78,
+      "cardinal_err_deg": 24.78,
+      "behind_err_deg": 24.78,
+      "sensitivity_deg_per_unit": 4.0,
+      "difficulty": 0.672,
+      "tier": "hard"
+    },
+    {
+      "id": 94,
+      "seed": 2123,
+      "turns": "LRRLRRLR",
+      "legs": [
+        3,
+        4,
+        4,
+        1,
+        6,
+        3,
+        1,
+        1,
+        3
+      ],
+      "n_turns": 8,
+      "ratio_band": [
+        6.0,
+        7.5
+      ],
+      "ratio": 6.0,
+      "total_steps": 26,
+      "pattern_requested": "rand",
+      "pattern": "rand",
+      "legs_sorted_ascending": false,
+      "replicate": 2,
+      "bearing_gt_deg": 7.13,
+      "distance_to_x": 24.19,
+      "final_yaw_deg": 180.0,
+      "end_xy": [
+        29.5,
+        17.5
+      ],
+      "marker_xy": [
+        5.5,
+        14.5
+      ],
+      "path_len": 76.54,
+      "duration_s": 64.2,
+      "n_frames": 1925,
+      "cum_turn_deg": 180.0,
+      "net_turn_deg": -180.0,
+      "crow_over_path": 0.316,
+      "equal_leg_bearing_deg": 71.57,
+      "equal_leg_err_deg": 64.44,
+      "cardinal_err_deg": 7.13,
+      "behind_err_deg": 172.87,
+      "sensitivity_deg_per_unit": 2.37,
+      "difficulty": 0.588,
+      "tier": "hard"
+    },
+    {
+      "id": 95,
+      "seed": 2124,
+      "turns": "LLLRLRLL",
+      "legs": [
+        1,
+        7,
+        4,
+        6,
+        6,
+        1,
+        1,
+        4,
+        1
+      ],
+      "n_turns": 8,
+      "ratio_band": [
+        6.0,
+        7.5
+      ],
+      "ratio": 7.0,
+      "total_steps": 31,
+      "pattern_requested": "rand",
+      "pattern": "rand",
+      "legs_sorted_ascending": false,
+      "replicate": 3,
+      "bearing_gt_deg": 337.52,
+      "distance_to_x": 31.38,
+      "final_yaw_deg": 0.0,
+      "end_xy": [
+        5.5,
+        35.5
+      ],
+      "marker_xy": [
+        34.5,
+        23.5
+      ],
+      "path_len": 91.54,
+      "duration_s": 76.1,
+      "n_frames": 2282,
+      "cum_turn_deg": -360.0,
+      "net_turn_deg": 0.0,
+      "crow_over_path": 0.343,
+      "equal_leg_bearing_deg": 303.69,
+      "equal_leg_err_deg": 33.83,
+      "cardinal_err_deg": 22.48,
+      "behind_err_deg": 157.52,
+      "sensitivity_deg_per_unit": 1.83,
+      "difficulty": 0.566,
+      "tier": "hard"
+    },
+    {
+      "id": 96,
+      "seed": 2125,
+      "turns": "LRLRLRLR",
+      "legs": [
+        2,
+        1,
+        2,
+        1,
+        6,
+        3,
+        1,
+        5,
+        10
+      ],
+      "n_turns": 8,
+      "ratio_band": [
+        9.0,
+        10.0
+      ],
+      "ratio": 10.0,
+      "total_steps": 31,
+      "pattern_requested": "alt",
+      "pattern": "alt",
+      "legs_sorted_ascending": false,
+      "replicate": 0,
+      "bearing_gt_deg": 153.43,
+      "distance_to_x": 67.08,
+      "final_yaw_deg": 0.0,
+      "end_xy": [
+        65.5,
+        2.5
+      ],
+      "marker_xy": [
+        5.5,
+        32.5
+      ],
+      "path_len": 91.54,
+      "duration_s": 76.1,
+      "n_frames": 2282,
+      "cum_turn_deg": 0.0,
+      "net_turn_deg": 0.0,
+      "crow_over_path": 0.733,
+      "equal_leg_bearing_deg": 139.4,
+      "equal_leg_err_deg": 14.04,
+      "cardinal_err_deg": 26.57,
+      "behind_err_deg": 26.57,
+      "sensitivity_deg_per_unit": 0.85,
+      "difficulty": 0.487,
+      "tier": "medium"
+    },
+    {
+      "id": 97,
+      "seed": 2126,
+      "turns": "LLLLLLLL",
+      "legs": [
+        1,
+        1,
+        2,
+        2,
+        3,
+        4,
+        4,
+        5,
+        9
+      ],
+      "n_turns": 8,
+      "ratio_band": [
+        9.0,
+        10.0
+      ],
+      "ratio": 9.0,
+      "total_steps": 31,
+      "pattern_requested": "same",
+      "pattern": "same",
+      "legs_sorted_ascending": true,
+      "replicate": 1,
+      "bearing_gt_deg": 197.53,
+      "distance_to_x": 19.92,
+      "final_yaw_deg": 0.0,
+      "end_xy": [
+        29.5,
+        17.5
+      ],
+      "marker_xy": [
+        10.5,
+        11.5
+      ],
+      "path_len": 91.54,
+      "duration_s": 76.1,
+      "n_frames": 2282,
+      "cum_turn_deg": -720.0,
+      "net_turn_deg": 0.0,
+      "crow_over_path": 0.218,
+      "equal_leg_bearing_deg": 180.0,
+      "equal_leg_err_deg": 17.53,
+      "cardinal_err_deg": 17.53,
+      "behind_err_deg": 17.53,
+      "sensitivity_deg_per_unit": 2.88,
+      "difficulty": 0.561,
+      "tier": "hard"
+    },
+    {
+      "id": 98,
+      "seed": 2127,
+      "turns": "LLRLLLRL",
+      "legs": [
+        1,
+        1,
+        6,
+        2,
+        3,
+        10,
+        2,
+        1,
+        2
+      ],
+      "n_turns": 8,
+      "ratio_band": [
+        9.0,
+        10.0
+      ],
+      "ratio": 10.0,
+      "total_steps": 28,
+      "pattern_requested": "rand",
+      "pattern": "rand",
+      "legs_sorted_ascending": false,
+      "replicate": 2,
+      "bearing_gt_deg": 300.26,
+      "distance_to_x": 27.78,
+      "final_yaw_deg": 0.0,
+      "end_xy": [
+        14.5,
+        35.5
+      ],
+      "marker_xy": [
+        28.5,
+        11.5
+      ],
+      "path_len": 82.54,
+      "duration_s": 68.9,
+      "n_frames": 2068,
+      "cum_turn_deg": -360.0,
+      "net_turn_deg": 0.0,
+      "crow_over_path": 0.337,
+      "equal_leg_bearing_deg": 180.0,
+      "equal_leg_err_deg": 120.26,
+      "cardinal_err_deg": 30.26,
+      "behind_err_deg": 120.26,
+      "sensitivity_deg_per_unit": 2.06,
+      "difficulty": 0.725,
+      "tier": "hard"
+    },
+    {
+      "id": 99,
+      "seed": 2128,
+      "turns": "RRLLRLLL",
+      "legs": [
+        9,
+        3,
+        4,
+        1,
+        2,
+        2,
+        3,
+        1,
+        2
+      ],
+      "n_turns": 8,
+      "ratio_band": [
+        9.0,
+        10.0
+      ],
+      "ratio": 9.0,
+      "total_steps": 27,
+      "pattern_requested": "rand",
+      "pattern": "rand",
+      "legs_sorted_ascending": false,
+      "replicate": 3,
+      "bearing_gt_deg": 35.54,
+      "distance_to_x": 25.81,
+      "final_yaw_deg": 180.0,
+      "end_xy": [
+        26.5,
+        17.5
+      ],
+      "marker_xy": [
+        5.5,
+        2.5
+      ],
+      "path_len": 79.54,
+      "duration_s": 66.5,
+      "n_frames": 1996,
+      "cum_turn_deg": -180.0,
+      "net_turn_deg": -180.0,
+      "crow_over_path": 0.324,
+      "equal_leg_bearing_deg": 71.57,
+      "equal_leg_err_deg": 36.03,
+      "cardinal_err_deg": 35.54,
+      "behind_err_deg": 144.46,
+      "sensitivity_deg_per_unit": 2.22,
+      "difficulty": 0.687,
+      "tier": "hard"
+    }
+  ]
+}

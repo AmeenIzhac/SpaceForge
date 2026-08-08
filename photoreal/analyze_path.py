@@ -9,7 +9,7 @@ import json
 import numpy as np
 from scipy import signal
 
-d = json.load(open("/Users/ameenizhac/Documents/spaceforge-sim/three/camera_ref.json"))
+d = json.load(open("/Users/ameenizhac/Documents/spaceforge-sim/photoreal/camera_ref.json"))
 fps = d["fps"]
 P = np.array(d["positions"])            # (N,3)
 R = np.array(d["rotations_c2w"]).reshape(-1, 3, 3)

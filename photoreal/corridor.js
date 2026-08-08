@@ -1,5 +1,5 @@
 // Realistic corridor scene + deterministic first-person walk.
-// Runs inside headless Chrome; render.mjs calls window.renderFrame(i).
+// Runs inside headless Chrome; render_corridor.mjs calls window.renderFrame(i).
 //
 // Hotel-ish corridor, left-right-left turns, no rooms. PBR materials from
 // ambientCG (plaster walls, carpet floor, wood doors), recessed ceiling

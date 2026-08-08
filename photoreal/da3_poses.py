@@ -15,7 +15,7 @@ import numpy as np
 import torch
 
 CLIP = Path(__file__).parent / "tour_clip.mp4"
-OUT = Path("/Users/ameenizhac/Documents/spaceforge-sim/three/camera_ref.json")
+OUT = Path("/Users/ameenizhac/Documents/spaceforge-sim/photoreal/camera_ref.json")
 SAMPLE_FPS = 10
 WIDTH = 640
 CHUNK = 24

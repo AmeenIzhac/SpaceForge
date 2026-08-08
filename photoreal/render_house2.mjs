@@ -1,8 +1,8 @@
-// Headless Three.js corridor sample -> out/three/0.mp4
+// Headless Three.js house-tour sample -> out/photoreal/2.mp4
 //
-// Serves scene.js + node_modules + assets over a local HTTP server, drives a
+// Serves the scene module + node_modules + assets over a local HTTP server, drives a
 // headless Chrome (puppeteer) frame by frame, and pipes PNG screenshots into
-// ffmpeg. Everything is hardcoded; run with:  node three/render.mjs
+// ffmpeg. Everything is hardcoded; run with:  node photoreal/render_house2.mjs
 
 import http from "node:http";
 import { readFile } from "node:fs/promises";
@@ -14,7 +14,7 @@ import { fileURLToPath } from "node:url";
 import puppeteer from "puppeteer";
 
 const ROOT = path.dirname(fileURLToPath(import.meta.url));
-const OUT = path.join(ROOT, "..", "out", "three", "2.mp4");
+const OUT = path.join(ROOT, "..", "out", "photoreal", "2.mp4");
 const FFMPEG = "/opt/homebrew/bin/ffmpeg";
 const W = 960, H = 544, FPS = 30, DSF = 2; // render at 2x, downscale in ffmpeg
 
