@@ -21,6 +21,7 @@ The two earlier pipelines are kept as backups: dataset/generate_dataset.py
 """
 
 import math
+import os
 import random
 from pathlib import Path
 
@@ -327,8 +328,13 @@ def make_sample(name, turns, legs, seed):
 
     out = OUT_DIR / f"{name}.mp4"
     out.parent.mkdir(parents=True, exist_ok=True)
+    # libx264 will otherwise grab every core it can see — with a few render
+    # workers in parallel that starves anything else sharing the box
+    threads = os.environ.get("SPACEFORGE_FFMPEG_THREADS")
     writer = imageio.get_writer(str(out), fps=FPS, codec="libx264",
-                                quality=8, pixelformat="yuv420p")
+                                quality=8, pixelformat="yuv420p",
+                                output_params=(["-threads", threads]
+                                               if threads else None))
     try:
         for (x, y, yaw, sv) in poses:
             writer.append_data(rend.render(x, y, yaw, sv))

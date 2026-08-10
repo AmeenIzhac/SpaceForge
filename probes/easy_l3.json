@@ -1,0 +1,732 @@
+{
+ "question": "This is a first-person video of someone walking through corridors. A large red X is painted on the floor at the spot where the walk begins; it is visible in the opening seconds, and the walker then leaves it behind. Freeze on the final frame and treat the direction the camera is facing at that moment as north (000 degrees). What is the compass bearing from the camera's final position to the red X? Answer in degrees clockwise from that forward direction, 0-359: 090 is directly to the right, 180 directly behind, 270 directly to the left.",
+ "scoring": "Absolute circular error in degrees between the answer and bearing_gt_deg: err = min(|a - gt|, 360 - |a - gt|). Chance level for a uniform guess is 90 degrees. Levels cluster their answers, so compare against const_baseline_deg, not against 90.",
+ "answer_field": "bearing_gt_deg",
+ "note": "Easy ladder, not the benchmark. Levels isolate question comprehension (L0), turn direction (L1), composing turns (L2) and leg integration (L3).",
+ "convention": "World axes are x east, y south; the camera looks along (cos yaw, sin yaw), so bearing 090 is (-sin, cos), its right. One lattice step is 3 world units.",
+ "generator": {
+  "seed": 7717,
+  "seed_base": 900000,
+  "levels": [
+   [
+    "L0_straight",
+    0,
+    [
+     1.0,
+     1.2
+    ],
+    [
+     4,
+     10
+    ],
+    10
+   ],
+   [
+    "L1_one_turn",
+    1,
+    [
+     1.0,
+     1.2
+    ],
+    [
+     4,
+     9
+    ],
+    15
+   ],
+   [
+    "L2_two_turns",
+    2,
+    [
+     1.0,
+     1.2
+    ],
+    [
+     6,
+     12
+    ],
+    15
+   ],
+   [
+    "L3_three_turns",
+    3,
+    [
+     1.8,
+     2.6
+    ],
+    [
+     9,
+     15
+    ],
+    15
+   ]
+  ],
+  "mood": "office",
+  "junctions": false,
+  "marker_ahead": 3.0,
+  "speed": 1.26,
+  "fps": 30
+ },
+ "plans": [
+  {
+   "id": 40,
+   "seed": 900040,
+   "level": "L3_three_turns",
+   "turns": "LRL",
+   "legs": [
+    2,
+    4,
+    4,
+    2
+   ],
+   "n_turns": 3,
+   "ratio_band": [
+    1.8,
+    2.6
+   ],
+   "ratio": 2.0,
+   "total_steps": 12,
+   "pattern": "alt",
+   "bearing_gt_deg": 219.81,
+   "distance_to_x": 23.43,
+   "final_yaw_deg": 270.0,
+   "end_xy": [
+    20.5,
+    2.5
+   ],
+   "marker_xy": [
+    5.5,
+    20.5
+   ],
+   "path_len": 35.45,
+   "duration_s": 31.6,
+   "n_frames": 947,
+   "cum_turn_deg": -90.0,
+   "net_turn_deg": -90.0,
+   "crow_over_path": 0.661,
+   "equal_leg_bearing_deg": 219.81,
+   "equal_leg_err_deg": 0.0,
+   "cardinal_err_deg": 39.81,
+   "behind_err_deg": 39.81,
+   "sensitivity_deg_per_unit": 2.45,
+   "const_baseline_deg": 80.0,
+   "const_baseline_answer": 166
+  },
+  {
+   "id": 41,
+   "seed": 900041,
+   "level": "L3_three_turns",
+   "turns": "LLL",
+   "legs": [
+    2,
+    4,
+    5,
+    4
+   ],
+   "n_turns": 3,
+   "ratio_band": [
+    1.8,
+    2.6
+   ],
+   "ratio": 2.5,
+   "total_steps": 15,
+   "pattern": "same",
+   "bearing_gt_deg": 270.0,
+   "distance_to_x": 12.0,
+   "final_yaw_deg": 90.0,
+   "end_xy": [
+    2.5,
+    14.5
+   ],
+   "marker_xy": [
+    14.5,
+    14.5
+   ],
+   "path_len": 44.45,
+   "duration_s": 38.7,
+   "n_frames": 1161,
+   "cum_turn_deg": -270.0,
+   "net_turn_deg": 90.0,
+   "crow_over_path": 0.27,
+   "equal_leg_bearing_deg": 270.0,
+   "equal_leg_err_deg": 0.0,
+   "cardinal_err_deg": 0.0,
+   "behind_err_deg": 90.0,
+   "sensitivity_deg_per_unit": 4.77,
+   "const_baseline_deg": 80.0,
+   "const_baseline_answer": 166
+  },
+  {
+   "id": 42,
+   "seed": 900042,
+   "level": "L3_three_turns",
+   "turns": "RRR",
+   "legs": [
+    2,
+    3,
+    3,
+    4
+   ],
+   "n_turns": 3,
+   "ratio_band": [
+    1.8,
+    2.6
+   ],
+   "ratio": 2.0,
+   "total_steps": 12,
+   "pattern": "rand",
+   "bearing_gt_deg": 116.57,
+   "distance_to_x": 6.71,
+   "final_yaw_deg": 270.0,
+   "end_xy": [
+    2.5,
+    2.5
+   ],
+   "marker_xy": [
+    8.5,
+    5.5
+   ],
+   "path_len": 35.45,
+   "duration_s": 31.6,
+   "n_frames": 947,
+   "cum_turn_deg": 270.0,
+   "net_turn_deg": -90.0,
+   "crow_over_path": 0.189,
+   "equal_leg_bearing_deg": 90.0,
+   "equal_leg_err_deg": 26.57,
+   "cardinal_err_deg": 26.57,
+   "behind_err_deg": 63.43,
+   "sensitivity_deg_per_unit": 8.54,
+   "const_baseline_deg": 80.0,
+   "const_baseline_answer": 166
+  },
+  {
+   "id": 43,
+   "seed": 900043,
+   "level": "L3_three_turns",
+   "turns": "LRL",
+   "legs": [
+    2,
+    5,
+    4,
+    4
+   ],
+   "n_turns": 3,
+   "ratio_band": [
+    1.8,
+    2.6
+   ],
+   "ratio": 2.5,
+   "total_steps": 15,
+   "pattern": "alt",
+   "bearing_gt_deg": 209.05,
+   "distance_to_x": 30.89,
+   "final_yaw_deg": 270.0,
+   "end_xy": [
+    20.5,
+    2.5
+   ],
+   "marker_xy": [
+    5.5,
+    29.5
+   ],
+   "path_len": 44.45,
+   "duration_s": 38.7,
+   "n_frames": 1161,
+   "cum_turn_deg": -90.0,
+   "net_turn_deg": -90.0,
+   "crow_over_path": 0.695,
+   "equal_leg_bearing_deg": 221.19,
+   "equal_leg_err_deg": 12.13,
+   "cardinal_err_deg": 29.05,
+   "behind_err_deg": 29.05,
+   "sensitivity_deg_per_unit": 1.86,
+   "const_baseline_deg": 80.0,
+   "const_baseline_answer": 166
+  },
+  {
+   "id": 44,
+   "seed": 900044,
+   "level": "L3_three_turns",
+   "turns": "RRR",
+   "legs": [
+    4,
+    4,
+    2,
+    2
+   ],
+   "n_turns": 3,
+   "ratio_band": [
+    1.8,
+    2.6
+   ],
+   "ratio": 2.0,
+   "total_steps": 12,
+   "pattern": "same",
+   "bearing_gt_deg": 333.43,
+   "distance_to_x": 6.71,
+   "final_yaw_deg": 270.0,
+   "end_xy": [
+    8.5,
+    8.5
+   ],
+   "marker_xy": [
+    5.5,
+    2.5
+   ],
+   "path_len": 35.45,
+   "duration_s": 31.6,
+   "n_frames": 947,
+   "cum_turn_deg": 270.0,
+   "net_turn_deg": -90.0,
+   "crow_over_path": 0.189,
+   "equal_leg_bearing_deg": 90.0,
+   "equal_leg_err_deg": 116.57,
+   "cardinal_err_deg": 26.57,
+   "behind_err_deg": 153.43,
+   "sensitivity_deg_per_unit": 8.54,
+   "const_baseline_deg": 80.0,
+   "const_baseline_answer": 166
+  },
+  {
+   "id": 45,
+   "seed": 900045,
+   "level": "L3_three_turns",
+   "turns": "LLR",
+   "legs": [
+    2,
+    4,
+    3,
+    4
+   ],
+   "n_turns": 3,
+   "ratio_band": [
+    1.8,
+    2.6
+   ],
+   "ratio": 2.0,
+   "total_steps": 13,
+   "pattern": "rand",
+   "bearing_gt_deg": 165.96,
+   "distance_to_x": 24.74,
+   "final_yaw_deg": 270.0,
+   "end_xy": [
+    2.5,
+    2.5
+   ],
+   "marker_xy": [
+    8.5,
+    26.5
+   ],
+   "path_len": 38.45,
+   "duration_s": 33.9,
+   "n_frames": 1018,
+   "cum_turn_deg": -90.0,
+   "net_turn_deg": -90.0,
+   "crow_over_path": 0.643,
+   "equal_leg_bearing_deg": 170.54,
+   "equal_leg_err_deg": 4.57,
+   "cardinal_err_deg": 14.04,
+   "behind_err_deg": 14.04,
+   "sensitivity_deg_per_unit": 2.32,
+   "const_baseline_deg": 80.0,
+   "const_baseline_answer": 166
+  },
+  {
+   "id": 46,
+   "seed": 900046,
+   "level": "L3_three_turns",
+   "turns": "RLR",
+   "legs": [
+    2,
+    3,
+    5,
+    3
+   ],
+   "n_turns": 3,
+   "ratio_band": [
+    1.8,
+    2.6
+   ],
+   "ratio": 2.5,
+   "total_steps": 13,
+   "pattern": "alt",
+   "bearing_gt_deg": 135.0,
+   "distance_to_x": 25.46,
+   "final_yaw_deg": 90.0,
+   "end_xy": [
+    23.5,
+    20.5
+   ],
+   "marker_xy": [
+    5.5,
+    2.5
+   ],
+   "path_len": 38.45,
+   "duration_s": 33.9,
+   "n_frames": 1018,
+   "cum_turn_deg": 90.0,
+   "net_turn_deg": 90.0,
+   "crow_over_path": 0.662,
+   "equal_leg_bearing_deg": 140.19,
+   "equal_leg_err_deg": 5.19,
+   "cardinal_err_deg": 45.0,
+   "behind_err_deg": 45.0,
+   "sensitivity_deg_per_unit": 2.25,
+   "const_baseline_deg": 80.0,
+   "const_baseline_answer": 166
+  },
+  {
+   "id": 47,
+   "seed": 900047,
+   "level": "L3_three_turns",
+   "turns": "LLL",
+   "legs": [
+    4,
+    4,
+    2,
+    2
+   ],
+   "n_turns": 3,
+   "ratio_band": [
+    1.8,
+    2.6
+   ],
+   "ratio": 2.0,
+   "total_steps": 12,
+   "pattern": "same",
+   "bearing_gt_deg": 26.57,
+   "distance_to_x": 6.71,
+   "final_yaw_deg": 90.0,
+   "end_xy": [
+    8.5,
+    8.5
+   ],
+   "marker_xy": [
+    5.5,
+    14.5
+   ],
+   "path_len": 35.45,
+   "duration_s": 31.6,
+   "n_frames": 947,
+   "cum_turn_deg": -270.0,
+   "net_turn_deg": 90.0,
+   "crow_over_path": 0.189,
+   "equal_leg_bearing_deg": 270.0,
+   "equal_leg_err_deg": 116.57,
+   "cardinal_err_deg": 26.57,
+   "behind_err_deg": 153.43,
+   "sensitivity_deg_per_unit": 8.54,
+   "const_baseline_deg": 80.0,
+   "const_baseline_answer": 166
+  },
+  {
+   "id": 48,
+   "seed": 900048,
+   "level": "L3_three_turns",
+   "turns": "RLL",
+   "legs": [
+    5,
+    5,
+    2,
+    2
+   ],
+   "n_turns": 3,
+   "ratio_band": [
+    1.8,
+    2.6
+   ],
+   "ratio": 2.5,
+   "total_steps": 14,
+   "pattern": "rand",
+   "bearing_gt_deg": 296.57,
+   "distance_to_x": 20.12,
+   "final_yaw_deg": 270.0,
+   "end_xy": [
+    23.5,
+    11.5
+   ],
+   "marker_xy": [
+    5.5,
+    2.5
+   ],
+   "path_len": 41.45,
+   "duration_s": 36.3,
+   "n_frames": 1090,
+   "cum_turn_deg": -90.0,
+   "net_turn_deg": -90.0,
+   "crow_over_path": 0.486,
+   "equal_leg_bearing_deg": 270.0,
+   "equal_leg_err_deg": 26.57,
+   "cardinal_err_deg": 26.57,
+   "behind_err_deg": 116.57,
+   "sensitivity_deg_per_unit": 2.85,
+   "const_baseline_deg": 80.0,
+   "const_baseline_answer": 166
+  },
+  {
+   "id": 49,
+   "seed": 900049,
+   "level": "L3_three_turns",
+   "turns": "RLR",
+   "legs": [
+    5,
+    2,
+    3,
+    5
+   ],
+   "n_turns": 3,
+   "ratio_band": [
+    1.8,
+    2.6
+   ],
+   "ratio": 2.5,
+   "total_steps": 15,
+   "pattern": "alt",
+   "bearing_gt_deg": 135.0,
+   "distance_to_x": 29.7,
+   "final_yaw_deg": 90.0,
+   "end_xy": [
+    26.5,
+    23.5
+   ],
+   "marker_xy": [
+    5.5,
+    2.5
+   ],
+   "path_len": 44.45,
+   "duration_s": 38.7,
+   "n_frames": 1161,
+   "cum_turn_deg": 90.0,
+   "net_turn_deg": 90.0,
+   "crow_over_path": 0.668,
+   "equal_leg_bearing_deg": 138.81,
+   "equal_leg_err_deg": 3.81,
+   "cardinal_err_deg": 45.0,
+   "behind_err_deg": 45.0,
+   "sensitivity_deg_per_unit": 1.93,
+   "const_baseline_deg": 80.0,
+   "const_baseline_answer": 166
+  },
+  {
+   "id": 50,
+   "seed": 900050,
+   "level": "L3_three_turns",
+   "turns": "RRR",
+   "legs": [
+    5,
+    5,
+    2,
+    2
+   ],
+   "n_turns": 3,
+   "ratio_band": [
+    1.8,
+    2.6
+   ],
+   "ratio": 2.5,
+   "total_steps": 14,
+   "pattern": "same",
+   "bearing_gt_deg": 326.31,
+   "distance_to_x": 10.82,
+   "final_yaw_deg": 270.0,
+   "end_xy": [
+    11.5,
+    11.5
+   ],
+   "marker_xy": [
+    5.5,
+    2.5
+   ],
+   "path_len": 41.45,
+   "duration_s": 36.3,
+   "n_frames": 1090,
+   "cum_turn_deg": 270.0,
+   "net_turn_deg": -90.0,
+   "crow_over_path": 0.261,
+   "equal_leg_bearing_deg": 90.0,
+   "equal_leg_err_deg": 123.69,
+   "cardinal_err_deg": 33.69,
+   "behind_err_deg": 146.31,
+   "sensitivity_deg_per_unit": 5.3,
+   "const_baseline_deg": 80.0,
+   "const_baseline_answer": 166
+  },
+  {
+   "id": 51,
+   "seed": 900051,
+   "level": "L3_three_turns",
+   "turns": "LLL",
+   "legs": [
+    4,
+    5,
+    2,
+    4
+   ],
+   "n_turns": 3,
+   "ratio_band": [
+    1.8,
+    2.6
+   ],
+   "ratio": 2.5,
+   "total_steps": 15,
+   "pattern": "rand",
+   "bearing_gt_deg": 45.0,
+   "distance_to_x": 4.24,
+   "final_yaw_deg": 90.0,
+   "end_xy": [
+    8.5,
+    14.5
+   ],
+   "marker_xy": [
+    5.5,
+    17.5
+   ],
+   "path_len": 44.45,
+   "duration_s": 38.7,
+   "n_frames": 1161,
+   "cum_turn_deg": -270.0,
+   "net_turn_deg": 90.0,
+   "crow_over_path": 0.095,
+   "equal_leg_bearing_deg": 270.0,
+   "equal_leg_err_deg": 135.0,
+   "cardinal_err_deg": 45.0,
+   "behind_err_deg": 135.0,
+   "sensitivity_deg_per_unit": 13.5,
+   "const_baseline_deg": 80.0,
+   "const_baseline_answer": 166
+  },
+  {
+   "id": 52,
+   "seed": 900052,
+   "level": "L3_three_turns",
+   "turns": "LRL",
+   "legs": [
+    4,
+    2,
+    2,
+    2
+   ],
+   "n_turns": 3,
+   "ratio_band": [
+    1.8,
+    2.6
+   ],
+   "ratio": 2.0,
+   "total_steps": 10,
+   "pattern": "alt",
+   "bearing_gt_deg": 231.34,
+   "distance_to_x": 19.21,
+   "final_yaw_deg": 270.0,
+   "end_xy": [
+    20.5,
+    2.5
+   ],
+   "marker_xy": [
+    5.5,
+    14.5
+   ],
+   "path_len": 29.45,
+   "duration_s": 26.8,
+   "n_frames": 804,
+   "cum_turn_deg": -90.0,
+   "net_turn_deg": -90.0,
+   "crow_over_path": 0.652,
+   "equal_leg_bearing_deg": 216.87,
+   "equal_leg_err_deg": 14.47,
+   "cardinal_err_deg": 38.66,
+   "behind_err_deg": 51.34,
+   "sensitivity_deg_per_unit": 2.98,
+   "const_baseline_deg": 80.0,
+   "const_baseline_answer": 166
+  },
+  {
+   "id": 53,
+   "seed": 900053,
+   "level": "L3_three_turns",
+   "turns": "RRR",
+   "legs": [
+    2,
+    3,
+    4,
+    2
+   ],
+   "n_turns": 3,
+   "ratio_band": [
+    1.8,
+    2.6
+   ],
+   "ratio": 2.0,
+   "total_steps": 11,
+   "pattern": "same",
+   "bearing_gt_deg": 71.57,
+   "distance_to_x": 9.49,
+   "final_yaw_deg": 270.0,
+   "end_xy": [
+    2.5,
+    5.5
+   ],
+   "marker_xy": [
+    11.5,
+    2.5
+   ],
+   "path_len": 32.45,
+   "duration_s": 29.2,
+   "n_frames": 875,
+   "cum_turn_deg": 270.0,
+   "net_turn_deg": -90.0,
+   "crow_over_path": 0.292,
+   "equal_leg_bearing_deg": 90.0,
+   "equal_leg_err_deg": 18.43,
+   "cardinal_err_deg": 18.43,
+   "behind_err_deg": 108.43,
+   "sensitivity_deg_per_unit": 6.04,
+   "const_baseline_deg": 80.0,
+   "const_baseline_answer": 166
+  },
+  {
+   "id": 54,
+   "seed": 900054,
+   "level": "L3_three_turns",
+   "turns": "LLR",
+   "legs": [
+    2,
+    2,
+    4,
+    5
+   ],
+   "n_turns": 3,
+   "ratio_band": [
+    1.8,
+    2.6
+   ],
+   "ratio": 2.5,
+   "total_steps": 13,
+   "pattern": "rand",
+   "bearing_gt_deg": 156.8,
+   "distance_to_x": 22.85,
+   "final_yaw_deg": 270.0,
+   "end_xy": [
+    2.5,
+    2.5
+   ],
+   "marker_xy": [
+    11.5,
+    23.5
+   ],
+   "path_len": 38.45,
+   "duration_s": 33.9,
+   "n_frames": 1018,
+   "cum_turn_deg": -90.0,
+   "net_turn_deg": -90.0,
+   "crow_over_path": 0.594,
+   "equal_leg_bearing_deg": 170.54,
+   "equal_leg_err_deg": 13.74,
+   "cardinal_err_deg": 23.2,
+   "behind_err_deg": 23.2,
+   "sensitivity_deg_per_unit": 2.51,
+   "const_baseline_deg": 80.0,
+   "const_baseline_answer": 166
+  }
+ ]
+}

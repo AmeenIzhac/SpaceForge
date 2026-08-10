@@ -1,0 +1,1978 @@
+{
+  "note": "training plans; disjoint routes and seeds from the benchmark",
+  "seed_base": 500000,
+  "tiers": [
+    [
+      0.45,
+      [
+        1,
+        2
+      ],
+      [
+        4,
+        10
+      ]
+    ],
+    [
+      0.35,
+      [
+        3,
+        4
+      ],
+      [
+        6,
+        14
+      ]
+    ],
+    [
+      0.15,
+      [
+        5,
+        6
+      ],
+      [
+        9,
+        20
+      ]
+    ],
+    [
+      0.05,
+      [
+        7,
+        8
+      ],
+      [
+        12,
+        30
+      ]
+    ]
+  ],
+  "plans": [
+    {
+      "id": 0,
+      "seed": 620000,
+      "turns": "LL",
+      "legs": [
+        6,
+        1,
+        7
+      ],
+      "n_turns": 2,
+      "ratio_band": [
+        6.0,
+        7.5
+      ],
+      "ratio": 7.0,
+      "total_steps": 14,
+      "pattern": "rand",
+      "level": "unequal",
+      "bearing_gt_deg": 206.57,
+      "distance_to_x": 6.71,
+      "final_yaw_deg": 180.0,
+      "end_xy": [
+        2.5,
+        2.5
+      ],
+      "marker_xy": [
+        8.5,
+        5.5
+      ],
+      "path_len": 41.63,
+      "duration_s": 36.5,
+      "n_frames": 1094,
+      "cum_turn_deg": -180.0,
+      "net_turn_deg": -180.0,
+      "crow_over_path": 0.161,
+      "turn_events": [
+        {
+          "t_start": 14.3,
+          "t_end": 15.97,
+          "dir": "L",
+          "delta_deg": -90
+        },
+        {
+          "t_start": 16.53,
+          "t_end": 18.2,
+          "dir": "L",
+          "delta_deg": -90
+        }
+      ],
+      "leg_times": [
+        {
+          "t_start": 0.0,
+          "t_end": 14.3,
+          "seconds": 14.3
+        },
+        {
+          "t_start": 15.97,
+          "t_end": 16.53,
+          "seconds": 0.56
+        },
+        {
+          "t_start": 18.2,
+          "t_end": 36.47,
+          "seconds": 18.27
+        }
+      ]
+    },
+    {
+      "id": 1,
+      "seed": 620001,
+      "turns": "LR",
+      "legs": [
+        2,
+        4,
+        1
+      ],
+      "n_turns": 2,
+      "ratio_band": [
+        3.5,
+        4.5
+      ],
+      "ratio": 4.0,
+      "total_steps": 7,
+      "pattern": "alt",
+      "level": "unequal",
+      "bearing_gt_deg": 116.57,
+      "distance_to_x": 13.42,
+      "final_yaw_deg": 0.0,
+      "end_xy": [
+        11.5,
+        2.5
+      ],
+      "marker_xy": [
+        5.5,
+        14.5
+      ],
+      "path_len": 20.63,
+      "duration_s": 19.8,
+      "n_frames": 594,
+      "cum_turn_deg": 0.0,
+      "net_turn_deg": 0.0,
+      "crow_over_path": 0.65,
+      "turn_events": [
+        {
+          "t_start": 4.77,
+          "t_end": 6.43,
+          "dir": "L",
+          "delta_deg": -90
+        },
+        {
+          "t_start": 14.17,
+          "t_end": 15.8,
+          "dir": "R",
+          "delta_deg": 89
+        }
+      ],
+      "leg_times": [
+        {
+          "t_start": 0.0,
+          "t_end": 4.77,
+          "seconds": 4.77
+        },
+        {
+          "t_start": 6.43,
+          "t_end": 14.17,
+          "seconds": 7.74
+        },
+        {
+          "t_start": 15.8,
+          "t_end": 19.8,
+          "seconds": 4.0
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "seed": 620002,
+      "turns": "R",
+      "legs": [
+        2,
+        9
+      ],
+      "n_turns": 1,
+      "ratio_band": [
+        3.5,
+        4.5
+      ],
+      "ratio": 4.5,
+      "total_steps": 11,
+      "pattern": "rand",
+      "level": "unequal",
+      "bearing_gt_deg": 173.66,
+      "distance_to_x": 27.17,
+      "final_yaw_deg": 90.0,
+      "end_xy": [
+        8.5,
+        29.5
+      ],
+      "marker_xy": [
+        5.5,
+        2.5
+      ],
+      "path_len": 32.82,
+      "duration_s": 29.5,
+      "n_frames": 884,
+      "cum_turn_deg": 90.0,
+      "net_turn_deg": 90.0,
+      "crow_over_path": 0.828,
+      "turn_events": [
+        {
+          "t_start": 4.77,
+          "t_end": 6.43,
+          "dir": "R",
+          "delta_deg": 90
+        }
+      ],
+      "leg_times": [
+        {
+          "t_start": 0.0,
+          "t_end": 4.77,
+          "seconds": 4.77
+        },
+        {
+          "t_start": 6.43,
+          "t_end": 29.47,
+          "seconds": 23.04
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "seed": 620003,
+      "turns": "L",
+      "legs": [
+        4,
+        1
+      ],
+      "n_turns": 1,
+      "ratio_band": [
+        3.5,
+        4.5
+      ],
+      "ratio": 4.0,
+      "total_steps": 5,
+      "pattern": "alt",
+      "level": "unequal",
+      "bearing_gt_deg": 251.57,
+      "distance_to_x": 9.49,
+      "final_yaw_deg": 270.0,
+      "end_xy": [
+        14.5,
+        2.5
+      ],
+      "marker_xy": [
+        5.5,
+        5.5
+      ],
+      "path_len": 14.82,
+      "duration_s": 15.2,
+      "n_frames": 455,
+      "cum_turn_deg": -90.0,
+      "net_turn_deg": -90.0,
+      "crow_over_path": 0.64,
+      "turn_events": [
+        {
+          "t_start": 9.53,
+          "t_end": 11.2,
+          "dir": "L",
+          "delta_deg": -90
+        }
+      ],
+      "leg_times": [
+        {
+          "t_start": 0.0,
+          "t_end": 9.53,
+          "seconds": 9.53
+        },
+        {
+          "t_start": 11.2,
+          "t_end": 15.17,
+          "seconds": 3.97
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "seed": 620004,
+      "turns": "RL",
+      "legs": [
+        7,
+        1,
+        4
+      ],
+      "n_turns": 2,
+      "ratio_band": [
+        6.0,
+        7.5
+      ],
+      "ratio": 7.0,
+      "total_steps": 12,
+      "pattern": "alt",
+      "level": "unequal",
+      "bearing_gt_deg": 185.71,
+      "distance_to_x": 30.15,
+      "final_yaw_deg": 0.0,
+      "end_xy": [
+        35.5,
+        5.5
+      ],
+      "marker_xy": [
+        5.5,
+        2.5
+      ],
+      "path_len": 35.63,
+      "duration_s": 31.7,
+      "n_frames": 951,
+      "cum_turn_deg": 0.0,
+      "net_turn_deg": 0.0,
+      "crow_over_path": 0.846,
+      "turn_events": [
+        {
+          "t_start": 16.67,
+          "t_end": 18.33,
+          "dir": "R",
+          "delta_deg": 90
+        },
+        {
+          "t_start": 18.9,
+          "t_end": 20.57,
+          "dir": "L",
+          "delta_deg": -90
+        }
+      ],
+      "leg_times": [
+        {
+          "t_start": 0.0,
+          "t_end": 16.67,
+          "seconds": 16.67
+        },
+        {
+          "t_start": 18.33,
+          "t_end": 18.9,
+          "seconds": 0.57
+        },
+        {
+          "t_start": 20.57,
+          "t_end": 31.7,
+          "seconds": 11.13
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "seed": 620005,
+      "turns": "RR",
+      "legs": [
+        2,
+        1,
+        4
+      ],
+      "n_turns": 2,
+      "ratio_band": [
+        3.5,
+        4.5
+      ],
+      "ratio": 4.0,
+      "total_steps": 7,
+      "pattern": "same",
+      "level": "unequal",
+      "bearing_gt_deg": 161.57,
+      "distance_to_x": 9.49,
+      "final_yaw_deg": 180.0,
+      "end_xy": [
+        2.5,
+        5.5
+      ],
+      "marker_xy": [
+        11.5,
+        2.5
+      ],
+      "path_len": 20.63,
+      "duration_s": 19.8,
+      "n_frames": 594,
+      "cum_turn_deg": 180.0,
+      "net_turn_deg": -180.0,
+      "crow_over_path": 0.46,
+      "turn_events": [
+        {
+          "t_start": 4.77,
+          "t_end": 6.43,
+          "dir": "R",
+          "delta_deg": 90
+        },
+        {
+          "t_start": 7.0,
+          "t_end": 8.67,
+          "dir": "R",
+          "delta_deg": 90
+        }
+      ],
+      "leg_times": [
+        {
+          "t_start": 0.0,
+          "t_end": 4.77,
+          "seconds": 4.77
+        },
+        {
+          "t_start": 6.43,
+          "t_end": 7.0,
+          "seconds": 0.57
+        },
+        {
+          "t_start": 8.67,
+          "t_end": 19.8,
+          "seconds": 11.13
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "seed": 620006,
+      "turns": "RR",
+      "legs": [
+        7,
+        4,
+        1
+      ],
+      "n_turns": 2,
+      "ratio_band": [
+        6.0,
+        7.5
+      ],
+      "ratio": 7.0,
+      "total_steps": 12,
+      "pattern": "rand",
+      "level": "unequal",
+      "bearing_gt_deg": 38.66,
+      "distance_to_x": 19.21,
+      "final_yaw_deg": 180.0,
+      "end_xy": [
+        20.5,
+        14.5
+      ],
+      "marker_xy": [
+        5.5,
+        2.5
+      ],
+      "path_len": 35.63,
+      "duration_s": 31.7,
+      "n_frames": 951,
+      "cum_turn_deg": 180.0,
+      "net_turn_deg": -180.0,
+      "crow_over_path": 0.539,
+      "turn_events": [
+        {
+          "t_start": 16.67,
+          "t_end": 18.33,
+          "dir": "R",
+          "delta_deg": 90
+        },
+        {
+          "t_start": 26.07,
+          "t_end": 27.7,
+          "dir": "R",
+          "delta_deg": 89
+        }
+      ],
+      "leg_times": [
+        {
+          "t_start": 0.0,
+          "t_end": 16.67,
+          "seconds": 16.67
+        },
+        {
+          "t_start": 18.33,
+          "t_end": 26.07,
+          "seconds": 7.74
+        },
+        {
+          "t_start": 27.7,
+          "t_end": 31.7,
+          "seconds": 4.0
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "seed": 620007,
+      "turns": "L",
+      "legs": [
+        1,
+        4
+      ],
+      "n_turns": 1,
+      "ratio_band": [
+        3.5,
+        4.5
+      ],
+      "ratio": 4.0,
+      "total_steps": 5,
+      "pattern": "rand",
+      "level": "unequal",
+      "bearing_gt_deg": 184.76,
+      "distance_to_x": 12.04,
+      "final_yaw_deg": 270.0,
+      "end_xy": [
+        5.5,
+        2.5
+      ],
+      "marker_xy": [
+        4.5,
+        14.5
+      ],
+      "path_len": 14.82,
+      "duration_s": 15.2,
+      "n_frames": 455,
+      "cum_turn_deg": -90.0,
+      "net_turn_deg": -90.0,
+      "crow_over_path": 0.813,
+      "turn_events": [
+        {
+          "t_start": 2.4,
+          "t_end": 4.03,
+          "dir": "L",
+          "delta_deg": -89
+        }
+      ],
+      "leg_times": [
+        {
+          "t_start": 0.0,
+          "t_end": 2.4,
+          "seconds": 2.4
+        },
+        {
+          "t_start": 4.03,
+          "t_end": 15.17,
+          "seconds": 11.14
+        }
+      ]
+    },
+    {
+      "id": 8,
+      "seed": 620008,
+      "turns": "R",
+      "legs": [
+        4,
+        1
+      ],
+      "n_turns": 1,
+      "ratio_band": [
+        3.5,
+        4.5
+      ],
+      "ratio": 4.0,
+      "total_steps": 5,
+      "pattern": "same",
+      "level": "unequal",
+      "bearing_gt_deg": 108.43,
+      "distance_to_x": 9.49,
+      "final_yaw_deg": 90.0,
+      "end_xy": [
+        14.5,
+        5.5
+      ],
+      "marker_xy": [
+        5.5,
+        2.5
+      ],
+      "path_len": 14.82,
+      "duration_s": 15.2,
+      "n_frames": 455,
+      "cum_turn_deg": 90.0,
+      "net_turn_deg": 90.0,
+      "crow_over_path": 0.64,
+      "turn_events": [
+        {
+          "t_start": 9.53,
+          "t_end": 11.2,
+          "dir": "R",
+          "delta_deg": 90
+        }
+      ],
+      "leg_times": [
+        {
+          "t_start": 0.0,
+          "t_end": 9.53,
+          "seconds": 9.53
+        },
+        {
+          "t_start": 11.2,
+          "t_end": 15.17,
+          "seconds": 3.97
+        }
+      ]
+    },
+    {
+      "id": 9,
+      "seed": 620009,
+      "turns": "LL",
+      "legs": [
+        1,
+        7,
+        5
+      ],
+      "n_turns": 2,
+      "ratio_band": [
+        6.0,
+        7.5
+      ],
+      "ratio": 7.0,
+      "total_steps": 13,
+      "pattern": "rand",
+      "level": "unequal",
+      "bearing_gt_deg": 236.31,
+      "distance_to_x": 25.24,
+      "final_yaw_deg": 180.0,
+      "end_xy": [
+        2.5,
+        2.5
+      ],
+      "marker_xy": [
+        16.5,
+        23.5
+      ],
+      "path_len": 38.63,
+      "duration_s": 34.1,
+      "n_frames": 1023,
+      "cum_turn_deg": -180.0,
+      "net_turn_deg": -180.0,
+      "crow_over_path": 0.653,
+      "turn_events": [
+        {
+          "t_start": 2.4,
+          "t_end": 4.03,
+          "dir": "L",
+          "delta_deg": -89
+        },
+        {
+          "t_start": 18.9,
+          "t_end": 20.57,
+          "dir": "L",
+          "delta_deg": -90
+        }
+      ],
+      "leg_times": [
+        {
+          "t_start": 0.0,
+          "t_end": 2.4,
+          "seconds": 2.4
+        },
+        {
+          "t_start": 4.03,
+          "t_end": 18.9,
+          "seconds": 14.87
+        },
+        {
+          "t_start": 20.57,
+          "t_end": 34.1,
+          "seconds": 13.53
+        }
+      ]
+    },
+    {
+      "id": 10,
+      "seed": 620010,
+      "turns": "LR",
+      "legs": [
+        1,
+        7,
+        1
+      ],
+      "n_turns": 2,
+      "ratio_band": [
+        6.0,
+        7.5
+      ],
+      "ratio": 7.0,
+      "total_steps": 9,
+      "pattern": "alt",
+      "level": "unequal",
+      "bearing_gt_deg": 100.78,
+      "distance_to_x": 21.38,
+      "final_yaw_deg": 360.0,
+      "end_xy": [
+        8.5,
+        2.5
+      ],
+      "marker_xy": [
+        4.5,
+        23.5
+      ],
+      "path_len": 26.63,
+      "duration_s": 24.6,
+      "n_frames": 737,
+      "cum_turn_deg": 0.0,
+      "net_turn_deg": 0.0,
+      "crow_over_path": 0.803,
+      "turn_events": [
+        {
+          "t_start": 2.4,
+          "t_end": 4.03,
+          "dir": "L",
+          "delta_deg": -89
+        },
+        {
+          "t_start": 18.9,
+          "t_end": 20.57,
+          "dir": "R",
+          "delta_deg": 90
+        }
+      ],
+      "leg_times": [
+        {
+          "t_start": 0.0,
+          "t_end": 2.4,
+          "seconds": 2.4
+        },
+        {
+          "t_start": 4.03,
+          "t_end": 18.9,
+          "seconds": 14.87
+        },
+        {
+          "t_start": 20.57,
+          "t_end": 24.57,
+          "seconds": 4.0
+        }
+      ]
+    },
+    {
+      "id": 11,
+      "seed": 620011,
+      "turns": "R",
+      "legs": [
+        7,
+        1
+      ],
+      "n_turns": 1,
+      "ratio_band": [
+        6.0,
+        7.5
+      ],
+      "ratio": 7.0,
+      "total_steps": 8,
+      "pattern": "same",
+      "level": "unequal",
+      "bearing_gt_deg": 99.46,
+      "distance_to_x": 18.25,
+      "final_yaw_deg": 90.0,
+      "end_xy": [
+        23.5,
+        5.5
+      ],
+      "marker_xy": [
+        5.5,
+        2.5
+      ],
+      "path_len": 23.82,
+      "duration_s": 22.3,
+      "n_frames": 670,
+      "cum_turn_deg": 90.0,
+      "net_turn_deg": 90.0,
+      "crow_over_path": 0.766,
+      "turn_events": [
+        {
+          "t_start": 16.67,
+          "t_end": 18.33,
+          "dir": "R",
+          "delta_deg": 90
+        }
+      ],
+      "leg_times": [
+        {
+          "t_start": 0.0,
+          "t_end": 16.67,
+          "seconds": 16.67
+        },
+        {
+          "t_start": 18.33,
+          "t_end": 22.33,
+          "seconds": 4.0
+        }
+      ]
+    },
+    {
+      "id": 12,
+      "seed": 620012,
+      "turns": "RL",
+      "legs": [
+        7,
+        2,
+        5
+      ],
+      "n_turns": 2,
+      "ratio_band": [
+        3.5,
+        4.5
+      ],
+      "ratio": 3.5,
+      "total_steps": 14,
+      "pattern": "alt",
+      "level": "unequal",
+      "bearing_gt_deg": 190.3,
+      "distance_to_x": 33.54,
+      "final_yaw_deg": 0.0,
+      "end_xy": [
+        38.5,
+        8.5
+      ],
+      "marker_xy": [
+        5.5,
+        2.5
+      ],
+      "path_len": 41.63,
+      "duration_s": 36.5,
+      "n_frames": 1094,
+      "cum_turn_deg": 0.0,
+      "net_turn_deg": 0.0,
+      "crow_over_path": 0.806,
+      "turn_events": [
+        {
+          "t_start": 16.67,
+          "t_end": 18.33,
+          "dir": "R",
+          "delta_deg": 90
+        },
+        {
+          "t_start": 21.3,
+          "t_end": 22.93,
+          "dir": "L",
+          "delta_deg": -89
+        }
+      ],
+      "leg_times": [
+        {
+          "t_start": 0.0,
+          "t_end": 16.67,
+          "seconds": 16.67
+        },
+        {
+          "t_start": 18.33,
+          "t_end": 21.3,
+          "seconds": 2.97
+        },
+        {
+          "t_start": 22.93,
+          "t_end": 36.47,
+          "seconds": 13.54
+        }
+      ]
+    },
+    {
+      "id": 13,
+      "seed": 620013,
+      "turns": "LR",
+      "legs": [
+        1,
+        4,
+        1
+      ],
+      "n_turns": 2,
+      "ratio_band": [
+        3.5,
+        4.5
+      ],
+      "ratio": 4.0,
+      "total_steps": 6,
+      "pattern": "alt",
+      "level": "unequal",
+      "bearing_gt_deg": 108.43,
+      "distance_to_x": 12.65,
+      "final_yaw_deg": 360.0,
+      "end_xy": [
+        8.5,
+        2.5
+      ],
+      "marker_xy": [
+        4.5,
+        14.5
+      ],
+      "path_len": 17.63,
+      "duration_s": 17.4,
+      "n_frames": 523,
+      "cum_turn_deg": 0.0,
+      "net_turn_deg": 0.0,
+      "crow_over_path": 0.717,
+      "turn_events": [
+        {
+          "t_start": 2.4,
+          "t_end": 4.03,
+          "dir": "L",
+          "delta_deg": -89
+        },
+        {
+          "t_start": 11.77,
+          "t_end": 13.43,
+          "dir": "R",
+          "delta_deg": 90
+        }
+      ],
+      "leg_times": [
+        {
+          "t_start": 0.0,
+          "t_end": 2.4,
+          "seconds": 2.4
+        },
+        {
+          "t_start": 4.03,
+          "t_end": 11.77,
+          "seconds": 7.74
+        },
+        {
+          "t_start": 13.43,
+          "t_end": 17.43,
+          "seconds": 4.0
+        }
+      ]
+    },
+    {
+      "id": 14,
+      "seed": 620014,
+      "turns": "LR",
+      "legs": [
+        1,
+        1,
+        7
+      ],
+      "n_turns": 2,
+      "ratio_band": [
+        6.0,
+        7.5
+      ],
+      "ratio": 7.0,
+      "total_steps": 9,
+      "pattern": "alt",
+      "level": "unequal",
+      "bearing_gt_deg": 172.23,
+      "distance_to_x": 22.2,
+      "final_yaw_deg": 0.0,
+      "end_xy": [
+        26.5,
+        2.5
+      ],
+      "marker_xy": [
+        4.5,
+        5.5
+      ],
+      "path_len": 26.63,
+      "duration_s": 24.6,
+      "n_frames": 737,
+      "cum_turn_deg": 0.0,
+      "net_turn_deg": 0.0,
+      "crow_over_path": 0.834,
+      "turn_events": [
+        {
+          "t_start": 2.4,
+          "t_end": 4.03,
+          "dir": "L",
+          "delta_deg": -89
+        },
+        {
+          "t_start": 4.63,
+          "t_end": 6.27,
+          "dir": "R",
+          "delta_deg": 89
+        }
+      ],
+      "leg_times": [
+        {
+          "t_start": 0.0,
+          "t_end": 2.4,
+          "seconds": 2.4
+        },
+        {
+          "t_start": 4.03,
+          "t_end": 4.63,
+          "seconds": 0.6
+        },
+        {
+          "t_start": 6.27,
+          "t_end": 24.57,
+          "seconds": 18.3
+        }
+      ]
+    },
+    {
+      "id": 15,
+      "seed": 620015,
+      "turns": "LR",
+      "legs": [
+        2,
+        1,
+        4
+      ],
+      "n_turns": 2,
+      "ratio_band": [
+        3.5,
+        4.5
+      ],
+      "ratio": 4.0,
+      "total_steps": 7,
+      "pattern": "rand",
+      "level": "unequal",
+      "bearing_gt_deg": 168.69,
+      "distance_to_x": 15.3,
+      "final_yaw_deg": 360.0,
+      "end_xy": [
+        20.5,
+        2.5
+      ],
+      "marker_xy": [
+        5.5,
+        5.5
+      ],
+      "path_len": 20.63,
+      "duration_s": 19.8,
+      "n_frames": 594,
+      "cum_turn_deg": 0.0,
+      "net_turn_deg": 0.0,
+      "crow_over_path": 0.741,
+      "turn_events": [
+        {
+          "t_start": 4.77,
+          "t_end": 6.43,
+          "dir": "L",
+          "delta_deg": -90
+        },
+        {
+          "t_start": 7.0,
+          "t_end": 8.67,
+          "dir": "R",
+          "delta_deg": 90
+        }
+      ],
+      "leg_times": [
+        {
+          "t_start": 0.0,
+          "t_end": 4.77,
+          "seconds": 4.77
+        },
+        {
+          "t_start": 6.43,
+          "t_end": 7.0,
+          "seconds": 0.57
+        },
+        {
+          "t_start": 8.67,
+          "t_end": 19.8,
+          "seconds": 11.13
+        }
+      ]
+    },
+    {
+      "id": 16,
+      "seed": 620016,
+      "turns": "RR",
+      "legs": [
+        2,
+        4,
+        1
+      ],
+      "n_turns": 2,
+      "ratio_band": [
+        3.5,
+        4.5
+      ],
+      "ratio": 4.0,
+      "total_steps": 7,
+      "pattern": "same",
+      "level": "unequal",
+      "bearing_gt_deg": 90.0,
+      "distance_to_x": 12.0,
+      "final_yaw_deg": 180.0,
+      "end_xy": [
+        5.5,
+        14.5
+      ],
+      "marker_xy": [
+        5.5,
+        2.5
+      ],
+      "path_len": 20.63,
+      "duration_s": 19.8,
+      "n_frames": 594,
+      "cum_turn_deg": 180.0,
+      "net_turn_deg": -180.0,
+      "crow_over_path": 0.582,
+      "turn_events": [
+        {
+          "t_start": 4.77,
+          "t_end": 6.43,
+          "dir": "R",
+          "delta_deg": 90
+        },
+        {
+          "t_start": 14.17,
+          "t_end": 15.8,
+          "dir": "R",
+          "delta_deg": 89
+        }
+      ],
+      "leg_times": [
+        {
+          "t_start": 0.0,
+          "t_end": 4.77,
+          "seconds": 4.77
+        },
+        {
+          "t_start": 6.43,
+          "t_end": 14.17,
+          "seconds": 7.74
+        },
+        {
+          "t_start": 15.8,
+          "t_end": 19.8,
+          "seconds": 4.0
+        }
+      ]
+    },
+    {
+      "id": 17,
+      "seed": 620017,
+      "turns": "L",
+      "legs": [
+        1,
+        7
+      ],
+      "n_turns": 1,
+      "ratio_band": [
+        6.0,
+        7.5
+      ],
+      "ratio": 7.0,
+      "total_steps": 8,
+      "pattern": "same",
+      "level": "unequal",
+      "bearing_gt_deg": 182.73,
+      "distance_to_x": 21.02,
+      "final_yaw_deg": 270.0,
+      "end_xy": [
+        5.5,
+        2.5
+      ],
+      "marker_xy": [
+        4.5,
+        23.5
+      ],
+      "path_len": 23.82,
+      "duration_s": 22.3,
+      "n_frames": 670,
+      "cum_turn_deg": -90.0,
+      "net_turn_deg": -90.0,
+      "crow_over_path": 0.883,
+      "turn_events": [
+        {
+          "t_start": 2.4,
+          "t_end": 4.03,
+          "dir": "L",
+          "delta_deg": -89
+        }
+      ],
+      "leg_times": [
+        {
+          "t_start": 0.0,
+          "t_end": 2.4,
+          "seconds": 2.4
+        },
+        {
+          "t_start": 4.03,
+          "t_end": 22.33,
+          "seconds": 18.3
+        }
+      ]
+    },
+    {
+      "id": 18,
+      "seed": 620018,
+      "turns": "LL",
+      "legs": [
+        1,
+        4,
+        7
+      ],
+      "n_turns": 2,
+      "ratio_band": [
+        6.0,
+        7.5
+      ],
+      "ratio": 7.0,
+      "total_steps": 12,
+      "pattern": "rand",
+      "level": "unequal",
+      "bearing_gt_deg": 210.96,
+      "distance_to_x": 23.32,
+      "final_yaw_deg": 180.0,
+      "end_xy": [
+        2.5,
+        2.5
+      ],
+      "marker_xy": [
+        22.5,
+        14.5
+      ],
+      "path_len": 35.63,
+      "duration_s": 31.7,
+      "n_frames": 951,
+      "cum_turn_deg": -180.0,
+      "net_turn_deg": -180.0,
+      "crow_over_path": 0.655,
+      "turn_events": [
+        {
+          "t_start": 2.4,
+          "t_end": 4.03,
+          "dir": "L",
+          "delta_deg": -89
+        },
+        {
+          "t_start": 11.77,
+          "t_end": 13.43,
+          "dir": "L",
+          "delta_deg": -90
+        }
+      ],
+      "leg_times": [
+        {
+          "t_start": 0.0,
+          "t_end": 2.4,
+          "seconds": 2.4
+        },
+        {
+          "t_start": 4.03,
+          "t_end": 11.77,
+          "seconds": 7.74
+        },
+        {
+          "t_start": 13.43,
+          "t_end": 31.7,
+          "seconds": 18.27
+        }
+      ]
+    },
+    {
+      "id": 19,
+      "seed": 620019,
+      "turns": "LL",
+      "legs": [
+        4,
+        1,
+        4
+      ],
+      "n_turns": 2,
+      "ratio_band": [
+        3.5,
+        4.5
+      ],
+      "ratio": 4.0,
+      "total_steps": 9,
+      "pattern": "rand",
+      "level": "unequal",
+      "bearing_gt_deg": 225.0,
+      "distance_to_x": 4.24,
+      "final_yaw_deg": 180.0,
+      "end_xy": [
+        2.5,
+        2.5
+      ],
+      "marker_xy": [
+        5.5,
+        5.5
+      ],
+      "path_len": 26.63,
+      "duration_s": 24.6,
+      "n_frames": 737,
+      "cum_turn_deg": -180.0,
+      "net_turn_deg": -180.0,
+      "crow_over_path": 0.159,
+      "turn_events": [
+        {
+          "t_start": 9.53,
+          "t_end": 11.2,
+          "dir": "L",
+          "delta_deg": -90
+        },
+        {
+          "t_start": 11.77,
+          "t_end": 13.43,
+          "dir": "L",
+          "delta_deg": -90
+        }
+      ],
+      "leg_times": [
+        {
+          "t_start": 0.0,
+          "t_end": 9.53,
+          "seconds": 9.53
+        },
+        {
+          "t_start": 11.2,
+          "t_end": 11.77,
+          "seconds": 0.57
+        },
+        {
+          "t_start": 13.43,
+          "t_end": 24.57,
+          "seconds": 11.14
+        }
+      ]
+    },
+    {
+      "id": 20,
+      "seed": 620020,
+      "turns": "RL",
+      "legs": [
+        5,
+        7,
+        1
+      ],
+      "n_turns": 2,
+      "ratio_band": [
+        6.0,
+        7.5
+      ],
+      "ratio": 7.0,
+      "total_steps": 13,
+      "pattern": "rand",
+      "level": "unequal",
+      "bearing_gt_deg": 234.46,
+      "distance_to_x": 25.81,
+      "final_yaw_deg": 0.0,
+      "end_xy": [
+        20.5,
+        23.5
+      ],
+      "marker_xy": [
+        5.5,
+        2.5
+      ],
+      "path_len": 38.63,
+      "duration_s": 34.1,
+      "n_frames": 1023,
+      "cum_turn_deg": 0.0,
+      "net_turn_deg": 0.0,
+      "crow_over_path": 0.668,
+      "turn_events": [
+        {
+          "t_start": 11.9,
+          "t_end": 13.57,
+          "dir": "R",
+          "delta_deg": 90
+        },
+        {
+          "t_start": 28.43,
+          "t_end": 30.1,
+          "dir": "L",
+          "delta_deg": -90
+        }
+      ],
+      "leg_times": [
+        {
+          "t_start": 0.0,
+          "t_end": 11.9,
+          "seconds": 11.9
+        },
+        {
+          "t_start": 13.57,
+          "t_end": 28.43,
+          "seconds": 14.86
+        },
+        {
+          "t_start": 30.1,
+          "t_end": 34.1,
+          "seconds": 4.0
+        }
+      ]
+    },
+    {
+      "id": 21,
+      "seed": 620021,
+      "turns": "RL",
+      "legs": [
+        4,
+        1,
+        4
+      ],
+      "n_turns": 2,
+      "ratio_band": [
+        3.5,
+        4.5
+      ],
+      "ratio": 4.0,
+      "total_steps": 9,
+      "pattern": "alt",
+      "level": "unequal",
+      "bearing_gt_deg": 188.13,
+      "distance_to_x": 21.21,
+      "final_yaw_deg": 360.0,
+      "end_xy": [
+        26.5,
+        5.5
+      ],
+      "marker_xy": [
+        5.5,
+        2.5
+      ],
+      "path_len": 26.63,
+      "duration_s": 24.6,
+      "n_frames": 737,
+      "cum_turn_deg": 0.0,
+      "net_turn_deg": 0.0,
+      "crow_over_path": 0.796,
+      "turn_events": [
+        {
+          "t_start": 9.53,
+          "t_end": 11.2,
+          "dir": "R",
+          "delta_deg": 90
+        },
+        {
+          "t_start": 11.77,
+          "t_end": 13.43,
+          "dir": "L",
+          "delta_deg": -90
+        }
+      ],
+      "leg_times": [
+        {
+          "t_start": 0.0,
+          "t_end": 9.53,
+          "seconds": 9.53
+        },
+        {
+          "t_start": 11.2,
+          "t_end": 11.77,
+          "seconds": 0.57
+        },
+        {
+          "t_start": 13.43,
+          "t_end": 24.57,
+          "seconds": 11.14
+        }
+      ]
+    },
+    {
+      "id": 22,
+      "seed": 620022,
+      "turns": "LR",
+      "legs": [
+        4,
+        8,
+        2
+      ],
+      "n_turns": 2,
+      "ratio_band": [
+        3.5,
+        4.5
+      ],
+      "ratio": 4.0,
+      "total_steps": 14,
+      "pattern": "alt",
+      "level": "unequal",
+      "bearing_gt_deg": 122.01,
+      "distance_to_x": 28.3,
+      "final_yaw_deg": 360.0,
+      "end_xy": [
+        20.5,
+        2.5
+      ],
+      "marker_xy": [
+        5.5,
+        26.5
+      ],
+      "path_len": 41.63,
+      "duration_s": 36.5,
+      "n_frames": 1094,
+      "cum_turn_deg": 0.0,
+      "net_turn_deg": 0.0,
+      "crow_over_path": 0.68,
+      "turn_events": [
+        {
+          "t_start": 9.53,
+          "t_end": 11.2,
+          "dir": "L",
+          "delta_deg": -90
+        },
+        {
+          "t_start": 28.43,
+          "t_end": 30.1,
+          "dir": "R",
+          "delta_deg": 90
+        }
+      ],
+      "leg_times": [
+        {
+          "t_start": 0.0,
+          "t_end": 9.53,
+          "seconds": 9.53
+        },
+        {
+          "t_start": 11.2,
+          "t_end": 28.43,
+          "seconds": 17.23
+        },
+        {
+          "t_start": 30.1,
+          "t_end": 36.47,
+          "seconds": 6.37
+        }
+      ]
+    },
+    {
+      "id": 23,
+      "seed": 620023,
+      "turns": "RR",
+      "legs": [
+        7,
+        1,
+        2
+      ],
+      "n_turns": 2,
+      "ratio_band": [
+        6.0,
+        7.5
+      ],
+      "ratio": 7.0,
+      "total_steps": 10,
+      "pattern": "same",
+      "level": "unequal",
+      "bearing_gt_deg": 14.04,
+      "distance_to_x": 12.37,
+      "final_yaw_deg": 180.0,
+      "end_xy": [
+        17.5,
+        5.5
+      ],
+      "marker_xy": [
+        5.5,
+        2.5
+      ],
+      "path_len": 29.63,
+      "duration_s": 26.9,
+      "n_frames": 808,
+      "cum_turn_deg": 180.0,
+      "net_turn_deg": -180.0,
+      "crow_over_path": 0.417,
+      "turn_events": [
+        {
+          "t_start": 16.67,
+          "t_end": 18.33,
+          "dir": "R",
+          "delta_deg": 90
+        },
+        {
+          "t_start": 18.9,
+          "t_end": 20.57,
+          "dir": "R",
+          "delta_deg": 90
+        }
+      ],
+      "leg_times": [
+        {
+          "t_start": 0.0,
+          "t_end": 16.67,
+          "seconds": 16.67
+        },
+        {
+          "t_start": 18.33,
+          "t_end": 18.9,
+          "seconds": 0.57
+        },
+        {
+          "t_start": 20.57,
+          "t_end": 26.93,
+          "seconds": 6.36
+        }
+      ]
+    },
+    {
+      "id": 24,
+      "seed": 620024,
+      "turns": "LL",
+      "legs": [
+        1,
+        3,
+        4
+      ],
+      "n_turns": 2,
+      "ratio_band": [
+        3.5,
+        4.5
+      ],
+      "ratio": 4.0,
+      "total_steps": 8,
+      "pattern": "rand",
+      "level": "unequal",
+      "bearing_gt_deg": 219.29,
+      "distance_to_x": 14.21,
+      "final_yaw_deg": 180.0,
+      "end_xy": [
+        2.5,
+        2.5
+      ],
+      "marker_xy": [
+        13.5,
+        11.5
+      ],
+      "path_len": 23.63,
+      "duration_s": 22.2,
+      "n_frames": 665,
+      "cum_turn_deg": -180.0,
+      "net_turn_deg": -180.0,
+      "crow_over_path": 0.601,
+      "turn_events": [
+        {
+          "t_start": 2.4,
+          "t_end": 4.03,
+          "dir": "L",
+          "delta_deg": -89
+        },
+        {
+          "t_start": 9.4,
+          "t_end": 11.03,
+          "dir": "L",
+          "delta_deg": -89
+        }
+      ],
+      "leg_times": [
+        {
+          "t_start": 0.0,
+          "t_end": 2.4,
+          "seconds": 2.4
+        },
+        {
+          "t_start": 4.03,
+          "t_end": 9.4,
+          "seconds": 5.37
+        },
+        {
+          "t_start": 11.03,
+          "t_end": 22.17,
+          "seconds": 11.14
+        }
+      ]
+    },
+    {
+      "id": 25,
+      "seed": 620025,
+      "turns": "RL",
+      "legs": [
+        1,
+        7,
+        5
+      ],
+      "n_turns": 2,
+      "ratio_band": [
+        6.0,
+        7.5
+      ],
+      "ratio": 7.0,
+      "total_steps": 13,
+      "pattern": "rand",
+      "level": "unequal",
+      "bearing_gt_deg": 232.7,
+      "distance_to_x": 26.4,
+      "final_yaw_deg": 360.0,
+      "end_xy": [
+        20.5,
+        23.5
+      ],
+      "marker_xy": [
+        4.5,
+        2.5
+      ],
+      "path_len": 38.63,
+      "duration_s": 34.1,
+      "n_frames": 1023,
+      "cum_turn_deg": 0.0,
+      "net_turn_deg": 0.0,
+      "crow_over_path": 0.683,
+      "turn_events": [
+        {
+          "t_start": 2.4,
+          "t_end": 4.03,
+          "dir": "R",
+          "delta_deg": 89
+        },
+        {
+          "t_start": 18.9,
+          "t_end": 20.57,
+          "dir": "L",
+          "delta_deg": -90
+        }
+      ],
+      "leg_times": [
+        {
+          "t_start": 0.0,
+          "t_end": 2.4,
+          "seconds": 2.4
+        },
+        {
+          "t_start": 4.03,
+          "t_end": 18.9,
+          "seconds": 14.87
+        },
+        {
+          "t_start": 20.57,
+          "t_end": 34.1,
+          "seconds": 13.53
+        }
+      ]
+    },
+    {
+      "id": 26,
+      "seed": 620026,
+      "turns": "RR",
+      "legs": [
+        4,
+        4,
+        1
+      ],
+      "n_turns": 2,
+      "ratio_band": [
+        3.5,
+        4.5
+      ],
+      "ratio": 4.0,
+      "total_steps": 9,
+      "pattern": "same",
+      "level": "unequal",
+      "bearing_gt_deg": 63.43,
+      "distance_to_x": 13.42,
+      "final_yaw_deg": 180.0,
+      "end_xy": [
+        11.5,
+        14.5
+      ],
+      "marker_xy": [
+        5.5,
+        2.5
+      ],
+      "path_len": 26.63,
+      "duration_s": 24.6,
+      "n_frames": 737,
+      "cum_turn_deg": 180.0,
+      "net_turn_deg": -180.0,
+      "crow_over_path": 0.504,
+      "turn_events": [
+        {
+          "t_start": 9.53,
+          "t_end": 11.2,
+          "dir": "R",
+          "delta_deg": 90
+        },
+        {
+          "t_start": 18.9,
+          "t_end": 20.57,
+          "dir": "R",
+          "delta_deg": 90
+        }
+      ],
+      "leg_times": [
+        {
+          "t_start": 0.0,
+          "t_end": 9.53,
+          "seconds": 9.53
+        },
+        {
+          "t_start": 11.2,
+          "t_end": 18.9,
+          "seconds": 7.7
+        },
+        {
+          "t_start": 20.57,
+          "t_end": 24.57,
+          "seconds": 4.0
+        }
+      ]
+    },
+    {
+      "id": 27,
+      "seed": 620027,
+      "turns": "R",
+      "legs": [
+        9,
+        2
+      ],
+      "n_turns": 1,
+      "ratio_band": [
+        3.5,
+        4.5
+      ],
+      "ratio": 4.5,
+      "total_steps": 11,
+      "pattern": "alt",
+      "level": "unequal",
+      "bearing_gt_deg": 104.04,
+      "distance_to_x": 24.74,
+      "final_yaw_deg": 90.0,
+      "end_xy": [
+        29.5,
+        8.5
+      ],
+      "marker_xy": [
+        5.5,
+        2.5
+      ],
+      "path_len": 32.82,
+      "duration_s": 29.5,
+      "n_frames": 884,
+      "cum_turn_deg": 90.0,
+      "net_turn_deg": 90.0,
+      "crow_over_path": 0.754,
+      "turn_events": [
+        {
+          "t_start": 21.43,
+          "t_end": 23.1,
+          "dir": "R",
+          "delta_deg": 90
+        }
+      ],
+      "leg_times": [
+        {
+          "t_start": 0.0,
+          "t_end": 21.43,
+          "seconds": 21.43
+        },
+        {
+          "t_start": 23.1,
+          "t_end": 29.47,
+          "seconds": 6.37
+        }
+      ]
+    },
+    {
+      "id": 28,
+      "seed": 620028,
+      "turns": "LR",
+      "legs": [
+        1,
+        3,
+        4
+      ],
+      "n_turns": 2,
+      "ratio_band": [
+        3.5,
+        4.5
+      ],
+      "ratio": 4.0,
+      "total_steps": 8,
+      "pattern": "alt",
+      "level": "unequal",
+      "bearing_gt_deg": 145.3,
+      "distance_to_x": 15.81,
+      "final_yaw_deg": 360.0,
+      "end_xy": [
+        17.5,
+        2.5
+      ],
+      "marker_xy": [
+        4.5,
+        11.5
+      ],
+      "path_len": 23.63,
+      "duration_s": 22.2,
+      "n_frames": 665,
+      "cum_turn_deg": 0.0,
+      "net_turn_deg": 0.0,
+      "crow_over_path": 0.669,
+      "turn_events": [
+        {
+          "t_start": 2.4,
+          "t_end": 4.03,
+          "dir": "L",
+          "delta_deg": -89
+        },
+        {
+          "t_start": 9.4,
+          "t_end": 11.03,
+          "dir": "R",
+          "delta_deg": 89
+        }
+      ],
+      "leg_times": [
+        {
+          "t_start": 0.0,
+          "t_end": 2.4,
+          "seconds": 2.4
+        },
+        {
+          "t_start": 4.03,
+          "t_end": 9.4,
+          "seconds": 5.37
+        },
+        {
+          "t_start": 11.03,
+          "t_end": 22.17,
+          "seconds": 11.14
+        }
+      ]
+    },
+    {
+      "id": 29,
+      "seed": 620029,
+      "turns": "LL",
+      "legs": [
+        4,
+        4,
+        1
+      ],
+      "n_turns": 2,
+      "ratio_band": [
+        3.5,
+        4.5
+      ],
+      "ratio": 4.0,
+      "total_steps": 9,
+      "pattern": "same",
+      "level": "unequal",
+      "bearing_gt_deg": 296.57,
+      "distance_to_x": 13.42,
+      "final_yaw_deg": 180.0,
+      "end_xy": [
+        11.5,
+        2.5
+      ],
+      "marker_xy": [
+        5.5,
+        14.5
+      ],
+      "path_len": 26.63,
+      "duration_s": 24.6,
+      "n_frames": 737,
+      "cum_turn_deg": -180.0,
+      "net_turn_deg": -180.0,
+      "crow_over_path": 0.504,
+      "turn_events": [
+        {
+          "t_start": 9.53,
+          "t_end": 11.2,
+          "dir": "L",
+          "delta_deg": -90
+        },
+        {
+          "t_start": 18.9,
+          "t_end": 20.57,
+          "dir": "L",
+          "delta_deg": -90
+        }
+      ],
+      "leg_times": [
+        {
+          "t_start": 0.0,
+          "t_end": 9.53,
+          "seconds": 9.53
+        },
+        {
+          "t_start": 11.2,
+          "t_end": 18.9,
+          "seconds": 7.7
+        },
+        {
+          "t_start": 20.57,
+          "t_end": 24.57,
+          "seconds": 4.0
+        }
+      ]
+    }
+  ]
+}

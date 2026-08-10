@@ -1,0 +1,1942 @@
+{
+  "question": "This is a first-person video of someone walking through corridors. A large red X is painted on the floor at the spot where the walk begins; it is visible in the opening seconds, and the walker then leaves it behind. Freeze on the final frame and treat the direction the camera is facing at that moment as north (000 degrees). What is the compass bearing from the camera's final position to the red X? Answer in degrees clockwise from that forward direction, 0-359: 090 is directly to the right, 180 directly behind, 270 directly to the left.",
+  "answer_field": "bearing_gt_deg",
+  "note": "micro ladder: 1-2 step legs so corners are a large share of a short clip",
+  "plans": [
+    {
+      "id": 0,
+      "seed": 610000,
+      "level": "U1_one_turn",
+      "turns": "L",
+      "legs": [
+        1,
+        1
+      ],
+      "n_turns": 1,
+      "ratio_band": [
+        1.0,
+        1.2
+      ],
+      "ratio": 1.0,
+      "total_steps": 2,
+      "pattern": "alt",
+      "bearing_gt_deg": 198.43,
+      "distance_to_x": 3.16,
+      "final_yaw_deg": 270.0,
+      "end_xy": [
+        5.5,
+        2.5
+      ],
+      "marker_xy": [
+        4.5,
+        5.5
+      ],
+      "path_len": 5.82,
+      "duration_s": 8.0,
+      "n_frames": 241,
+      "cum_turn_deg": -90.0,
+      "net_turn_deg": -90.0,
+      "crow_over_path": 0.544,
+      "equal_leg_bearing_deg": 198.43,
+      "equal_leg_err_deg": 0.0,
+      "cardinal_err_deg": 18.43,
+      "behind_err_deg": 18.43,
+      "sensitivity_deg_per_unit": 18.12,
+      "const_baseline_deg": 23.2,
+      "const_baseline_answer": 198
+    },
+    {
+      "id": 1,
+      "seed": 610001,
+      "level": "U1_one_turn",
+      "turns": "R",
+      "legs": [
+        2,
+        2
+      ],
+      "n_turns": 1,
+      "ratio_band": [
+        1.0,
+        1.2
+      ],
+      "ratio": 1.0,
+      "total_steps": 4,
+      "pattern": "same",
+      "bearing_gt_deg": 153.43,
+      "distance_to_x": 6.71,
+      "final_yaw_deg": 90.0,
+      "end_xy": [
+        8.5,
+        8.5
+      ],
+      "marker_xy": [
+        5.5,
+        2.5
+      ],
+      "path_len": 11.82,
+      "duration_s": 12.8,
+      "n_frames": 384,
+      "cum_turn_deg": 90.0,
+      "net_turn_deg": 90.0,
+      "crow_over_path": 0.568,
+      "equal_leg_bearing_deg": 153.43,
+      "equal_leg_err_deg": 0.0,
+      "cardinal_err_deg": 26.57,
+      "behind_err_deg": 26.57,
+      "sensitivity_deg_per_unit": 8.54,
+      "const_baseline_deg": 23.2,
+      "const_baseline_answer": 198
+    },
+    {
+      "id": 2,
+      "seed": 610002,
+      "level": "U1_one_turn",
+      "turns": "L",
+      "legs": [
+        2,
+        2
+      ],
+      "n_turns": 1,
+      "ratio_band": [
+        1.0,
+        1.2
+      ],
+      "ratio": 1.0,
+      "total_steps": 4,
+      "pattern": "rand",
+      "bearing_gt_deg": 206.57,
+      "distance_to_x": 6.71,
+      "final_yaw_deg": 270.0,
+      "end_xy": [
+        8.5,
+        2.5
+      ],
+      "marker_xy": [
+        5.5,
+        8.5
+      ],
+      "path_len": 11.82,
+      "duration_s": 12.8,
+      "n_frames": 384,
+      "cum_turn_deg": -90.0,
+      "net_turn_deg": -90.0,
+      "crow_over_path": 0.568,
+      "equal_leg_bearing_deg": 206.57,
+      "equal_leg_err_deg": 0.0,
+      "cardinal_err_deg": 26.57,
+      "behind_err_deg": 26.57,
+      "sensitivity_deg_per_unit": 8.54,
+      "const_baseline_deg": 23.2,
+      "const_baseline_answer": 198
+    },
+    {
+      "id": 3,
+      "seed": 610003,
+      "level": "U1_one_turn",
+      "turns": "R",
+      "legs": [
+        1,
+        1
+      ],
+      "n_turns": 1,
+      "ratio_band": [
+        1.0,
+        1.2
+      ],
+      "ratio": 1.0,
+      "total_steps": 2,
+      "pattern": "alt",
+      "bearing_gt_deg": 161.57,
+      "distance_to_x": 3.16,
+      "final_yaw_deg": 90.0,
+      "end_xy": [
+        5.5,
+        5.5
+      ],
+      "marker_xy": [
+        4.5,
+        2.5
+      ],
+      "path_len": 5.82,
+      "duration_s": 8.0,
+      "n_frames": 241,
+      "cum_turn_deg": 90.0,
+      "net_turn_deg": 90.0,
+      "crow_over_path": 0.544,
+      "equal_leg_bearing_deg": 161.57,
+      "equal_leg_err_deg": 0.0,
+      "cardinal_err_deg": 18.43,
+      "behind_err_deg": 18.43,
+      "sensitivity_deg_per_unit": 18.12,
+      "const_baseline_deg": 23.2,
+      "const_baseline_answer": 198
+    },
+    {
+      "id": 4,
+      "seed": 610004,
+      "level": "U1_one_turn",
+      "turns": "L",
+      "legs": [
+        1,
+        1
+      ],
+      "n_turns": 1,
+      "ratio_band": [
+        1.0,
+        1.2
+      ],
+      "ratio": 1.0,
+      "total_steps": 2,
+      "pattern": "same",
+      "bearing_gt_deg": 198.43,
+      "distance_to_x": 3.16,
+      "final_yaw_deg": 270.0,
+      "end_xy": [
+        5.5,
+        2.5
+      ],
+      "marker_xy": [
+        4.5,
+        5.5
+      ],
+      "path_len": 5.82,
+      "duration_s": 8.0,
+      "n_frames": 241,
+      "cum_turn_deg": -90.0,
+      "net_turn_deg": -90.0,
+      "crow_over_path": 0.544,
+      "equal_leg_bearing_deg": 198.43,
+      "equal_leg_err_deg": 0.0,
+      "cardinal_err_deg": 18.43,
+      "behind_err_deg": 18.43,
+      "sensitivity_deg_per_unit": 18.12,
+      "const_baseline_deg": 23.2,
+      "const_baseline_answer": 198
+    },
+    {
+      "id": 5,
+      "seed": 610005,
+      "level": "U1_one_turn",
+      "turns": "R",
+      "legs": [
+        2,
+        2
+      ],
+      "n_turns": 1,
+      "ratio_band": [
+        1.0,
+        1.2
+      ],
+      "ratio": 1.0,
+      "total_steps": 4,
+      "pattern": "rand",
+      "bearing_gt_deg": 153.43,
+      "distance_to_x": 6.71,
+      "final_yaw_deg": 90.0,
+      "end_xy": [
+        8.5,
+        8.5
+      ],
+      "marker_xy": [
+        5.5,
+        2.5
+      ],
+      "path_len": 11.82,
+      "duration_s": 12.8,
+      "n_frames": 384,
+      "cum_turn_deg": 90.0,
+      "net_turn_deg": 90.0,
+      "crow_over_path": 0.568,
+      "equal_leg_bearing_deg": 153.43,
+      "equal_leg_err_deg": 0.0,
+      "cardinal_err_deg": 26.57,
+      "behind_err_deg": 26.57,
+      "sensitivity_deg_per_unit": 8.54,
+      "const_baseline_deg": 23.2,
+      "const_baseline_answer": 198
+    },
+    {
+      "id": 6,
+      "seed": 610006,
+      "level": "U1_one_turn",
+      "turns": "L",
+      "legs": [
+        2,
+        2
+      ],
+      "n_turns": 1,
+      "ratio_band": [
+        1.0,
+        1.2
+      ],
+      "ratio": 1.0,
+      "total_steps": 4,
+      "pattern": "alt",
+      "bearing_gt_deg": 206.57,
+      "distance_to_x": 6.71,
+      "final_yaw_deg": 270.0,
+      "end_xy": [
+        8.5,
+        2.5
+      ],
+      "marker_xy": [
+        5.5,
+        8.5
+      ],
+      "path_len": 11.82,
+      "duration_s": 12.8,
+      "n_frames": 384,
+      "cum_turn_deg": -90.0,
+      "net_turn_deg": -90.0,
+      "crow_over_path": 0.568,
+      "equal_leg_bearing_deg": 206.57,
+      "equal_leg_err_deg": 0.0,
+      "cardinal_err_deg": 26.57,
+      "behind_err_deg": 26.57,
+      "sensitivity_deg_per_unit": 8.54,
+      "const_baseline_deg": 23.2,
+      "const_baseline_answer": 198
+    },
+    {
+      "id": 7,
+      "seed": 610007,
+      "level": "U1_one_turn",
+      "turns": "R",
+      "legs": [
+        2,
+        2
+      ],
+      "n_turns": 1,
+      "ratio_band": [
+        1.0,
+        1.2
+      ],
+      "ratio": 1.0,
+      "total_steps": 4,
+      "pattern": "same",
+      "bearing_gt_deg": 153.43,
+      "distance_to_x": 6.71,
+      "final_yaw_deg": 90.0,
+      "end_xy": [
+        8.5,
+        8.5
+      ],
+      "marker_xy": [
+        5.5,
+        2.5
+      ],
+      "path_len": 11.82,
+      "duration_s": 12.8,
+      "n_frames": 384,
+      "cum_turn_deg": 90.0,
+      "net_turn_deg": 90.0,
+      "crow_over_path": 0.568,
+      "equal_leg_bearing_deg": 153.43,
+      "equal_leg_err_deg": 0.0,
+      "cardinal_err_deg": 26.57,
+      "behind_err_deg": 26.57,
+      "sensitivity_deg_per_unit": 8.54,
+      "const_baseline_deg": 23.2,
+      "const_baseline_answer": 198
+    },
+    {
+      "id": 8,
+      "seed": 610008,
+      "level": "U1_one_turn",
+      "turns": "R",
+      "legs": [
+        2,
+        2
+      ],
+      "n_turns": 1,
+      "ratio_band": [
+        1.0,
+        1.2
+      ],
+      "ratio": 1.0,
+      "total_steps": 4,
+      "pattern": "rand",
+      "bearing_gt_deg": 153.43,
+      "distance_to_x": 6.71,
+      "final_yaw_deg": 90.0,
+      "end_xy": [
+        8.5,
+        8.5
+      ],
+      "marker_xy": [
+        5.5,
+        2.5
+      ],
+      "path_len": 11.82,
+      "duration_s": 12.8,
+      "n_frames": 384,
+      "cum_turn_deg": 90.0,
+      "net_turn_deg": 90.0,
+      "crow_over_path": 0.568,
+      "equal_leg_bearing_deg": 153.43,
+      "equal_leg_err_deg": 0.0,
+      "cardinal_err_deg": 26.57,
+      "behind_err_deg": 26.57,
+      "sensitivity_deg_per_unit": 8.54,
+      "const_baseline_deg": 23.2,
+      "const_baseline_answer": 198
+    },
+    {
+      "id": 9,
+      "seed": 610009,
+      "level": "U1_one_turn",
+      "turns": "L",
+      "legs": [
+        2,
+        2
+      ],
+      "n_turns": 1,
+      "ratio_band": [
+        1.0,
+        1.2
+      ],
+      "ratio": 1.0,
+      "total_steps": 4,
+      "pattern": "alt",
+      "bearing_gt_deg": 206.57,
+      "distance_to_x": 6.71,
+      "final_yaw_deg": 270.0,
+      "end_xy": [
+        8.5,
+        2.5
+      ],
+      "marker_xy": [
+        5.5,
+        8.5
+      ],
+      "path_len": 11.82,
+      "duration_s": 12.8,
+      "n_frames": 384,
+      "cum_turn_deg": -90.0,
+      "net_turn_deg": -90.0,
+      "crow_over_path": 0.568,
+      "equal_leg_bearing_deg": 206.57,
+      "equal_leg_err_deg": 0.0,
+      "cardinal_err_deg": 26.57,
+      "behind_err_deg": 26.57,
+      "sensitivity_deg_per_unit": 8.54,
+      "const_baseline_deg": 23.2,
+      "const_baseline_answer": 198
+    },
+    {
+      "id": 10,
+      "seed": 610010,
+      "level": "U1_one_turn",
+      "turns": "R",
+      "legs": [
+        2,
+        2
+      ],
+      "n_turns": 1,
+      "ratio_band": [
+        1.0,
+        1.2
+      ],
+      "ratio": 1.0,
+      "total_steps": 4,
+      "pattern": "same",
+      "bearing_gt_deg": 153.43,
+      "distance_to_x": 6.71,
+      "final_yaw_deg": 90.0,
+      "end_xy": [
+        8.5,
+        8.5
+      ],
+      "marker_xy": [
+        5.5,
+        2.5
+      ],
+      "path_len": 11.82,
+      "duration_s": 12.8,
+      "n_frames": 384,
+      "cum_turn_deg": 90.0,
+      "net_turn_deg": 90.0,
+      "crow_over_path": 0.568,
+      "equal_leg_bearing_deg": 153.43,
+      "equal_leg_err_deg": 0.0,
+      "cardinal_err_deg": 26.57,
+      "behind_err_deg": 26.57,
+      "sensitivity_deg_per_unit": 8.54,
+      "const_baseline_deg": 23.2,
+      "const_baseline_answer": 198
+    },
+    {
+      "id": 11,
+      "seed": 610011,
+      "level": "U1_one_turn",
+      "turns": "L",
+      "legs": [
+        1,
+        1
+      ],
+      "n_turns": 1,
+      "ratio_band": [
+        1.0,
+        1.2
+      ],
+      "ratio": 1.0,
+      "total_steps": 2,
+      "pattern": "rand",
+      "bearing_gt_deg": 198.43,
+      "distance_to_x": 3.16,
+      "final_yaw_deg": 270.0,
+      "end_xy": [
+        5.5,
+        2.5
+      ],
+      "marker_xy": [
+        4.5,
+        5.5
+      ],
+      "path_len": 5.82,
+      "duration_s": 8.0,
+      "n_frames": 241,
+      "cum_turn_deg": -90.0,
+      "net_turn_deg": -90.0,
+      "crow_over_path": 0.544,
+      "equal_leg_bearing_deg": 198.43,
+      "equal_leg_err_deg": 0.0,
+      "cardinal_err_deg": 18.43,
+      "behind_err_deg": 18.43,
+      "sensitivity_deg_per_unit": 18.12,
+      "const_baseline_deg": 23.2,
+      "const_baseline_answer": 198
+    },
+    {
+      "id": 12,
+      "seed": 610012,
+      "level": "U1_one_turn",
+      "turns": "R",
+      "legs": [
+        2,
+        2
+      ],
+      "n_turns": 1,
+      "ratio_band": [
+        1.0,
+        1.2
+      ],
+      "ratio": 1.0,
+      "total_steps": 4,
+      "pattern": "alt",
+      "bearing_gt_deg": 153.43,
+      "distance_to_x": 6.71,
+      "final_yaw_deg": 90.0,
+      "end_xy": [
+        8.5,
+        8.5
+      ],
+      "marker_xy": [
+        5.5,
+        2.5
+      ],
+      "path_len": 11.82,
+      "duration_s": 12.8,
+      "n_frames": 384,
+      "cum_turn_deg": 90.0,
+      "net_turn_deg": 90.0,
+      "crow_over_path": 0.568,
+      "equal_leg_bearing_deg": 153.43,
+      "equal_leg_err_deg": 0.0,
+      "cardinal_err_deg": 26.57,
+      "behind_err_deg": 26.57,
+      "sensitivity_deg_per_unit": 8.54,
+      "const_baseline_deg": 23.2,
+      "const_baseline_answer": 198
+    },
+    {
+      "id": 13,
+      "seed": 610013,
+      "level": "U1_one_turn",
+      "turns": "L",
+      "legs": [
+        2,
+        2
+      ],
+      "n_turns": 1,
+      "ratio_band": [
+        1.0,
+        1.2
+      ],
+      "ratio": 1.0,
+      "total_steps": 4,
+      "pattern": "same",
+      "bearing_gt_deg": 206.57,
+      "distance_to_x": 6.71,
+      "final_yaw_deg": 270.0,
+      "end_xy": [
+        8.5,
+        2.5
+      ],
+      "marker_xy": [
+        5.5,
+        8.5
+      ],
+      "path_len": 11.82,
+      "duration_s": 12.8,
+      "n_frames": 384,
+      "cum_turn_deg": -90.0,
+      "net_turn_deg": -90.0,
+      "crow_over_path": 0.568,
+      "equal_leg_bearing_deg": 206.57,
+      "equal_leg_err_deg": 0.0,
+      "cardinal_err_deg": 26.57,
+      "behind_err_deg": 26.57,
+      "sensitivity_deg_per_unit": 8.54,
+      "const_baseline_deg": 23.2,
+      "const_baseline_answer": 198
+    },
+    {
+      "id": 14,
+      "seed": 610014,
+      "level": "U1_one_turn",
+      "turns": "L",
+      "legs": [
+        2,
+        2
+      ],
+      "n_turns": 1,
+      "ratio_band": [
+        1.0,
+        1.2
+      ],
+      "ratio": 1.0,
+      "total_steps": 4,
+      "pattern": "rand",
+      "bearing_gt_deg": 206.57,
+      "distance_to_x": 6.71,
+      "final_yaw_deg": 270.0,
+      "end_xy": [
+        8.5,
+        2.5
+      ],
+      "marker_xy": [
+        5.5,
+        8.5
+      ],
+      "path_len": 11.82,
+      "duration_s": 12.8,
+      "n_frames": 384,
+      "cum_turn_deg": -90.0,
+      "net_turn_deg": -90.0,
+      "crow_over_path": 0.568,
+      "equal_leg_bearing_deg": 206.57,
+      "equal_leg_err_deg": 0.0,
+      "cardinal_err_deg": 26.57,
+      "behind_err_deg": 26.57,
+      "sensitivity_deg_per_unit": 8.54,
+      "const_baseline_deg": 23.2,
+      "const_baseline_answer": 198
+    },
+    {
+      "id": 15,
+      "seed": 610015,
+      "level": "U2_two_turns",
+      "turns": "LR",
+      "legs": [
+        2,
+        2,
+        2
+      ],
+      "n_turns": 2,
+      "ratio_band": [
+        1.0,
+        1.2
+      ],
+      "ratio": 1.0,
+      "total_steps": 6,
+      "pattern": "alt",
+      "bearing_gt_deg": 146.31,
+      "distance_to_x": 10.82,
+      "final_yaw_deg": 0.0,
+      "end_xy": [
+        14.5,
+        2.5
+      ],
+      "marker_xy": [
+        5.5,
+        8.5
+      ],
+      "path_len": 17.63,
+      "duration_s": 17.4,
+      "n_frames": 523,
+      "cum_turn_deg": 0.0,
+      "net_turn_deg": 0.0,
+      "crow_over_path": 0.613,
+      "equal_leg_bearing_deg": 146.31,
+      "equal_leg_err_deg": 0.0,
+      "cardinal_err_deg": 33.69,
+      "behind_err_deg": 33.69,
+      "sensitivity_deg_per_unit": 5.3,
+      "const_baseline_deg": 47.22,
+      "const_baseline_answer": 214
+    },
+    {
+      "id": 16,
+      "seed": 610016,
+      "level": "U2_two_turns",
+      "turns": "RR",
+      "legs": [
+        2,
+        2,
+        2
+      ],
+      "n_turns": 2,
+      "ratio_band": [
+        1.0,
+        1.2
+      ],
+      "ratio": 1.0,
+      "total_steps": 6,
+      "pattern": "same",
+      "bearing_gt_deg": 116.57,
+      "distance_to_x": 6.71,
+      "final_yaw_deg": 180.0,
+      "end_xy": [
+        2.5,
+        8.5
+      ],
+      "marker_xy": [
+        5.5,
+        2.5
+      ],
+      "path_len": 17.63,
+      "duration_s": 17.4,
+      "n_frames": 523,
+      "cum_turn_deg": 180.0,
+      "net_turn_deg": -180.0,
+      "crow_over_path": 0.38,
+      "equal_leg_bearing_deg": 116.57,
+      "equal_leg_err_deg": 0.0,
+      "cardinal_err_deg": 26.57,
+      "behind_err_deg": 63.43,
+      "sensitivity_deg_per_unit": 8.54,
+      "const_baseline_deg": 47.22,
+      "const_baseline_answer": 214
+    },
+    {
+      "id": 17,
+      "seed": 610017,
+      "level": "U2_two_turns",
+      "turns": "RL",
+      "legs": [
+        2,
+        2,
+        2
+      ],
+      "n_turns": 2,
+      "ratio_band": [
+        1.0,
+        1.2
+      ],
+      "ratio": 1.0,
+      "total_steps": 6,
+      "pattern": "rand",
+      "bearing_gt_deg": 213.69,
+      "distance_to_x": 10.82,
+      "final_yaw_deg": 0.0,
+      "end_xy": [
+        14.5,
+        8.5
+      ],
+      "marker_xy": [
+        5.5,
+        2.5
+      ],
+      "path_len": 17.63,
+      "duration_s": 17.4,
+      "n_frames": 523,
+      "cum_turn_deg": 0.0,
+      "net_turn_deg": 0.0,
+      "crow_over_path": 0.613,
+      "equal_leg_bearing_deg": 213.69,
+      "equal_leg_err_deg": 0.0,
+      "cardinal_err_deg": 33.69,
+      "behind_err_deg": 33.69,
+      "sensitivity_deg_per_unit": 5.3,
+      "const_baseline_deg": 47.22,
+      "const_baseline_answer": 214
+    },
+    {
+      "id": 18,
+      "seed": 610018,
+      "level": "U2_two_turns",
+      "turns": "RL",
+      "legs": [
+        1,
+        1,
+        1
+      ],
+      "n_turns": 2,
+      "ratio_band": [
+        1.0,
+        1.2
+      ],
+      "ratio": 1.0,
+      "total_steps": 3,
+      "pattern": "alt",
+      "bearing_gt_deg": 216.87,
+      "distance_to_x": 5.0,
+      "final_yaw_deg": 0.0,
+      "end_xy": [
+        8.5,
+        5.5
+      ],
+      "marker_xy": [
+        4.5,
+        2.5
+      ],
+      "path_len": 8.63,
+      "duration_s": 10.3,
+      "n_frames": 308,
+      "cum_turn_deg": 0.0,
+      "net_turn_deg": 0.0,
+      "crow_over_path": 0.579,
+      "equal_leg_bearing_deg": 216.87,
+      "equal_leg_err_deg": 0.0,
+      "cardinal_err_deg": 36.87,
+      "behind_err_deg": 36.87,
+      "sensitivity_deg_per_unit": 11.46,
+      "const_baseline_deg": 47.22,
+      "const_baseline_answer": 214
+    },
+    {
+      "id": 19,
+      "seed": 610019,
+      "level": "U2_two_turns",
+      "turns": "LL",
+      "legs": [
+        2,
+        2,
+        2
+      ],
+      "n_turns": 2,
+      "ratio_band": [
+        1.0,
+        1.2
+      ],
+      "ratio": 1.0,
+      "total_steps": 6,
+      "pattern": "same",
+      "bearing_gt_deg": 243.43,
+      "distance_to_x": 6.71,
+      "final_yaw_deg": 180.0,
+      "end_xy": [
+        2.5,
+        2.5
+      ],
+      "marker_xy": [
+        5.5,
+        8.5
+      ],
+      "path_len": 17.63,
+      "duration_s": 17.4,
+      "n_frames": 523,
+      "cum_turn_deg": -180.0,
+      "net_turn_deg": -180.0,
+      "crow_over_path": 0.38,
+      "equal_leg_bearing_deg": 243.43,
+      "equal_leg_err_deg": 0.0,
+      "cardinal_err_deg": 26.57,
+      "behind_err_deg": 63.43,
+      "sensitivity_deg_per_unit": 8.54,
+      "const_baseline_deg": 47.22,
+      "const_baseline_answer": 214
+    },
+    {
+      "id": 20,
+      "seed": 610020,
+      "level": "U2_two_turns",
+      "turns": "LR",
+      "legs": [
+        1,
+        1,
+        1
+      ],
+      "n_turns": 2,
+      "ratio_band": [
+        1.0,
+        1.2
+      ],
+      "ratio": 1.0,
+      "total_steps": 3,
+      "pattern": "rand",
+      "bearing_gt_deg": 143.13,
+      "distance_to_x": 5.0,
+      "final_yaw_deg": 0.0,
+      "end_xy": [
+        8.5,
+        2.5
+      ],
+      "marker_xy": [
+        4.5,
+        5.5
+      ],
+      "path_len": 8.63,
+      "duration_s": 10.3,
+      "n_frames": 308,
+      "cum_turn_deg": 0.0,
+      "net_turn_deg": 0.0,
+      "crow_over_path": 0.579,
+      "equal_leg_bearing_deg": 143.13,
+      "equal_leg_err_deg": 0.0,
+      "cardinal_err_deg": 36.87,
+      "behind_err_deg": 36.87,
+      "sensitivity_deg_per_unit": 11.46,
+      "const_baseline_deg": 47.22,
+      "const_baseline_answer": 214
+    },
+    {
+      "id": 21,
+      "seed": 610021,
+      "level": "U2_two_turns",
+      "turns": "LR",
+      "legs": [
+        2,
+        2,
+        2
+      ],
+      "n_turns": 2,
+      "ratio_band": [
+        1.0,
+        1.2
+      ],
+      "ratio": 1.0,
+      "total_steps": 6,
+      "pattern": "alt",
+      "bearing_gt_deg": 146.31,
+      "distance_to_x": 10.82,
+      "final_yaw_deg": 0.0,
+      "end_xy": [
+        14.5,
+        2.5
+      ],
+      "marker_xy": [
+        5.5,
+        8.5
+      ],
+      "path_len": 17.63,
+      "duration_s": 17.4,
+      "n_frames": 523,
+      "cum_turn_deg": 0.0,
+      "net_turn_deg": 0.0,
+      "crow_over_path": 0.613,
+      "equal_leg_bearing_deg": 146.31,
+      "equal_leg_err_deg": 0.0,
+      "cardinal_err_deg": 33.69,
+      "behind_err_deg": 33.69,
+      "sensitivity_deg_per_unit": 5.3,
+      "const_baseline_deg": 47.22,
+      "const_baseline_answer": 214
+    },
+    {
+      "id": 22,
+      "seed": 610022,
+      "level": "U2_two_turns",
+      "turns": "LL",
+      "legs": [
+        1,
+        1,
+        1
+      ],
+      "n_turns": 2,
+      "ratio_band": [
+        1.0,
+        1.2
+      ],
+      "ratio": 1.0,
+      "total_steps": 3,
+      "pattern": "same",
+      "bearing_gt_deg": 236.31,
+      "distance_to_x": 3.61,
+      "final_yaw_deg": 180.0,
+      "end_xy": [
+        2.5,
+        2.5
+      ],
+      "marker_xy": [
+        4.5,
+        5.5
+      ],
+      "path_len": 8.63,
+      "duration_s": 10.3,
+      "n_frames": 308,
+      "cum_turn_deg": -180.0,
+      "net_turn_deg": -180.0,
+      "crow_over_path": 0.418,
+      "equal_leg_bearing_deg": 236.31,
+      "equal_leg_err_deg": 0.0,
+      "cardinal_err_deg": 33.69,
+      "behind_err_deg": 56.31,
+      "sensitivity_deg_per_unit": 15.89,
+      "const_baseline_deg": 47.22,
+      "const_baseline_answer": 214
+    },
+    {
+      "id": 23,
+      "seed": 610023,
+      "level": "U2_two_turns",
+      "turns": "RR",
+      "legs": [
+        1,
+        1,
+        1
+      ],
+      "n_turns": 2,
+      "ratio_band": [
+        1.0,
+        1.2
+      ],
+      "ratio": 1.0,
+      "total_steps": 3,
+      "pattern": "rand",
+      "bearing_gt_deg": 123.69,
+      "distance_to_x": 3.61,
+      "final_yaw_deg": 180.0,
+      "end_xy": [
+        2.5,
+        5.5
+      ],
+      "marker_xy": [
+        4.5,
+        2.5
+      ],
+      "path_len": 8.63,
+      "duration_s": 10.3,
+      "n_frames": 308,
+      "cum_turn_deg": 180.0,
+      "net_turn_deg": -180.0,
+      "crow_over_path": 0.418,
+      "equal_leg_bearing_deg": 123.69,
+      "equal_leg_err_deg": 0.0,
+      "cardinal_err_deg": 33.69,
+      "behind_err_deg": 56.31,
+      "sensitivity_deg_per_unit": 15.89,
+      "const_baseline_deg": 47.22,
+      "const_baseline_answer": 214
+    },
+    {
+      "id": 24,
+      "seed": 610024,
+      "level": "U2_two_turns",
+      "turns": "RL",
+      "legs": [
+        1,
+        1,
+        1
+      ],
+      "n_turns": 2,
+      "ratio_band": [
+        1.0,
+        1.2
+      ],
+      "ratio": 1.0,
+      "total_steps": 3,
+      "pattern": "alt",
+      "bearing_gt_deg": 216.87,
+      "distance_to_x": 5.0,
+      "final_yaw_deg": 0.0,
+      "end_xy": [
+        8.5,
+        5.5
+      ],
+      "marker_xy": [
+        4.5,
+        2.5
+      ],
+      "path_len": 8.63,
+      "duration_s": 10.3,
+      "n_frames": 308,
+      "cum_turn_deg": 0.0,
+      "net_turn_deg": 0.0,
+      "crow_over_path": 0.579,
+      "equal_leg_bearing_deg": 216.87,
+      "equal_leg_err_deg": 0.0,
+      "cardinal_err_deg": 36.87,
+      "behind_err_deg": 36.87,
+      "sensitivity_deg_per_unit": 11.46,
+      "const_baseline_deg": 47.22,
+      "const_baseline_answer": 214
+    },
+    {
+      "id": 25,
+      "seed": 610025,
+      "level": "U2_two_turns",
+      "turns": "LL",
+      "legs": [
+        2,
+        2,
+        2
+      ],
+      "n_turns": 2,
+      "ratio_band": [
+        1.0,
+        1.2
+      ],
+      "ratio": 1.0,
+      "total_steps": 6,
+      "pattern": "same",
+      "bearing_gt_deg": 243.43,
+      "distance_to_x": 6.71,
+      "final_yaw_deg": 180.0,
+      "end_xy": [
+        2.5,
+        2.5
+      ],
+      "marker_xy": [
+        5.5,
+        8.5
+      ],
+      "path_len": 17.63,
+      "duration_s": 17.4,
+      "n_frames": 523,
+      "cum_turn_deg": -180.0,
+      "net_turn_deg": -180.0,
+      "crow_over_path": 0.38,
+      "equal_leg_bearing_deg": 243.43,
+      "equal_leg_err_deg": 0.0,
+      "cardinal_err_deg": 26.57,
+      "behind_err_deg": 63.43,
+      "sensitivity_deg_per_unit": 8.54,
+      "const_baseline_deg": 47.22,
+      "const_baseline_answer": 214
+    },
+    {
+      "id": 26,
+      "seed": 610026,
+      "level": "U2_two_turns",
+      "turns": "RR",
+      "legs": [
+        2,
+        2,
+        2
+      ],
+      "n_turns": 2,
+      "ratio_band": [
+        1.0,
+        1.2
+      ],
+      "ratio": 1.0,
+      "total_steps": 6,
+      "pattern": "rand",
+      "bearing_gt_deg": 116.57,
+      "distance_to_x": 6.71,
+      "final_yaw_deg": 180.0,
+      "end_xy": [
+        2.5,
+        8.5
+      ],
+      "marker_xy": [
+        5.5,
+        2.5
+      ],
+      "path_len": 17.63,
+      "duration_s": 17.4,
+      "n_frames": 523,
+      "cum_turn_deg": 180.0,
+      "net_turn_deg": -180.0,
+      "crow_over_path": 0.38,
+      "equal_leg_bearing_deg": 116.57,
+      "equal_leg_err_deg": 0.0,
+      "cardinal_err_deg": 26.57,
+      "behind_err_deg": 63.43,
+      "sensitivity_deg_per_unit": 8.54,
+      "const_baseline_deg": 47.22,
+      "const_baseline_answer": 214
+    },
+    {
+      "id": 27,
+      "seed": 610027,
+      "level": "U2_two_turns",
+      "turns": "RL",
+      "legs": [
+        1,
+        1,
+        1
+      ],
+      "n_turns": 2,
+      "ratio_band": [
+        1.0,
+        1.2
+      ],
+      "ratio": 1.0,
+      "total_steps": 3,
+      "pattern": "alt",
+      "bearing_gt_deg": 216.87,
+      "distance_to_x": 5.0,
+      "final_yaw_deg": 0.0,
+      "end_xy": [
+        8.5,
+        5.5
+      ],
+      "marker_xy": [
+        4.5,
+        2.5
+      ],
+      "path_len": 8.63,
+      "duration_s": 10.3,
+      "n_frames": 308,
+      "cum_turn_deg": 0.0,
+      "net_turn_deg": 0.0,
+      "crow_over_path": 0.579,
+      "equal_leg_bearing_deg": 216.87,
+      "equal_leg_err_deg": 0.0,
+      "cardinal_err_deg": 36.87,
+      "behind_err_deg": 36.87,
+      "sensitivity_deg_per_unit": 11.46,
+      "const_baseline_deg": 47.22,
+      "const_baseline_answer": 214
+    },
+    {
+      "id": 28,
+      "seed": 610028,
+      "level": "U2_two_turns",
+      "turns": "RR",
+      "legs": [
+        2,
+        2,
+        2
+      ],
+      "n_turns": 2,
+      "ratio_band": [
+        1.0,
+        1.2
+      ],
+      "ratio": 1.0,
+      "total_steps": 6,
+      "pattern": "same",
+      "bearing_gt_deg": 116.57,
+      "distance_to_x": 6.71,
+      "final_yaw_deg": 180.0,
+      "end_xy": [
+        2.5,
+        8.5
+      ],
+      "marker_xy": [
+        5.5,
+        2.5
+      ],
+      "path_len": 17.63,
+      "duration_s": 17.4,
+      "n_frames": 523,
+      "cum_turn_deg": 180.0,
+      "net_turn_deg": -180.0,
+      "crow_over_path": 0.38,
+      "equal_leg_bearing_deg": 116.57,
+      "equal_leg_err_deg": 0.0,
+      "cardinal_err_deg": 26.57,
+      "behind_err_deg": 63.43,
+      "sensitivity_deg_per_unit": 8.54,
+      "const_baseline_deg": 47.22,
+      "const_baseline_answer": 214
+    },
+    {
+      "id": 29,
+      "seed": 610029,
+      "level": "U2_two_turns",
+      "turns": "LL",
+      "legs": [
+        2,
+        2,
+        2
+      ],
+      "n_turns": 2,
+      "ratio_band": [
+        1.0,
+        1.2
+      ],
+      "ratio": 1.0,
+      "total_steps": 6,
+      "pattern": "rand",
+      "bearing_gt_deg": 243.43,
+      "distance_to_x": 6.71,
+      "final_yaw_deg": 180.0,
+      "end_xy": [
+        2.5,
+        2.5
+      ],
+      "marker_xy": [
+        5.5,
+        8.5
+      ],
+      "path_len": 17.63,
+      "duration_s": 17.4,
+      "n_frames": 523,
+      "cum_turn_deg": -180.0,
+      "net_turn_deg": -180.0,
+      "crow_over_path": 0.38,
+      "equal_leg_bearing_deg": 243.43,
+      "equal_leg_err_deg": 0.0,
+      "cardinal_err_deg": 26.57,
+      "behind_err_deg": 63.43,
+      "sensitivity_deg_per_unit": 8.54,
+      "const_baseline_deg": 47.22,
+      "const_baseline_answer": 214
+    },
+    {
+      "id": 30,
+      "seed": 610030,
+      "level": "U3_three_turns",
+      "turns": "RLR",
+      "legs": [
+        2,
+        2,
+        2,
+        2
+      ],
+      "n_turns": 3,
+      "ratio_band": [
+        1.0,
+        1.2
+      ],
+      "ratio": 1.0,
+      "total_steps": 8,
+      "pattern": "alt",
+      "bearing_gt_deg": 143.13,
+      "distance_to_x": 15.0,
+      "final_yaw_deg": 90.0,
+      "end_xy": [
+        14.5,
+        14.5
+      ],
+      "marker_xy": [
+        5.5,
+        2.5
+      ],
+      "path_len": 23.45,
+      "duration_s": 22.0,
+      "n_frames": 661,
+      "cum_turn_deg": 90.0,
+      "net_turn_deg": 90.0,
+      "crow_over_path": 0.64,
+      "equal_leg_bearing_deg": 143.13,
+      "equal_leg_err_deg": 0.0,
+      "cardinal_err_deg": 36.87,
+      "behind_err_deg": 36.87,
+      "sensitivity_deg_per_unit": 3.82,
+      "const_baseline_deg": 49.12,
+      "const_baseline_answer": 198
+    },
+    {
+      "id": 31,
+      "seed": 610031,
+      "level": "U3_three_turns",
+      "turns": "RLL",
+      "legs": [
+        2,
+        2,
+        2,
+        2
+      ],
+      "n_turns": 3,
+      "ratio_band": [
+        1.0,
+        1.2
+      ],
+      "ratio": 1.0,
+      "total_steps": 8,
+      "pattern": "same",
+      "bearing_gt_deg": 270.0,
+      "distance_to_x": 9.0,
+      "final_yaw_deg": 270.0,
+      "end_xy": [
+        14.5,
+        2.5
+      ],
+      "marker_xy": [
+        5.5,
+        2.5
+      ],
+      "path_len": 23.45,
+      "duration_s": 22.0,
+      "n_frames": 661,
+      "cum_turn_deg": -90.0,
+      "net_turn_deg": -90.0,
+      "crow_over_path": 0.384,
+      "equal_leg_bearing_deg": 270.0,
+      "equal_leg_err_deg": 0.0,
+      "cardinal_err_deg": 0.0,
+      "behind_err_deg": 90.0,
+      "sensitivity_deg_per_unit": 6.37,
+      "const_baseline_deg": 49.12,
+      "const_baseline_answer": 198
+    },
+    {
+      "id": 32,
+      "seed": 610032,
+      "level": "U3_three_turns",
+      "turns": "RRL",
+      "legs": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "n_turns": 3,
+      "ratio_band": [
+        1.0,
+        1.2
+      ],
+      "ratio": 1.0,
+      "total_steps": 4,
+      "pattern": "rand",
+      "bearing_gt_deg": 198.43,
+      "distance_to_x": 6.32,
+      "final_yaw_deg": 90.0,
+      "end_xy": [
+        2.5,
+        8.5
+      ],
+      "marker_xy": [
+        4.5,
+        2.5
+      ],
+      "path_len": 11.45,
+      "duration_s": 12.5,
+      "n_frames": 375,
+      "cum_turn_deg": 90.0,
+      "net_turn_deg": 90.0,
+      "crow_over_path": 0.552,
+      "equal_leg_bearing_deg": 198.43,
+      "equal_leg_err_deg": 0.0,
+      "cardinal_err_deg": 18.43,
+      "behind_err_deg": 18.43,
+      "sensitivity_deg_per_unit": 9.06,
+      "const_baseline_deg": 49.12,
+      "const_baseline_answer": 198
+    },
+    {
+      "id": 33,
+      "seed": 610033,
+      "level": "U3_three_turns",
+      "turns": "LRL",
+      "legs": [
+        2,
+        2,
+        2,
+        2
+      ],
+      "n_turns": 3,
+      "ratio_band": [
+        1.0,
+        1.2
+      ],
+      "ratio": 1.0,
+      "total_steps": 8,
+      "pattern": "alt",
+      "bearing_gt_deg": 216.87,
+      "distance_to_x": 15.0,
+      "final_yaw_deg": 270.0,
+      "end_xy": [
+        14.5,
+        2.5
+      ],
+      "marker_xy": [
+        5.5,
+        14.5
+      ],
+      "path_len": 23.45,
+      "duration_s": 22.0,
+      "n_frames": 661,
+      "cum_turn_deg": -90.0,
+      "net_turn_deg": -90.0,
+      "crow_over_path": 0.64,
+      "equal_leg_bearing_deg": 216.87,
+      "equal_leg_err_deg": 0.0,
+      "cardinal_err_deg": 36.87,
+      "behind_err_deg": 36.87,
+      "sensitivity_deg_per_unit": 3.82,
+      "const_baseline_deg": 49.12,
+      "const_baseline_answer": 198
+    },
+    {
+      "id": 34,
+      "seed": 610034,
+      "level": "U3_three_turns",
+      "turns": "RLL",
+      "legs": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "n_turns": 3,
+      "ratio_band": [
+        1.0,
+        1.2
+      ],
+      "ratio": 1.0,
+      "total_steps": 4,
+      "pattern": "same",
+      "bearing_gt_deg": 270.0,
+      "distance_to_x": 4.0,
+      "final_yaw_deg": 270.0,
+      "end_xy": [
+        8.5,
+        2.5
+      ],
+      "marker_xy": [
+        4.5,
+        2.5
+      ],
+      "path_len": 11.45,
+      "duration_s": 12.5,
+      "n_frames": 375,
+      "cum_turn_deg": -90.0,
+      "net_turn_deg": -90.0,
+      "crow_over_path": 0.349,
+      "equal_leg_bearing_deg": 270.0,
+      "equal_leg_err_deg": 0.0,
+      "cardinal_err_deg": 0.0,
+      "behind_err_deg": 90.0,
+      "sensitivity_deg_per_unit": 14.32,
+      "const_baseline_deg": 49.12,
+      "const_baseline_answer": 198
+    },
+    {
+      "id": 35,
+      "seed": 610035,
+      "level": "U3_three_turns",
+      "turns": "LLR",
+      "legs": [
+        2,
+        2,
+        2,
+        2
+      ],
+      "n_turns": 3,
+      "ratio_band": [
+        1.0,
+        1.2
+      ],
+      "ratio": 1.0,
+      "total_steps": 8,
+      "pattern": "rand",
+      "bearing_gt_deg": 165.96,
+      "distance_to_x": 12.37,
+      "final_yaw_deg": 270.0,
+      "end_xy": [
+        2.5,
+        2.5
+      ],
+      "marker_xy": [
+        5.5,
+        14.5
+      ],
+      "path_len": 23.45,
+      "duration_s": 22.0,
+      "n_frames": 661,
+      "cum_turn_deg": -90.0,
+      "net_turn_deg": -90.0,
+      "crow_over_path": 0.527,
+      "equal_leg_bearing_deg": 165.96,
+      "equal_leg_err_deg": 0.0,
+      "cardinal_err_deg": 14.04,
+      "behind_err_deg": 14.04,
+      "sensitivity_deg_per_unit": 4.63,
+      "const_baseline_deg": 49.12,
+      "const_baseline_answer": 198
+    },
+    {
+      "id": 36,
+      "seed": 610036,
+      "level": "U3_three_turns",
+      "turns": "RLR",
+      "legs": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "n_turns": 3,
+      "ratio_band": [
+        1.0,
+        1.2
+      ],
+      "ratio": 1.0,
+      "total_steps": 4,
+      "pattern": "alt",
+      "bearing_gt_deg": 146.31,
+      "distance_to_x": 7.21,
+      "final_yaw_deg": 90.0,
+      "end_xy": [
+        8.5,
+        8.5
+      ],
+      "marker_xy": [
+        4.5,
+        2.5
+      ],
+      "path_len": 11.45,
+      "duration_s": 12.5,
+      "n_frames": 375,
+      "cum_turn_deg": 90.0,
+      "net_turn_deg": 90.0,
+      "crow_over_path": 0.63,
+      "equal_leg_bearing_deg": 146.31,
+      "equal_leg_err_deg": 0.0,
+      "cardinal_err_deg": 33.69,
+      "behind_err_deg": 33.69,
+      "sensitivity_deg_per_unit": 7.95,
+      "const_baseline_deg": 49.12,
+      "const_baseline_answer": 198
+    },
+    {
+      "id": 37,
+      "seed": 610037,
+      "level": "U3_three_turns",
+      "turns": "LRR",
+      "legs": [
+        2,
+        2,
+        2,
+        2
+      ],
+      "n_turns": 3,
+      "ratio_band": [
+        1.0,
+        1.2
+      ],
+      "ratio": 1.0,
+      "total_steps": 8,
+      "pattern": "same",
+      "bearing_gt_deg": 90.0,
+      "distance_to_x": 9.0,
+      "final_yaw_deg": 90.0,
+      "end_xy": [
+        14.5,
+        8.5
+      ],
+      "marker_xy": [
+        5.5,
+        8.5
+      ],
+      "path_len": 23.45,
+      "duration_s": 22.0,
+      "n_frames": 661,
+      "cum_turn_deg": 90.0,
+      "net_turn_deg": 90.0,
+      "crow_over_path": 0.384,
+      "equal_leg_bearing_deg": 90.0,
+      "equal_leg_err_deg": 0.0,
+      "cardinal_err_deg": 0.0,
+      "behind_err_deg": 90.0,
+      "sensitivity_deg_per_unit": 6.37,
+      "const_baseline_deg": 49.12,
+      "const_baseline_answer": 198
+    },
+    {
+      "id": 38,
+      "seed": 610038,
+      "level": "U3_three_turns",
+      "turns": "RRL",
+      "legs": [
+        2,
+        2,
+        2,
+        2
+      ],
+      "n_turns": 3,
+      "ratio_band": [
+        1.0,
+        1.2
+      ],
+      "ratio": 1.0,
+      "total_steps": 8,
+      "pattern": "rand",
+      "bearing_gt_deg": 194.04,
+      "distance_to_x": 12.37,
+      "final_yaw_deg": 90.0,
+      "end_xy": [
+        2.5,
+        14.5
+      ],
+      "marker_xy": [
+        5.5,
+        2.5
+      ],
+      "path_len": 23.45,
+      "duration_s": 22.0,
+      "n_frames": 661,
+      "cum_turn_deg": 90.0,
+      "net_turn_deg": 90.0,
+      "crow_over_path": 0.527,
+      "equal_leg_bearing_deg": 194.04,
+      "equal_leg_err_deg": 0.0,
+      "cardinal_err_deg": 14.04,
+      "behind_err_deg": 14.04,
+      "sensitivity_deg_per_unit": 4.63,
+      "const_baseline_deg": 49.12,
+      "const_baseline_answer": 198
+    },
+    {
+      "id": 39,
+      "seed": 610039,
+      "level": "U3_three_turns",
+      "turns": "LRL",
+      "legs": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "n_turns": 3,
+      "ratio_band": [
+        1.0,
+        1.2
+      ],
+      "ratio": 1.0,
+      "total_steps": 4,
+      "pattern": "alt",
+      "bearing_gt_deg": 213.69,
+      "distance_to_x": 7.21,
+      "final_yaw_deg": 270.0,
+      "end_xy": [
+        8.5,
+        2.5
+      ],
+      "marker_xy": [
+        4.5,
+        8.5
+      ],
+      "path_len": 11.45,
+      "duration_s": 12.5,
+      "n_frames": 375,
+      "cum_turn_deg": -90.0,
+      "net_turn_deg": -90.0,
+      "crow_over_path": 0.63,
+      "equal_leg_bearing_deg": 213.69,
+      "equal_leg_err_deg": 0.0,
+      "cardinal_err_deg": 33.69,
+      "behind_err_deg": 33.69,
+      "sensitivity_deg_per_unit": 7.95,
+      "const_baseline_deg": 49.12,
+      "const_baseline_answer": 198
+    },
+    {
+      "id": 40,
+      "seed": 610040,
+      "level": "U3_three_turns",
+      "turns": "LLR",
+      "legs": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "n_turns": 3,
+      "ratio_band": [
+        1.0,
+        1.2
+      ],
+      "ratio": 1.0,
+      "total_steps": 4,
+      "pattern": "same",
+      "bearing_gt_deg": 161.57,
+      "distance_to_x": 6.32,
+      "final_yaw_deg": 270.0,
+      "end_xy": [
+        2.5,
+        2.5
+      ],
+      "marker_xy": [
+        4.5,
+        8.5
+      ],
+      "path_len": 11.45,
+      "duration_s": 12.5,
+      "n_frames": 375,
+      "cum_turn_deg": -90.0,
+      "net_turn_deg": -90.0,
+      "crow_over_path": 0.552,
+      "equal_leg_bearing_deg": 161.57,
+      "equal_leg_err_deg": 0.0,
+      "cardinal_err_deg": 18.43,
+      "behind_err_deg": 18.43,
+      "sensitivity_deg_per_unit": 9.06,
+      "const_baseline_deg": 49.12,
+      "const_baseline_answer": 198
+    },
+    {
+      "id": 41,
+      "seed": 610041,
+      "level": "U3_three_turns",
+      "turns": "LRR",
+      "legs": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "n_turns": 3,
+      "ratio_band": [
+        1.0,
+        1.2
+      ],
+      "ratio": 1.0,
+      "total_steps": 4,
+      "pattern": "rand",
+      "bearing_gt_deg": 90.0,
+      "distance_to_x": 4.0,
+      "final_yaw_deg": 90.0,
+      "end_xy": [
+        8.5,
+        5.5
+      ],
+      "marker_xy": [
+        4.5,
+        5.5
+      ],
+      "path_len": 11.45,
+      "duration_s": 12.5,
+      "n_frames": 375,
+      "cum_turn_deg": 90.0,
+      "net_turn_deg": 90.0,
+      "crow_over_path": 0.349,
+      "equal_leg_bearing_deg": 90.0,
+      "equal_leg_err_deg": 0.0,
+      "cardinal_err_deg": 0.0,
+      "behind_err_deg": 90.0,
+      "sensitivity_deg_per_unit": 14.32,
+      "const_baseline_deg": 49.12,
+      "const_baseline_answer": 198
+    },
+    {
+      "id": 42,
+      "seed": 610042,
+      "level": "U3_three_turns",
+      "turns": "LRL",
+      "legs": [
+        2,
+        2,
+        2,
+        2
+      ],
+      "n_turns": 3,
+      "ratio_band": [
+        1.0,
+        1.2
+      ],
+      "ratio": 1.0,
+      "total_steps": 8,
+      "pattern": "alt",
+      "bearing_gt_deg": 216.87,
+      "distance_to_x": 15.0,
+      "final_yaw_deg": 270.0,
+      "end_xy": [
+        14.5,
+        2.5
+      ],
+      "marker_xy": [
+        5.5,
+        14.5
+      ],
+      "path_len": 23.45,
+      "duration_s": 22.0,
+      "n_frames": 661,
+      "cum_turn_deg": -90.0,
+      "net_turn_deg": -90.0,
+      "crow_over_path": 0.64,
+      "equal_leg_bearing_deg": 216.87,
+      "equal_leg_err_deg": 0.0,
+      "cardinal_err_deg": 36.87,
+      "behind_err_deg": 36.87,
+      "sensitivity_deg_per_unit": 3.82,
+      "const_baseline_deg": 49.12,
+      "const_baseline_answer": 198
+    },
+    {
+      "id": 43,
+      "seed": 610043,
+      "level": "U3_three_turns",
+      "turns": "RLL",
+      "legs": [
+        2,
+        2,
+        2,
+        2
+      ],
+      "n_turns": 3,
+      "ratio_band": [
+        1.0,
+        1.2
+      ],
+      "ratio": 1.0,
+      "total_steps": 8,
+      "pattern": "same",
+      "bearing_gt_deg": 270.0,
+      "distance_to_x": 9.0,
+      "final_yaw_deg": 270.0,
+      "end_xy": [
+        14.5,
+        2.5
+      ],
+      "marker_xy": [
+        5.5,
+        2.5
+      ],
+      "path_len": 23.45,
+      "duration_s": 22.0,
+      "n_frames": 661,
+      "cum_turn_deg": -90.0,
+      "net_turn_deg": -90.0,
+      "crow_over_path": 0.384,
+      "equal_leg_bearing_deg": 270.0,
+      "equal_leg_err_deg": 0.0,
+      "cardinal_err_deg": 0.0,
+      "behind_err_deg": 90.0,
+      "sensitivity_deg_per_unit": 6.37,
+      "const_baseline_deg": 49.12,
+      "const_baseline_answer": 198
+    },
+    {
+      "id": 44,
+      "seed": 610044,
+      "level": "U3_three_turns",
+      "turns": "RLL",
+      "legs": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "n_turns": 3,
+      "ratio_band": [
+        1.0,
+        1.2
+      ],
+      "ratio": 1.0,
+      "total_steps": 4,
+      "pattern": "rand",
+      "bearing_gt_deg": 270.0,
+      "distance_to_x": 4.0,
+      "final_yaw_deg": 270.0,
+      "end_xy": [
+        8.5,
+        2.5
+      ],
+      "marker_xy": [
+        4.5,
+        2.5
+      ],
+      "path_len": 11.45,
+      "duration_s": 12.5,
+      "n_frames": 375,
+      "cum_turn_deg": -90.0,
+      "net_turn_deg": -90.0,
+      "crow_over_path": 0.349,
+      "equal_leg_bearing_deg": 270.0,
+      "equal_leg_err_deg": 0.0,
+      "cardinal_err_deg": 0.0,
+      "behind_err_deg": 90.0,
+      "sensitivity_deg_per_unit": 14.32,
+      "const_baseline_deg": 49.12,
+      "const_baseline_answer": 198
+    }
+  ]
+}

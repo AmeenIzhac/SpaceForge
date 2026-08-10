@@ -9,6 +9,8 @@ interface as the numpy raycaster, so the generator can use either.
 World ground plane (x, y) maps to GL (x, z); height is GL +Y.
 """
 
+import os
+
 import numpy as np
 
 try:
@@ -191,6 +193,19 @@ def _look_at(eye, center, up=(0.0, 1.0, 0.0)):
     return m
 
 
+def _standalone_context():
+    """A headless GL context. On a desktop the default (X11/GLX) backend works;
+    on a headless box with NVIDIA cards there is no display, so fall back to
+    EGL, which talks to the driver directly. MODERNGL_BACKEND forces a choice."""
+    forced = os.environ.get("MODERNGL_BACKEND")
+    if forced:
+        return moderngl.create_context(standalone=True, backend=forced)
+    try:
+        return moderngl.create_context(standalone=True)
+    except Exception:
+        return moderngl.create_context(standalone=True, backend="egl")
+
+
 class GLRenderer:
     def __init__(self, wmap, wall_atlas, floor_tex, ceil_tex, floor_spec, mood,
                  prop_mesh, shadows, prop_lights,
@@ -207,7 +222,7 @@ class GLRenderer:
         fovy = 2 * np.arctan(np.tan(np.radians(fov_deg) / 2) * height / width)
         self.proj = _perspective(fovy, width / height, 0.03, 80.0)
 
-        ctx = self.ctx = moderngl.create_context(standalone=True)
+        ctx = self.ctx = _standalone_context()
         ctx.enable(moderngl.DEPTH_TEST)
         ctx.blend_func = (moderngl.SRC_ALPHA, moderngl.ONE_MINUS_SRC_ALPHA)
 

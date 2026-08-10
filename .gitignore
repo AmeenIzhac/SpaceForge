@@ -2,3 +2,9 @@
 out/
 __pycache__/
 *.mp4
+out
+runs/
+ckpt/
+data/
+*.log
+.DS_Store
