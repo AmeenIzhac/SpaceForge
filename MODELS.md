@@ -131,7 +131,11 @@ colours freely, so colour alone is not enough to identify it.
 62% of answers within 5°, 90% within 15°. Mirror test 8.1° ≈ unmirrored 7.3°.
 
 **Corridor transfer** (never trained on corridors; target there is a painted
-red X, not an object): **45.0°** vs base 132.2° on the same 40 walks.
+red X, not an object): **none.** Scored 45.0° but the set's best constant is
+43.5° and the model answered 186–190° on all 40 probes — it fell back to a
+"behind me" constant. Beating the base (132.2°) means nothing here because the
+base is worse than useless on corridors; the constant is the only bar, and it
+was not cleared.
 
 <details><summary>reproduce</summary>
 
