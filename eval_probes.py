@@ -146,6 +146,10 @@ def build_worker(args, gpu):
     from transformers import AutoProcessor, Qwen3_5ForConditionalGeneration
 
     processor = AutoProcessor.from_pretrained(args.model)
+    if args.no_timestamps:
+        import notimestamps
+        notimestamps.install()
+        processor._no_timestamps = True
     load_kw = dict(dtype=torch.bfloat16, device_map="cuda:0",
                    attn_implementation=args.attn)
     if args.load_4bit:
@@ -168,12 +172,23 @@ def build_worker(args, gpu):
     video_dir = ROOT / args.videos
     gen_kwargs = dict(max_new_tokens=args.max_new_tokens, do_sample=True,
                       temperature=1.0, top_p=0.95, top_k=20)
+    if args.greedy:
+        # bare-answer evals: temperature-1.0 sampling puts noise directly on
+        # the answer digits (a trace pins them), so checkpoint-to-checkpoint
+        # comparisons need deterministic decoding
+        gen_kwargs = dict(max_new_tokens=args.max_new_tokens, do_sample=False)
 
     def run(plan):
-        vid = video_dir / f"{plan['id']:03d}.mp4"
+        vid = video_dir / plan.get("video", f"{plan['id']:03d}.mp4")
         frames, meta, duration = load_frames(
             vid, args.fps, args.max_frames, (args.width, args.height))
 
+        if args.hflip:
+            # mirror test: flip every frame left-right. A model reading the
+            # pixels must now answer the mirrored bearing (360-gt); one that
+            # answers the unmirrored value is using route priors, not vision.
+            import numpy as np
+            frames = np.ascontiguousarray(frames[:, :, ::-1])
         question = (plan["_question"]
                     + (SCAFFOLD if args.scaffold else "")
                     + (ANSWER_FORMAT if args.format_hint else ""))
@@ -220,6 +235,8 @@ def build_worker(args, gpu):
         body = reply.split("</think>")[-1] if "</think>" in reply else reply
         ans, how = parse_bearing(body)
         gt = plan["bearing_gt_deg"]
+        if args.hflip:
+            gt = (360.0 - gt) % 360.0
         return {
             "id": plan["id"], "level": plan.get("level"), "gt": gt,
             "answer": ans, "parsed_by": how,
@@ -283,6 +300,14 @@ def main():
                     help="append the four-step recipe (names the quantities, "
                          "gives none of them away)")
     ap.add_argument("--no-thinking", dest="thinking", action="store_false")
+    ap.add_argument("--greedy", action="store_true",
+                    help="deterministic decoding, for checkpoint curves")
+    ap.add_argument("--no-timestamps", action="store_true",
+                    help="strip the <t seconds> frame tags: durations must "
+                         "come from pixels, not from reading numbers")
+    ap.add_argument("--hflip", action="store_true",
+                    help="mirror frames and score against the mirrored "
+                         "bearing — a pixels-vs-priors test")
     ap.add_argument("--no-format-hint", dest="format_hint",
                     action="store_false")
     args = ap.parse_args()
@@ -294,7 +319,9 @@ def main():
                 else doc.get("question") or json.loads(
                     (ROOT / "probes/bearing_probes.json").read_text())["question"])
     for p in plans:
-        p["_question"] = question
+        # a plan may carry its own question (multi-object scenes, mid-walk
+        # variants); the doc-level question is the default
+        p["_question"] = p.get("question") or question
     if args.ids:
         keep = set()
         for part in args.ids.split(","):

@@ -61,9 +61,11 @@ class Collator:
     avoids running the video through the image processor a second time just
     to find out where the prompt stopped."""
 
-    def __init__(self, processor, cfg, thinking=True, check=True):
+    def __init__(self, processor, cfg, thinking=True, check=True,
+                 timestamps=True):
         self.p, self.cfg, self.thinking = processor, cfg, thinking
         self.check = check
+        self.timestamps = timestamps
 
     def _reply(self, row):
         think = row.get("think") or ""
@@ -78,6 +80,12 @@ class Collator:
 
     def __call__(self, rows):
         from eval_probes import load_frames
+        if not self.timestamps:
+            # applied here, not in __init__: the collator is pickled into
+            # dataloader workers and the patch must exist in each process
+            import notimestamps
+            notimestamps.install()
+            self.p._no_timestamps = True
 
         texts, vids, metas, n_reply = [], [], [], []
         for r in rows:
@@ -171,12 +179,22 @@ def build_model(args):
     if missing:
         print(f"[warn] LoRA targets not found in the text stack: {missing}")
 
-    lcfg = LoraConfig(
-        r=args.rank, lora_alpha=2 * args.rank, lora_dropout=0.05,
-        bias="none", task_type="CAUSAL_LM",
-        target_modules=sorted(present),
-        exclude_modules=r".*visual.*")
-    model = get_peft_model(model, lcfg)
+    if getattr(args, "init_adapter", None):
+        # Continue training an existing adapter: trained weights, fresh
+        # optimizer. Trainer's own resume reloads paged-8bit optimizer state,
+        # which crashes bitsandbytes — this path sidesteps that, and is the
+        # right shape for curriculum stages: stage N+1 starts from what stage
+        # N learned instead of rediscovering it.
+        from peft import PeftModel
+        model = PeftModel.from_pretrained(model, args.init_adapter,
+                                          is_trainable=True)
+    else:
+        lcfg = LoraConfig(
+            r=args.rank, lora_alpha=2 * args.rank, lora_dropout=0.05,
+            bias="none", task_type="CAUSAL_LM",
+            target_modules=sorted(present),
+            exclude_modules=r".*visual.*")
+        model = get_peft_model(model, lcfg)
 
     # Run the vision tower under no_grad. It is frozen and carries no LoRA, so
     # the only reason its activations were being kept was to reach parameters
@@ -220,6 +238,13 @@ def main():
     ap.add_argument("--limit", type=int, default=None)
     # checkpoint often: a flat learning curve should be visible in minutes,
     # not after a full epoch
+    ap.add_argument("--no-timestamps", dest="timestamps",
+                    action="store_false",
+                    help="strip <t seconds> frame tags from prompts")
+    ap.add_argument("--init-adapter", default=None,
+                    help="start from this LoRA checkpoint's weights with a "
+                         "fresh optimizer (not Trainer resume, which crashes "
+                         "reloading 8-bit optimizer state)")
     ap.add_argument("--no-thinking", dest="thinking",
                     action="store_false",
                     help="train under the thinking-off template, "
@@ -289,7 +314,8 @@ def main():
         model=model, args=targs,
         train_dataset=SFTSet(train, cfg),
         eval_dataset=SFTSet(val, cfg) if val else None,
-        data_collator=Collator(processor, cfg, thinking=args.thinking),
+        data_collator=Collator(processor, cfg, thinking=args.thinking,
+                               timestamps=args.timestamps),
     )
     trainer.train(resume_from_checkpoint=args.resume)
     trainer.save_model(str(ROOT / args.out / "final"))

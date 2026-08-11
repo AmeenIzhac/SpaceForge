@@ -1,0 +1,502 @@
+{
+ "question": "This is a first-person video of someone walking through corridors. A large red X is painted on the floor at the spot where the walk begins; it is visible in the opening seconds, and the walker then leaves it behind. Now think back to the moment IN THE MIDDLE of the walk, one second BEFORE the walker started to turn the FINAL corner. Freeze on that moment \u2014 not the end of the video. Treat the direction the camera was facing at that moment as north (000 degrees). What was the compass bearing from the camera's position at that moment to the red X? Answer in degrees clockwise from that facing, 0-359: 090 is directly to the right, 180 directly behind, 270 directly to the left.",
+ "note": "Mid-walk state probe over existing videos; bearing_gt_deg is measured 1 s before the final turn starts.",
+ "const_baseline_deg": 18.85,
+ "const_baseline_answer": 180,
+ "answer_final_anyway_deg": 46.43,
+ "plans": [
+  {
+   "id": 1,
+   "video": "001.mp4",
+   "level": "mid_2turn",
+   "turns": "LR",
+   "legs": [
+    4,
+    3,
+    7
+   ],
+   "n_turns": 2,
+   "t_question_s": 15.53,
+   "bearing_final_deg": 163.3,
+   "bearing_gt_deg": 235.51
+  },
+  {
+   "id": 3,
+   "video": "003.mp4",
+   "level": "mid_2turn",
+   "turns": "LL",
+   "legs": [
+    3,
+    7,
+    6
+   ],
+   "n_turns": 2,
+   "t_question_s": 22.67,
+   "bearing_final_deg": 240.26,
+   "bearing_gt_deg": 198.27
+  },
+  {
+   "id": 4,
+   "video": "004.mp4",
+   "level": "mid_1turn",
+   "turns": "L",
+   "legs": [
+    5,
+    9
+   ],
+   "n_turns": 1,
+   "t_question_s": 10.9,
+   "bearing_final_deg": 203.96,
+   "bearing_gt_deg": 180.0
+  },
+  {
+   "id": 6,
+   "video": "006.mp4",
+   "level": "mid_2turn",
+   "turns": "RL",
+   "legs": [
+    5,
+    5,
+    5
+   ],
+   "n_turns": 2,
+   "t_question_s": 22.67,
+   "bearing_final_deg": 209.05,
+   "bearing_gt_deg": 135.41
+  },
+  {
+   "id": 7,
+   "video": "007.mp4",
+   "level": "mid_1turn",
+   "turns": "R",
+   "legs": [
+    4,
+    10
+   ],
+   "n_turns": 1,
+   "t_question_s": 8.53,
+   "bearing_final_deg": 163.3,
+   "bearing_gt_deg": 180.0
+  },
+  {
+   "id": 8,
+   "video": "008.mp4",
+   "level": "mid_1turn",
+   "turns": "L",
+   "legs": [
+    7,
+    7
+   ],
+   "n_turns": 1,
+   "t_question_s": 15.67,
+   "bearing_final_deg": 220.6,
+   "bearing_gt_deg": 180.0
+  },
+  {
+   "id": 9,
+   "video": "009.mp4",
+   "level": "mid_1turn",
+   "turns": "L",
+   "legs": [
+    10,
+    4
+   ],
+   "n_turns": 1,
+   "t_question_s": 22.83,
+   "bearing_final_deg": 246.04,
+   "bearing_gt_deg": 180.0
+  },
+  {
+   "id": 10,
+   "video": "010.mp4",
+   "level": "mid_1turn",
+   "turns": "L",
+   "legs": [
+    5,
+    6
+   ],
+   "n_turns": 1,
+   "t_question_s": 10.9,
+   "bearing_final_deg": 213.69,
+   "bearing_gt_deg": 180.0
+  },
+  {
+   "id": 11,
+   "video": "011.mp4",
+   "level": "mid_1turn",
+   "turns": "R",
+   "legs": [
+    6,
+    6
+   ],
+   "n_turns": 1,
+   "t_question_s": 13.3,
+   "bearing_final_deg": 140.19,
+   "bearing_gt_deg": 180.0
+  },
+  {
+   "id": 13,
+   "video": "013.mp4",
+   "level": "mid_2turn",
+   "turns": "RR",
+   "legs": [
+    5,
+    7,
+    3
+   ],
+   "n_turns": 2,
+   "t_question_s": 27.43,
+   "bearing_final_deg": 81.87,
+   "bearing_gt_deg": 146.57
+  },
+  {
+   "id": 14,
+   "video": "014.mp4",
+   "level": "mid_1turn",
+   "turns": "R",
+   "legs": [
+    7,
+    6
+   ],
+   "n_turns": 1,
+   "t_question_s": 15.67,
+   "bearing_final_deg": 135.0,
+   "bearing_gt_deg": 180.0
+  },
+  {
+   "id": 15,
+   "video": "015.mp4",
+   "level": "mid_2turn",
+   "turns": "RR",
+   "legs": [
+    3,
+    5,
+    7
+   ],
+   "n_turns": 2,
+   "t_question_s": 17.9,
+   "bearing_final_deg": 135.0,
+   "bearing_gt_deg": 153.75
+  },
+  {
+   "id": 16,
+   "video": "016.mp4",
+   "level": "mid_2turn",
+   "turns": "RR",
+   "legs": [
+    3,
+    6,
+    6
+   ],
+   "n_turns": 2,
+   "t_question_s": 20.3,
+   "bearing_final_deg": 123.69,
+   "bearing_gt_deg": 158.45
+  },
+  {
+   "id": 17,
+   "video": "017.mp4",
+   "level": "mid_2turn",
+   "turns": "RR",
+   "legs": [
+    3,
+    6,
+    3
+   ],
+   "n_turns": 2,
+   "t_question_s": 20.3,
+   "bearing_final_deg": 99.46,
+   "bearing_gt_deg": 158.45
+  },
+  {
+   "id": 18,
+   "video": "018.mp4",
+   "level": "mid_2turn",
+   "turns": "LL",
+   "legs": [
+    5,
+    6,
+    5
+   ],
+   "n_turns": 2,
+   "t_question_s": 25.07,
+   "bearing_final_deg": 260.54,
+   "bearing_gt_deg": 218.3
+  },
+  {
+   "id": 20,
+   "video": "020.mp4",
+   "level": "mid_2turn",
+   "turns": "LR",
+   "legs": [
+    6,
+    5,
+    3
+   ],
+   "n_turns": 2,
+   "t_question_s": 25.07,
+   "bearing_final_deg": 147.99,
+   "bearing_gt_deg": 230.89
+  },
+  {
+   "id": 21,
+   "video": "021.mp4",
+   "level": "mid_1turn",
+   "turns": "R",
+   "legs": [
+    7,
+    7
+   ],
+   "n_turns": 1,
+   "t_question_s": 15.67,
+   "bearing_final_deg": 139.4,
+   "bearing_gt_deg": 180.0
+  },
+  {
+   "id": 22,
+   "video": "022.mp4",
+   "level": "mid_1turn",
+   "turns": "L",
+   "legs": [
+    9,
+    5
+   ],
+   "n_turns": 1,
+   "t_question_s": 20.43,
+   "bearing_final_deg": 237.99,
+   "bearing_gt_deg": 180.0
+  },
+  {
+   "id": 23,
+   "video": "023.mp4",
+   "level": "mid_2turn",
+   "turns": "RR",
+   "legs": [
+    5,
+    5,
+    5
+   ],
+   "n_turns": 2,
+   "t_question_s": 22.67,
+   "bearing_final_deg": 101.31,
+   "bearing_gt_deg": 135.41
+  },
+  {
+   "id": 24,
+   "video": "024.mp4",
+   "level": "mid_1turn",
+   "turns": "L",
+   "legs": [
+    6,
+    7
+   ],
+   "n_turns": 1,
+   "t_question_s": 13.3,
+   "bearing_final_deg": 215.54,
+   "bearing_gt_deg": 180.0
+  },
+  {
+   "id": 25,
+   "video": "025.mp4",
+   "level": "mid_1turn",
+   "turns": "R",
+   "legs": [
+    5,
+    10
+   ],
+   "n_turns": 1,
+   "t_question_s": 10.9,
+   "bearing_final_deg": 158.2,
+   "bearing_gt_deg": 180.0
+  },
+  {
+   "id": 26,
+   "video": "026.mp4",
+   "level": "mid_1turn",
+   "turns": "R",
+   "legs": [
+    6,
+    5
+   ],
+   "n_turns": 1,
+   "t_question_s": 13.3,
+   "bearing_final_deg": 135.0,
+   "bearing_gt_deg": 180.0
+  },
+  {
+   "id": 27,
+   "video": "027.mp4",
+   "level": "mid_2turn",
+   "turns": "RR",
+   "legs": [
+    5,
+    6,
+    3
+   ],
+   "n_turns": 2,
+   "t_question_s": 25.07,
+   "bearing_final_deg": 80.54,
+   "bearing_gt_deg": 141.7
+  },
+  {
+   "id": 28,
+   "video": "028.mp4",
+   "level": "mid_1turn",
+   "turns": "L",
+   "legs": [
+    4,
+    9
+   ],
+   "n_turns": 1,
+   "t_question_s": 8.53,
+   "bearing_final_deg": 198.43,
+   "bearing_gt_deg": 180.0
+  },
+  {
+   "id": 29,
+   "video": "029.mp4",
+   "level": "mid_2turn",
+   "turns": "LL",
+   "legs": [
+    5,
+    5,
+    2
+   ],
+   "n_turns": 2,
+   "t_question_s": 22.67,
+   "bearing_final_deg": 291.8,
+   "bearing_gt_deg": 224.59
+  },
+  {
+   "id": 31,
+   "video": "031.mp4",
+   "level": "mid_1turn",
+   "turns": "L",
+   "legs": [
+    9,
+    4
+   ],
+   "n_turns": 1,
+   "t_question_s": 20.43,
+   "bearing_final_deg": 243.43,
+   "bearing_gt_deg": 180.0
+  },
+  {
+   "id": 32,
+   "video": "032.mp4",
+   "level": "mid_2turn",
+   "turns": "RR",
+   "legs": [
+    6,
+    3,
+    3
+   ],
+   "n_turns": 2,
+   "t_question_s": 20.3,
+   "bearing_final_deg": 56.31,
+   "bearing_gt_deg": 112.42
+  },
+  {
+   "id": 33,
+   "video": "033.mp4",
+   "level": "mid_2turn",
+   "turns": "LR",
+   "legs": [
+    4,
+    4,
+    8
+   ],
+   "n_turns": 2,
+   "t_question_s": 17.9,
+   "bearing_final_deg": 160.02,
+   "bearing_gt_deg": 224.48
+  },
+  {
+   "id": 34,
+   "video": "034.mp4",
+   "level": "mid_2turn",
+   "turns": "RL",
+   "legs": [
+    3,
+    3,
+    6
+   ],
+   "n_turns": 2,
+   "t_question_s": 13.17,
+   "bearing_final_deg": 200.56,
+   "bearing_gt_deg": 135.95
+  },
+  {
+   "id": 35,
+   "video": "035.mp4",
+   "level": "mid_1turn",
+   "turns": "L",
+   "legs": [
+    10,
+    5
+   ],
+   "n_turns": 1,
+   "t_question_s": 22.83,
+   "bearing_final_deg": 240.95,
+   "bearing_gt_deg": 180.0
+  },
+  {
+   "id": 36,
+   "video": "036.mp4",
+   "level": "mid_1turn",
+   "turns": "R",
+   "legs": [
+    6,
+    7
+   ],
+   "n_turns": 1,
+   "t_question_s": 13.3,
+   "bearing_final_deg": 144.46,
+   "bearing_gt_deg": 180.0
+  },
+  {
+   "id": 37,
+   "video": "037.mp4",
+   "level": "mid_1turn",
+   "turns": "L",
+   "legs": [
+    6,
+    5
+   ],
+   "n_turns": 1,
+   "t_question_s": 13.3,
+   "bearing_final_deg": 225.0,
+   "bearing_gt_deg": 180.0
+  },
+  {
+   "id": 38,
+   "video": "038.mp4",
+   "level": "mid_2turn",
+   "turns": "RR",
+   "legs": [
+    2,
+    5,
+    4
+   ],
+   "n_turns": 2,
+   "t_question_s": 15.53,
+   "bearing_final_deg": 120.96,
+   "bearing_gt_deg": 166.17
+  },
+  {
+   "id": 39,
+   "video": "039.mp4",
+   "level": "mid_2turn",
+   "turns": "LL",
+   "legs": [
+    3,
+    4,
+    7
+   ],
+   "n_turns": 2,
+   "t_question_s": 15.53,
+   "bearing_final_deg": 218.66,
+   "bearing_gt_deg": 213.16
+  }
+ ]
+}

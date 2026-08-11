@@ -159,6 +159,10 @@ def worker_main(args, gpu, shard, n_shards, jobs, out_path):
     from eval_probes import load_frames
 
     processor = AutoProcessor.from_pretrained(args.model)
+    if getattr(args, "no_timestamps", False):
+        import notimestamps
+        notimestamps.install()
+        processor._no_timestamps = True
     model = Qwen3_5ForConditionalGeneration.from_pretrained(
         args.model, dtype=torch.bfloat16, device_map="cuda:0",
         attn_implementation=args.attn)
@@ -252,6 +256,7 @@ def main():
     ap.add_argument("--attn", default="sdpa")
     ap.add_argument("--hf-cache", default="/mnt/data0/ameen/hf_cache/hub")
     ap.add_argument("--thinking", action="store_true", default=False)
+    ap.add_argument("--no-timestamps", action="store_true")
     args = ap.parse_args()
 
     doc = json.loads((ROOT / args.plans).read_text())

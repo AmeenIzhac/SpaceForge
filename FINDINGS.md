@@ -1,6 +1,6 @@
 # Can Qwen3.5-9B tell where it came from? — findings
 
-A working log of one session (8–9 Aug 2026): benchmarking the base model on the
+A working log of 8–11 Aug 2026: benchmarking the base model on the
 bearing-to-start task, finding out *why* it failed, building training data
 aimed at that cause, and fine-tuning. `README.md` documents the simulator
 itself; this file is the experiment.
@@ -233,11 +233,255 @@ PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True CUDA_VISIBLE_DEVICES=0,1 \
 Rendering runs one worker per free GPU; a single worker coexists fine with
 another job on the same card (~10s per short walk), three do not.
 
-## 9. Next
+## 9. The leakage incident (and the clean result that survived it)
 
-1. The 4 fps control, before spending any training on L3 — if undercounting is
-   aliasing, counting jumps with no retraining and the fix is cheap.
-2. Finish `curriculum_c` and train on 3–4 turn walks if it isn't aliasing.
-3. Watch whether L0 recovers as training continues, or whether losing the
-   constant is a permanent cost.
-4. Re-run the full 100-plan benchmark once the ladder is solved.
+A stage-1 checkpoint appeared to *solve* L0–L2 (0.0°/0.3°/0.3°). An audit
+before reporting found **21 of the 40 easy-ladder test routes had been emitted
+as training data**: the generator's "repeat a route when draws run dry"
+fallback kept the holdout and the already-used-routes in one set, so a narrow
+tier that exhausted its geometries started handing back benchmark routes. The
+deeper cause is structural — at 0–2 turns over 4–10 steps only ~40 distinct
+routes exist, so the easy rungs cannot both be trained on and held out.
+
+Fixes: the holdout is now un-breachable (`forbidden` is checked before the
+repeat fallback), and test sets since use walk lengths the training set does
+not contain. Clean re-test on 40 verified-disjoint routes, **11–16 steps —
+longer than any training walk (4–10)**:
+
+| | base | stage-1 tuned |
+|---|---|---|
+| overall (40 routes) | 64.9° (22/40 answers are "180") | **3.0°, median 0.7°** |
+| 1 turn (17) | — | 1.0°, 17/17 within 5° |
+| 2 turns (17) | — | 6.0°, 13/17 within 5° |
+
+Generalises across routes *and* lengths at 1–2 turns. Every number in §5's
+table that involved L0–L2 bearing error should be treated as contaminated;
+the perception rows (seq/count) were re-confirmed on clean sets.
+
+## 10. Shortcut audit ("is it cheating?")
+
+"Measure the legs, do the trigonometry" is the *intended* solution; the
+illegitimate shortcuts were tested one by one on checkpoint `stage1_v2/360`:
+
+1. **Equal-leg assumption** (trained legs were near-equal, ≤2.6:1): 30 unseen
+   walks with leg ratios 3.5–7.5. Assuming equal legs scores 35.5° here; the
+   model scored **3.0° (median 0.5°)**. It genuinely reads leg durations, and
+   extrapolates to ratios it never saw.
+2. **Novel question** — "how many seconds of walking straight back to the X?"
+   (the *magnitude* of the displacement vector whose *angle* it was trained to
+   report; never asked in training): directional but rough — median 30%
+   relative error, 19/40 within 25%, r≈0.33. The angle is solid; the full
+   vector transfers only partially to new question forms.
+3. **Frame-sampling aliasing** (the §5 hypothesis for 3-turn undercounting):
+   **refuted.** On short-leg walks where corners fill 20–32% of the clip, 1–2
+   turn bearings hold (1.8°/3.5°) but 3-turn walks still fail (58.8° vs 49.1°
+   constant). The 3-turn failure is capability, not sampling.
+
+## 11. Three turns: fitting is not learning
+
+Stage 2 trained a fresh adapter on 3 360 examples (0–2-turn mix + 300 new
+3–4-turn walks, 17–36 s, all traces verified, holdout enforced). Training loss
+reached 0.02 — the model reproduces its 3-turn training traces — and its
+**final** checkpoint on unseen 3-turn walks:
+
+| 3-turn test (unseen routes) | stage-1 | stage-2 final | constant |
+|---|---|---|---|
+| lengths inside training range (L3, 27–39 s) | 83.6° | **50.2°** | 80.0° |
+| shorter walks (U3, 12–22 s) | 58.8° | 62.5° | 49.1° |
+
+First genuine 3-turn ability (30° under the constant), but **brittle to walk
+length**. The failure mode is specific: asked "which way did each corner go?"
+the stage-2 model answers the exact sequence **15/15** on the same unseen
+short walks whose bearings it gets wrong; inside its bearing working it then
+*narrates a different walk* ("the walk turns 2 times…"). Perception and
+procedure both present; the binding breaks under length shift at 3 turns.
+
+Stage 2b — continue-training from the stage-2 adapter (`--init-adapter`,
+fresh optimizer; Trainer resume crashes reloading 8-bit optimizer state, §7)
+with 120 additional *short* 3-turn walks covering the failing regime:
+
+| test | stage-2 | stage-2b | constant |
+|---|---|---|---|
+| 1–2 turns (40) | 6.6° | 7.1° (median 0.4°) | ~37–56° |
+| 3-turn in-length (L3) | 50.2° | **24.2°** (median 1.2°) | 80.0° |
+| 3-turn short (U3) | 62.5° | **32.7°** (median 0.4°) | 49.1° |
+
+Every rung 0–3 turns beat its constant on verified-clean held-out routes; the
+base model beat none. Medians say most 3-turn walks are solved exactly (10/15
+short walks within 5°); means are dragged by a few 150°+ blowups. Autopsy of
+every blowup: in six of seven the model narrates the correct turn sequence and
+then composes it **mirrored** — the answer is exactly 360°−truth — plus one
+answered relative to the initial heading. Discrete convention flips, not
+diffuse error (and themselves evidence of real computation: a guesser does not
+produce the exact mirror of a correctly-perceived walk).
+
+## 12. Working notes
+
+- Evals and training must share fps: frames carry absolute `<t seconds>` tags
+  (constant-rate sampling until `max_frames` caps it), so a checkpoint is
+  scored on the temporal density it trained at.
+- Walk `--speed` in `render_probes.py` re-times the same route: identical
+  ground truth, 2.75× shorter videos, 7× faster renders — but it shifts every
+  timestamp, so train/eval speed must match too.
+- Background-shell trap that cost four runs: gating on `pgrep -f "<string>"`
+  from a chain whose own command line contains that string deadlocks (or
+  self-kills). Poll a captured PID instead.
+- Root disk at 100% truncates files mid-`write_text` (one .py was cut mid-
+  line); optimizer states are ~700 MB per checkpoint and are dead weight when
+  Trainer-resume is never used — prune them.
+
+---
+
+# Part II — no reasoning anywhere (10 Aug onward)
+
+The objective was restated (Ameen, 10 Aug): the model should **authentically
+learn spatial reasoning in its weights** — genuinely represent where things
+are — not externalize the task into written arithmetic it already knows. The
+worked-trace models above are the wrong *kind* of success: their replies are
+timestamp differences, per-leg vectors and an atan2. Part II reruns the
+program with no reasoning in any channel: hidden thinking off **and**
+supervision a bare `ANSWER: N` — six tokens, nothing else. All evals greedy
+(sampling noise lands directly on answer digits once no trace pins them), all
+on verified-disjoint held-out routes.
+
+## 13. Stage A: bare answers work
+
+Training data: 1 048 bare-answer examples over 262 walks, 0–1 turns only.
+
+| checkpoint | 0–1-turn err (n=23) | 2-turn err, never trained (n=17) |
+|---|---|---|
+| base | 53.4° | 80.4° |
+| 40 (~10 min) | 10.9° | 46.7° |
+| 80–200 | ≈9° plateau | 34–51° |
+| 360 (end) | **3.1°** | 46.4° |
+| *references* | *constant 30.0° · trace model 0.7°* | *constant 55.6° · trace model 6.0°* |
+
+Three findings: (1) the mapping can live in the weights — 3.1° with a bare
+number reply, within 2.4° of the write-out-the-arithmetic model; (2)
+two-phase learning — a 120-step plateau that looks exactly like convergence,
+then a second drop; (3) composition is not free — 2-turn walks beat the
+constant on pure transfer but plateau at ≈46°.
+
+## 14. The `<t seconds>` crutch, removed
+
+The processor writes a literal `<12.3 seconds>` before every frame pair, so
+leg durations were readable as *text* even with bare answers. `notimestamps.py`
+removes the tag at the processor level (source-patched, guarded, per-instance;
+verified 22 tags → 0, vision payload identical), wired through trainer and
+evals as `--no-timestamps`. Stage A rerun identically without tags:
+
+- **Base model without tags: 150.7°** — beyond the 90° of random guessing
+  (answers anti-correlate with truth) and far worse than its 53.4° with tags.
+  The *base* model was leaning on the printed numbers.
+- **Trained without tags: 4.6°** (vs 3.1° with) — the crutch is worth ~1.5°
+  and nothing more. Duration is learnable from pixel evidence alone (frames
+  are uniformly spaced, so elapsed time is visible as frame count).
+
+Everything after this point is timestamp-free, bare-answer, thinking-off.
+
+## 15. Overnight curriculum: 0–2, then 3–4 turns
+
+Each stage warm-starts from the previous best (`--init-adapter`) and is
+scored per-checkpoint by a rolling greedy monitor on held-out sets.
+
+**Stage AB** (+2-turn data, 2 160 rows): 2-turn error **40.1° → 13.3°**,
+0–1-turn held at 4.0°. The stage-A transfer plateau broke as soon as 2-turn
+examples entered training.
+
+**Stage ABC** (+3–4-turn data, 4 480 rows, init AB-final):
+
+| checkpoint | 3-turn short U3 | 3-turn long L3 | 2-turn |
+|---|---|---|---|
+| 60 | 18.4° | 53.6° | — |
+| 360 | 3.1° | 30.0° | 11.6° |
+| 600 (best) | **2.2°** | **19.0°** | **9.2°** |
+| *constant* | *49.1°* | *80.0°* | *55.6°* |
+
+Three turns, no timestamps, no reasoning text: 2.2° on short walks, and the
+2-turn score kept improving under 3-turn data. The Part-I length-brittleness
+did not reappear (short and long both under their constants), though long
+3-turn walks (54–78 frames) remain the weakest rung at 19–20°.
+
+## 16. Anti-cheat battery (objective: transferable, not memorized)
+
+On the AB-final checkpoint, before ABC:
+
+- **Mirror test** (new): every frame flipped left-right, scored against the
+  mirrored bearing. A model reciting route priors fails at ~2× chance; one
+  reading pixels matches its unmirrored score. Result: **8.3° mirrored** vs
+  ~8.0° unmirrored blend — left/right is visually grounded, not memorized.
+- **Unequal legs, no timestamps**: 14.9° (median 9.5°) on ratios 3.5–7.5×
+  vs 35.5° for the equal-leg assumption — it measures durations from pixels.
+
+## 17. Stage D and the full-ladder result
+
+Stage D added 160 five/six-turn walks (init ABC-600). Final battery, every
+row a verified-unseen holdout, greedy, no timestamps, bare answers
+(`ckpt/d_nots/checkpoint-600`; chart: `demo_vids/overnight_ladder.png`):
+
+| rung | final model | best constant | base |
+|---|---|---|---|
+| 0–1 turn | 3.5° | 30.0° | 150.7° |
+| 2 turns | 8.8° | 55.6° | 110.1° |
+| 3 turns, short | **1.7°** | 49.1° | — |
+| 3 turns, long | 23.2° | 80.0° | — |
+| 4 turns | 16.6° | 45.0° | 130.0° |
+| 5–6 turns | 20.6° | 55.5° | 115.7° |
+
+Every rung far under its constant; the base model is *anti-correlated*
+everywhere (worse than the 90° of random guessing). Notable curriculum
+effects: the 2-turn score kept improving as harder data arrived
+(40.1 → 13.3 → 9.2 → 8.8), and a mid-stage-D dip on 3-turn walks (2.2 → 5.8)
+recovered to an all-time best 1.7° by the end — interference from new
+difficulty is transient at these scales.
+
+## 18. Authenticity battery — what is and is not real
+
+Run on the final model (base references where they change the reading):
+
+**Pass — the in-domain skill is genuinely visual and metric:**
+- **Mirror test**: every frame flipped left-right, scored against the
+  mirrored bearing: **5.5°** (its unmirrored blend ≈5–6°). Left/right comes
+  from the pixels, not memorized route priors.
+- **Unequal legs**: 12.2° on ratios 3.5–7.5× (equal-leg shortcut scores
+  35.5°) — leg durations are measured, without timestamp text, on ratios
+  never trained.
+- Route and length extrapolation hold at every rung (all test sets are
+  disjoint routes; several use lengths outside the training range).
+
+**Fail — the skill is question-shaped and domain-bound:**
+- **Mid-walk question** ("bearing just before the final corner"): 53.2° on
+  1–2-turn walks and 73.5° on 3-turn — hugging the answer-the-END-anyway
+  baselines (46.4°/72.1°) and far off the constants (18.9°/53.1°). It
+  answers the trained question regardless of the temporal qualifier; there
+  is no queryable running state yet. (Base is worse still: 124°.)
+- **New-domain transfer** (Three.js open plain, real sky/sun/grass, five
+  objects, rotation decoupled from any corridor): overall 80.9° ≈ the 81°
+  constant. The failure is *degenerate on both sides*: the tuned model
+  answers 180 to 39/84 questions (corridor prior: things are behind); the
+  base answers 000 to 75/84 (things are ahead) — which incidentally scores
+  7.9° on objects visible at the end and must not be mistaken for
+  perception. Zero-shot transfer to a new visual world: absent, in both
+  models.
+
+Objective-2 verdict: not cheating *within* the world it was taught — the
+mirror, unequal-leg and extrapolation tests close the shortcut routes — but
+the ability does not yet leave that world or that question form on its own.
+The obvious next levers: train across visual domains and question variants
+(the open-plain generator and mid-walk probes are now standing infrastructure
+for exactly that), and only then judge in-weights generality.
+
+## 19. Infrastructure added for Part II
+
+- `notimestamps.py` — guarded processor patch removing `<t seconds>` tags.
+- `--greedy`, `--hflip`, `--no-timestamps`, per-plan `question`/`video`
+  fields in `eval_probes.py`; `--no-timestamps` in `diagnose.py`.
+- `--init-adapter` staged training (Trainer resume stays broken; this
+  sidesteps it) and an optimizer-state pruner (700 MB per checkpoint of
+  dead weight once resume is off the table).
+- `make_midpoint_probes.py`, `plane3_make.py` + `photoreal/plane3.js` +
+  `photoreal/render_plane3.mjs` (headless Three.js on mac *and* linux;
+  platform switch documented in the file, node lives in
+  `/mnt/data0/ameen/tools`), `make_demo_vids.py` (first-person + top-down
+  map + verdict banner).
+- Demo videos: `demo_vids/map_{1,2,3,4}turn.mp4`, `map_6turn_{hit,miss}.mp4`.
