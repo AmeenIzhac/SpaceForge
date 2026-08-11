@@ -220,6 +220,26 @@ def perspective(fovy, aspect, near, far):
     return m
 
 
+def view_from_angles(eye, yaw, pitch, roll):
+    """View matrix from yaw/pitch/roll. Same handedness as look_at, and with
+    pitch=roll=0 it is exactly look_at(eye, eye+(cos yaw, 0, sin yaw)) — so the
+    bearing convention (090 = the camera's right) is unchanged and the existing
+    ground truth still applies."""
+    cf = math.cos(pitch)
+    f = np.array([math.cos(yaw) * cf, math.sin(pitch),
+                  math.sin(yaw) * cf], "f4")
+    f /= np.linalg.norm(f)
+    s = np.cross(f, np.array([0, 1, 0], "f4"))
+    s /= np.linalg.norm(s)
+    u = np.cross(s, f)
+    cr, sr = math.cos(roll), math.sin(roll)
+    s, u = s * cr + u * sr, u * cr - s * sr          # roll about the view axis
+    m = np.eye(4, dtype="f4")
+    m[0, :3], m[1, :3], m[2, :3] = s, u, -f
+    m[:3, 3] = -m[:3, :3] @ np.array(eye, "f4")
+    return m
+
+
 def look_at(eye, tgt, up=(0, 1, 0)):
     f = np.array(tgt, "f4") - np.array(eye, "f4")
     f /= np.linalg.norm(f)
@@ -298,9 +318,16 @@ def render_scene(ctx, prog, scene, out_path, fps=30):
          str(out_path)], stdin=subprocess.PIPE)
 
     proj = perspective(scene["fov"], W / H, 0.05, 400)
-    for k, (x, y, yaw) in enumerate(scene["poses"]):
-        h = scene["eye"] + 0.018 * math.sin(k * 0.42)
-        view = look_at((x, h, y), (x + math.cos(yaw), h, y + math.sin(yaw)))
+    for k, pose in enumerate(scene["poses"]):
+        # 3-element poses are the old (x, y, yaw); 6-element ones carry
+        # pitch, roll and a per-frame eye height as well
+        if len(pose) >= 6:
+            x, y, yaw, pitch, roll, h = pose[:6]
+        else:
+            x, y, yaw = pose[:3]
+            pitch = roll = 0.0
+            h = scene["eye"] + 0.018 * math.sin(k * 0.42)
+        view = view_from_angles((x, h, y), yaw, pitch, roll)
         vp = proj @ view
         fbo.clear(*sky, 1.0)
         prog["cam"].value = (x, h, y)

@@ -130,6 +130,30 @@ colours freely, so colour alone is not enough to identify it.
 
 62% of answers within 5°, 90% within 15°. Mirror test 8.1° ≈ unmirrored 7.3°.
 
+**Motion-template audit.** Training used one motion shape (straight, one eased
+turn, straight, stop); only its size, direction, speed and durations varied. So
+the same scenes were re-rendered with camera motions never trained, objects and
+questions unchanged — if the model had fitted a recipe for that one shape,
+these collapse toward the constant:
+
+| motion at eval | trained | n | mean | median | that set's constant |
+|---|---|---|---|---|---|
+| same shape (control) | yes | 112 | 6.9° | 3.8° | 69.1° |
+| two turns | no | 110 | 13.1° | 6.5° | 73.8° |
+| no turn at all | no | 107 | 7.1° | 2.9° | 53.0° |
+| continuous curved arc | no | 74 | 9.6° | 5.0° | 69.3° |
+| stop mid-leg + speed changes | no | 110 | 8.7° | 3.9° | 66.6° |
+| turn 3x faster (0.4 s) | no | 115 | 7.7° | 2.2° | 60.3° |
+| backtrack (175° turn) | no | 118 | 26.6° | 10.7° | 87.5° |
+
+Every unseen motion stays within a few degrees of the control, including the
+two that break the template hardest: a continuous arc (no discrete turn event
+to read off) and stop-go (no fixed time-to-distance mapping). `backtrack` is
+the only real degradation, and it is geometrically nasty rather than a template
+failure — after a 175° turn the target sits close and nearly behind, where a
+small heading error swings the bearing a long way. Still 3x under its constant.
+Conclusion: this is visual path integration, not motion-template matching.
+
 **Corridor transfer** (never trained on corridors; target there is a painted
 red X, not an object): **none.** Scored 45.0° but the set's best constant is
 43.5° and the model answered 186–190° on all 40 probes — it fell back to a
