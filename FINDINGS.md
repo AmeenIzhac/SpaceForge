@@ -456,13 +456,42 @@ Run on the final model (base references where they change the reading):
   answers the trained question regardless of the temporal qualifier; there
   is no queryable running state yet. (Base is worse still: 124°.)
 - **New-domain transfer** (Three.js open plain, real sky/sun/grass, five
-  objects, rotation decoupled from any corridor): overall 80.9° ≈ the 81°
-  constant. The failure is *degenerate on both sides*: the tuned model
-  answers 180 to 39/84 questions (corridor prior: things are behind); the
-  base answers 000 to 75/84 (things are ahead) — which incidentally scores
-  7.9° on objects visible at the end and must not be mistaken for
-  perception. Zero-shot transfer to a new visual world: absent, in both
-  models.
+  objects, rotation decoupled from any corridor). The first run of this test
+  was invalid — three flaws, all in the harness:
+  (a) the plain prompt omitted the corridor prompt's key sentence, that the
+  target is off-shot at the end and must be recovered from the route walked;
+  (b) the appended `ANSWER_FORMAT` referred to "the X", which does not exist
+  in that world; (c) 25 of 84 probes asked about an object that never
+  appeared on screen in its video — unanswerable, not failed. Visibility
+  labels were wrong too: three.js takes a *vertical* fov, so the camera is
+  100° horizontal, not the corridor renderer's 68°.
+
+  Rebuilt (`plane3_probes_v2.py`: matched prompt, self-contained format line,
+  65 answerable probes, FOV-correct labels), scored per level against that
+  level's own constant:
+
+  | level | n | best constant | tuned | base |
+  |---|---|---|---|---|
+  | object visible at end | 14 | 10.3° @004 | **153.1°** | 11.1° |
+  | object hidden at end | 27 | 72.5° @166 | **59.0°** | 106.3° |
+  | bearing from start pose | 24 | 31.6° @007 | 109.6° | 32.4° |
+  | all | 65 | 58.3° | 97.9° | 58.5° |
+
+  Three readings, in order of importance:
+  1. **The base model is a pure constant-answerer here** — 53 of its 65
+     answers are 0/1/2, and its per-level scores (11.1, 32.4) are *exactly*
+     the per-level constants. An earlier note in this log credited it with
+     ~8° "perception" on visible objects; that was the constant landing well,
+     and is retracted.
+  2. **The tuned model beats the constant on the one subset that needs path
+     integration** — object hidden at the end: 59.0° vs 72.5°, where the base
+     is 34° worse than the constant. A small but real transfer signal into a
+     world it has never seen.
+  3. **It is catastrophic where the answer is visible** — 153° on objects on
+     screen at the final frame, answering 180 to 11 of 14. Corridor training
+     installed a strong "the target is behind me" prior that overrides direct
+     visual evidence. That, not path integration, is what breaks out of
+     domain — and it is a training-mix problem, not a capability ceiling.
 
 Objective-2 verdict: not cheating *within* the world it was taught — the
 mirror, unequal-leg and extrapolation tests close the shortcut routes — but
