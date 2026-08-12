@@ -1,10 +1,38 @@
 .venv/
-out/
 __pycache__/
-*.mp4
-out
-runs/
-ckpt/
-data/
-*.log
+*.pyc
 .DS_Store
+*.mp4
+
+# node deps for the three.js renderer (npm install restores them)
+photoreal/node_modules/
+
+# rendered video and model weights live on the data disk; these are symlinks
+out
+ckpt
+ckpt2
+data/
+
+# run outputs and logs: every score is summarised in MODELS.md, and the raw
+# jsonl regenerates from the commands there
+runs/
+logs/
+*.log
+*.err
+*.out
+
+# generated stills and charts (also published as artifacts)
+figures/
+demo_vids/
+*_samples/
+renderer_compare/
+
+# multi-megabyte generated scene specs — they rebuild deterministically from
+# the seeds recorded in MODELS.md. The benchmark probe sets stay tracked.
+probes/nat_train.json
+probes/nat_test.json
+probes/mix_*.json
+probes/sph_*.json
+probes/plane_*.json
+probes/train_*.json
+probes/trainset.json

@@ -73,7 +73,8 @@ Test sets: `probes/test_clean.json`, `micro_u3`, `easy_l3`, `test_t4`,
 
 ## plane-s1 / plane-s2 — open-plane, five question types
 
-`ckpt2/pl_s1/checkpoint-375`, `ckpt2/pl_s2/checkpoint-340` — **kept.**
+`ckpt2/pl_s1/checkpoint-375`, `ckpt2/pl_s2/checkpoint-340` — **deleted
+12 Aug 2026**, reproducible below.
 
 Trained on Three.js open-plain scenes (`plane_gen.py` + `plane_tasks.py`),
 5 question types; three types held out entirely as transfer tests.
@@ -109,7 +110,7 @@ node photoreal/render_plane.mjs probes/plane_train.json out/plane_train 8
 
 ## sphere-1turn — narrowed open-plane task ⭐ best model so far
 
-`ckpt2/sph/checkpoint-612` — **kept.**
+`ckpt2/sph/checkpoint-612` — **deleted 12 Aug 2026**, reproducible below.
 
 Deliberately narrow: green plain, procedural noise ground (no checkerboard —
 a checker is a metric ruler painted on the floor), exactly one turn, ~18
@@ -229,6 +230,58 @@ the visual structure back. So the path integration is genuinely *visual*: it
 needs features in view to measure its own motion, and it does not care much
 what those features are.
 
+### Refined tail: it is a gradient, not a cliff
+
+Removing every object at once was too coarse, and the first pass's walls were a
+grid of blocks (jagged silhouette, and they could swallow the camera). Rebuilt
+with continuous mitred slabs, and the object count stepped down one notch at a
+time — same task, same motion, same wording throughout, 70 held-out scenes per
+point, each against its own constant:
+
+| objects besides the target | 12 | 10 | 8 | 5 | 3 | 2 | 1 | 0 |
+|---|---|---|---|---|---|---|---|---|
+| model | 13.9° | 16.9° | 21.6° | 22.6° | 26.7° | 25.4° | 34.7° | 33.3° |
+| its constant | 33.0 | 30.8 | 35.6 | 34.6 | 35.4 | 29.5 | 35.5 | 32.7 |
+| ×constant | 0.42 | 0.55 | 0.61 | 0.65 | 0.75 | 0.86 | **0.98** | **1.02** |
+
+Every removal costs a few degrees; the cheat line is only reached at one object
+or none. **There is no single change to blame** — the earlier "+18.8° when the
+scene empties" was the sum of six smaller costs.
+
+What can stand in for objects, starting from the bare plain (33.3°):
+
+| substitute | error | vs bare plain |
+|---|---|---|
+| checkerboard **ground** texture | 35.9° | no help at all |
+| fence walls, 1.2 m | 28.8° | small help |
+| checker ground + fence | 29.9° | no better than fence alone |
+| full corridor (walls, ceiling) + 5 props | 28.3° | small help |
+
+**Ground texture is worthless to it and walls are weak**; five objects on the
+open plain score 22.6° while a whole corridor with five props inside scores
+28.3°. What it uses is things standing out of the ground plane at varied
+depths — parallax against the horizon — not surface detail, and not flat
+planes running parallel to the motion. Caveat: this measures what *this* model
+uses, not what is usable in principle. It never trained on walls or on textured
+ground; the corridor-native models used walls perfectly well.
+
+### Not a shortcut
+
+The natural model, on its own 529 held-out probes, against the answer you would
+give by freezing the bearing at the moment the target left the screen:
+
+| target off-screen for | n | model | freeze-at-last-sight |
+|---|---|---|---|
+| 0–1 s | 134 | 3.1° | 1.8° |
+| 1–2 s | 39 | 8.4° | 39.3° |
+| 2–4 s | 98 | 11.6° | 72.4° |
+| 4 s+ | 258 | **15.0°** | 100.5° |
+
+Half the probes have the target hidden for over four seconds, where the
+shortcut is at 100° and the model is at 15°. 176 distinct answers over 529
+probes, answer quadrants matching truth (87/167/168/107 vs 98/161/158/112),
+circular correlation 0.963 against 0.180 for a constant answerer.
+
 The residual M9 gap is appearance/renderer, not sampling — scoring it at
 corridor-native 2 fps/128 frames instead of the chain's 4 fps/64 gives 50.8°
 vs 48.5°, i.e. no change.
@@ -252,6 +305,26 @@ PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True CUDA_VISIBLE_DEVICES=0,1 \
 </details>
 
 ---
+
+## Where things live
+
+```
+*.py                 the pipeline (see README.md and the header of each file)
+probes/              scene specs + ground truth for the benchmark and probe sets
+photoreal/           three.js renderer (npm install restores node_modules)
+MODELS.md            this file — every model, its scores, how to rebuild it
+FINDINGS.md          the experiment log
+logs/    (ignored)   training loss and checkpoint-curve logs
+figures/ (ignored)   generated charts
+out ckpt ckpt2 data  symlinks to the data disk: video, weights, sft rows
+runs/    (ignored)   raw eval output; every score is summarised here instead
+```
+
+Video sets and multi-megabyte scene specs are not tracked — they rebuild
+deterministically from the seeds in each model's reproduce block. Corridor-era
+test video (`out/easy`, `micro`, `unequal`, `test_t4`, `test_t56`) was deleted
+on 12 Aug; `out/test_clean_norm` is kept because the corridor benchmark still
+uses it.
 
 ## Conventions
 
