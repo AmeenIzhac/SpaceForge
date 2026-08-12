@@ -53,6 +53,8 @@ uniform vec3 ground_a;
 uniform vec3 ground_b;
 uniform float ground_scale;
 uniform int ground_style;      // 0 checker, 1 plain, 2 noise, 3 patchy
+uniform float ambient;         // raised indoors, where there is no sky
+uniform float diffuse_k;
 uniform float fog_near;
 uniform float fog_far;
 uniform vec3 cam;
@@ -95,7 +97,7 @@ void main() {
     }
     vec3 n = normalize(v_norm);
     float diff = max(dot(n, sun_dir), 0.0);
-    vec3 lit = base * (0.42 + 0.75 * diff);
+    vec3 lit = base * (ambient + diffuse_k * diff);
     float d = length(v_world - cam);
     float f = clamp((d - fog_near) / (fog_far - fog_near), 0.0, 1.0);
     f_colour = vec4(mix(lit, sky, f), 1.0);
@@ -185,6 +187,34 @@ def torus(R, r, seg=24, ring=14):
     return _mesh(v, n, idx)
 
 
+def xmark(arm, thick=0.22):
+    """Two flat bars crossed at right angles, lying on the ground — the
+    corridor task's floor marker, in this renderer."""
+    a = box(arm * 2, 0.03, thick)
+    b = box(thick, 0.03, arm * 2)
+    v = np.vstack([a[0], b[0]])
+    n = np.vstack([a[1], b[1]])
+    i = np.concatenate([a[2], b[2] + len(a[0])])
+    return v.astype("f4"), n.astype("f4"), i.astype("i4")
+
+
+def wallgrid(cells, size, h):
+    """One merged mesh for a whole set of wall blocks. Per-leg wall slabs
+    overlap through corners and can swallow the camera; a grid of blocks around
+    the walkable region cannot, and it is how the real corridor renderer does
+    it. Merging keeps it to a single draw call."""
+    bx, bn, bi = box(size, h, size)
+    vs, ns, idx = [], [], []
+    for cx, cy in cells:
+        base = len(vs)
+        for v in bx:
+            vs.append([v[0] + cx, v[1] + h / 2, v[2] + cy])
+        ns.extend(bn.tolist())
+        idx.extend((bi + base).tolist())
+    return (np.asarray(vs, "f4"), np.asarray(ns, "f4"),
+            np.asarray(idx, "i4"))
+
+
 def build(o):
     """(mesh, lift) for one object. `dims` overrides the shape's own size —
     that is how buildings get to be tall boxes rather than scaled cubes."""
@@ -197,6 +227,9 @@ def build(o):
             return cylinder(w / 2, w / 2, h), h / 2
         if shape == "cone":
             return cone(w / 2, h), h / 2
+    if shape == "wallgrid":
+        return wallgrid(o["cells"], o["cell"], o["h"]), 0.0
+    if shape == "xmark":     return xmark(0.75 * s), 0.02
     if shape == "cube":       return box(.95 * s, .95 * s, .95 * s), .475 * s
     if shape == "sphere":     return sphere(.55 * s), .55 * s
     if shape == "cylinder":   return cylinder(.38 * s, .38 * s, 1.9 * s), .95 * s
@@ -289,6 +322,7 @@ def render_scene(ctx, prog, scene, out_path, fps=30):
     objs = []
     for o in scene["objects"]:
         (v, n, i), lift = build(o)
+        lift = o.get("y_off", lift)          # walls/ceilings set this directly
         vao = ctx.vertex_array(prog, [
             (ctx.buffer(np.hstack([v, n]).astype("f4").tobytes()),
              "3f 3f", "in_pos", "in_norm")], ctx.buffer(i.tobytes()))
@@ -302,6 +336,12 @@ def render_scene(ctx, prog, scene, out_path, fps=30):
     # match the three.js checker size: its 256px/8-checker texture tiles
     # `ground_scale` times across a 900-unit plane
     prog["ground_scale"].value = scene["ground_scale"] * 8 / 900
+    indoor = bool(scene.get("indoor"))
+    prog["ambient"].value = 0.62 if indoor else 0.42
+    prog["diffuse_k"].value = 0.35 if indoor else 0.75
+    if indoor:
+        prog["fog_near"].value = 12.0
+        prog["fog_far"].value = 55.0
     prog["ground_style"].value = {"checker": 0, "plain": 1, "noise": 2,
                                   "patchy": 3}[scene.get("ground_style",
                                                          "checker")]
@@ -341,11 +381,15 @@ def render_scene(ctx, prog, scene, out_path, fps=30):
 
         prog["is_ground"].value = 0
         for vao, rgb, o, lift in objs:          # flat shadow, then the object
-            m = model_mat(o["x"], 0.012, o["y"], o["yaw"], sy=0.02)
-            prog["model"].write(m.T.tobytes())
-            prog["mvp"].write(vp.T.tobytes())
-            prog["colour"].value = (0.22, 0.22, 0.20)
-            vao.render()
+            # structure (walls, ceiling) casts no blob shadow: the ceiling is
+            # the size of the whole scene, so its shadow would paint the floor
+            # black — which is exactly what it did
+            if not o.get("no_shadow"):
+                m = model_mat(o["x"], 0.012, o["y"], o["yaw"], sy=0.02)
+                prog["model"].write(m.T.tobytes())
+                prog["mvp"].write(vp.T.tobytes())
+                prog["colour"].value = (0.22, 0.22, 0.20)
+                vao.render()
             m = model_mat(o["x"], lift, o["y"], o["yaw"])
             prog["model"].write(m.T.tobytes())
             prog["mvp"].write(vp.T.tobytes())

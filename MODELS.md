@@ -176,6 +176,81 @@ PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True CUDA_VISIBLE_DEVICES=0,1 \
 ```
 </details>
 
+## nat-varied — sphere task on natural, varied camera motion ⭐ current best
+
+`ckpt2/nat/checkpoint-1212` — **kept.**
+
+Same sphere task and questions as `sphere-1turn`, but the camera moves like a
+person rather than following one template: speed varies continuously with
+pauses and short backward stretches, lateral sway (motion is not locked to
+facing), 1-3 turns of varying size and duration, pitch and roll, and a gentle
+bob that fades when the walker slows. Every target signal is smoothed before
+use, so acceleration is bounded. 1800 train / 300 test scenes, 4994
+bare-answer examples, 2 epochs, 4h13m.
+
+| test | n | const | nat-varied | sphere-1turn (rigid) |
+|---|---|---|---|---|
+| natural-motion held-out | 829 | 78.9° | **8.9°** (median 4.0°) | 18.2° |
+
+Training on varied motion halves the error on varied motion — the rigid model
+degrades from 7.3° (its own easy test) to 18.2° when the camera stops being a
+template. Learning was slower (~1000 steps to reach what the rigid task
+reached in ~300), which is what a more general skill should look like.
+
+### Sphere → corridor morph ablation
+
+Ten test sets, each the previous plus **exactly one** change, 70 held-out
+scenes each, every step scored against its own best-constant answer:
+
+| step | const | nat-varied | ×const | rigid |
+|---|---|---|---|---|
+| M0 sphere task, as trained | 76.6° | 12.1° | 0.16 | 21.6° |
+| M1 + target at the start of the walk | 36.6° | 14.9° | 0.41 | 33.5° |
+| M2 + target is a flat X on the ground | 33.3° | 18.1° | 0.54 | 33.4° |
+| M3 + corridor wording | 32.1° | 16.1° | 0.50 | 34.0° |
+| M4 + rigid camera motion | 29.4° | 14.9° | 0.51 | 34.4° |
+| M5 + straight legs, 90° turns | 32.3° | 15.9° | 0.49 | 36.5° |
+| **M6 + all other objects removed** | 25.1° | **34.7°** | **1.38** | 31.6° |
+| M7 + walls | 32.6° | 22.9° | 0.70 | 33.8° |
+| M8 + ceiling and indoor light | 30.7° | 23.5° | 0.76 | 35.9° |
+| **M9 the real corridor task** | 43.5° | **48.5°** | **1.11** | 44.9° |
+
+Five of the changes cost almost nothing: moving the target to the start of the
+walk, turning it into a flat floor marker, the corridor's own wording, rigid
+constant-speed motion, and lattice geometry all leave the model at half its
+cheat line or better.
+
+**Emptying the scene is what breaks it** (+18.8°, and the only single change
+that pushes it past its cheat line): with the distractors gone there is a bare
+noise-textured plain and one marker, so there is nothing to track — no
+parallax, no landmarks — and half its answers collapse onto 190. **Adding
+walls recovers most of it** (-11.8°, back to 0.70× cheat), because walls give
+the visual structure back. So the path integration is genuinely *visual*: it
+needs features in view to measure its own motion, and it does not care much
+what those features are.
+
+The residual M9 gap is appearance/renderer, not sampling — scoring it at
+corridor-native 2 fps/128 frames instead of the chain's 4 fps/64 gives 50.8°
+vs 48.5°, i.e. no change.
+
+<details><summary>reproduce</summary>
+
+```bash
+.venv/bin/python natural_motion.py --n 1800 --secs 10 --seed 777  --seed0 100000 --out probes/nat_train.json
+.venv/bin/python natural_motion.py --n 300  --secs 10 --seed 1313 --seed0 200000 --out probes/nat_test.json
+# render: plane_gl.py over 4 shards on 3 GPUs (~15 min for 2100 scenes)
+# rows: sphere_gen.rows() -> data/nat_train.jsonl / probes/nat_probe.json
+PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True CUDA_VISIBLE_DEVICES=0,1 \
+ .venv/bin/python -m torch.distributed.run --nproc_per_node=2 train_lora.py \
+   --data data/nat_train.jsonl --out ckpt2/nat --epochs 2 --accum 4 --lr 1e-4 \
+   --no-thinking --no-timestamps --fps 4.0 --max-frames 64
+# ablation
+.venv/bin/python morph_ablation.py --n 70      # scene specs for M0-M8
+.venv/bin/python plane_gl.py --scenes probes/mo_<step>.json --out out/mo_<step>
+/mnt/data0/ameen/scripts/build_morph_probes.py ; /mnt/data0/ameen/scripts/ablation.sh
+```
+</details>
+
 ---
 
 ## Conventions
